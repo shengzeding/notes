@@ -62,10 +62,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
 @media (min-width: 960px) {
   .sidebar-toggle {
     display: block;
-    position: fixed;
-    top: calc(var(--vp-nav-height) + 10px);
-    left: 12px;
-    z-index: 40;
+    flex-shrink: 0;
+    width: 112px;
+    margin-right: 16px;
     padding: 4px 10px;
     border: 1px solid var(--vp-c-divider);
     border-radius: 3px;
@@ -76,7 +75,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
     cursor: pointer;
   }
   .sidebar-toggle:hover, .sidebar-toggle:focus-visible { color: #111; }
-  .VPSidebar { padding-top: calc(var(--vp-nav-height) + 52px); }
+  .VPSidebar {
+    top: var(--vp-nav-height);
+    padding-top: 24px;
+    transition: none;
+  }
+  .VPSidebar .curtain { display: none; }
+  .notes-sidebar-collapsed .VPLocalNav.has-sidebar { padding-left: 32px; }
   .VPDoc .content { min-width: 0; padding-left: 16px; padding-right: 16px; }
   .notes-sidebar-collapsed .VPSidebar {
     visibility: hidden;
@@ -110,3 +115,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
   padding-bottom: 6px;
 }
 .VPDocOutlineItem.nested { padding-right: 0; }
+
+/* The header must stay opaque even when the sidebar no longer covers its left edge. */
+.VPNav .VPNavBar { background-color: var(--vp-c-bg) !important; }
+.VPNavBar.has-sidebar .divider { padding-left: 0; }
+.VPNavBarTitle.has-sidebar .title { border-bottom-color: transparent; }
