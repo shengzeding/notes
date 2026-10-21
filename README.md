@@ -9,7 +9,7 @@ A Markdown notebook built with VitePress and published through GitHub Pages.
 - Styling: `docs/.vitepress/theme/style.css`
 - Writing instructions: `docs/guide/writing.md`
 
-The design follows the personal homepage: Raleway, a white background, black and gray text, blue links, and thin separators. The site interface and starter documentation are in English.
+The design follows the personal homepage: Raleway, a white background, black and gray text, monochrome links, and thin separators. The site interface and starter documentation are in English.
 
 ## Local development
 
