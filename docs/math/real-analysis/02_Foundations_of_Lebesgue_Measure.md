@@ -5,10 +5,6 @@ order: 2
 
 # Foundations of Lebesgue Measure
 
-We begin with the volume of rectangles and use countable coverings to assign an outer measure to every subset of $\mathbb{R}^n$. Restricting to measurable sets gives countable additivity. Approximation theorems then explain the structure of these sets, while nonmeasurable sets show why the restriction is necessary. The final section introduces measurable functions.
-
-Throughout, $m_*$ denotes Lebesgue outer measure and $m$ denotes Lebesgue measure. Complements are taken in $\mathbb{R}^n$ unless a different ambient set is specified. The topological facts used below are collected in the separate Review notes.
-
 ---
 
 ## 1. Rectangles and Outer Measure
