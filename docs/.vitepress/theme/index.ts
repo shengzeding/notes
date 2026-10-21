@@ -18,7 +18,7 @@ const ReadingLayout = defineComponent({
       try { localStorage.setItem('notes-sidebar-collapsed', String(collapsed.value)) } catch {}
     }
     return () => h(DefaultTheme.Layout, null, {
-      'layout-top': () => h('button', {
+      'nav-bar-content-before': () => h('button', {
         class: 'sidebar-toggle',
         type: 'button',
         'aria-controls': 'VPSidebarNav',
