@@ -1,10 +1,11 @@
 ---
-title: Mathematics & methods
-description: Mathematical foundations, derivations, and numerical methods.
+title: Mathematics
+description: Mathematical foundations, numerical methods, scientific computing, and optimization.
+order: 100
 ---
 
-# Mathematics & methods
+# Mathematics
 
-Mathematical foundations, derivations, and numerical methods.
+Mathematical foundations, numerical methods, scientific computing, and optimization.
 
 <CollectionNotes collection="math" />
