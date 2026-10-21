@@ -1,8 +1,11 @@
+---
+title: Fluid Equilibrium
+order: 6
+---
+
+
 # Fluid Equilibrium, Pressure Forces, and Buoyancy
 
-Throughout, $z$ points upward, $g>0$, and $\mathbf f$ denotes body force per unit mass. Unless otherwise stated, the liquid is homogeneous with constant density $\rho$. Pressure-force formulas use net gauge pressure when the same atmospheric pressure acts on the opposite side.
-
----
 
 ## 1. Equilibrium and Pressure Surfaces
 
