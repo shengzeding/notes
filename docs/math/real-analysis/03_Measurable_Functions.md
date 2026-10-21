@@ -58,7 +58,6 @@ Every subset of $Z$ is measurable and null. Hence the two level sets differ only
 
 The same reasoning allows us to extend or restrict a measurable function across a null set without losing measurability.
 
----
 
 ## 2. Operations and Limits
 
@@ -170,7 +169,6 @@ $$
 
 The limit superior is measurable by Theorem 2.5, and modifying it on a null set preserves measurability.
 
----
 
 ## 3. Approximation by Simple Functions
 
@@ -265,8 +263,6 @@ $$
 at every point, including points where $f=\pm\infty$. Each $\varphi_k$ is measurable and has finite range. Unlike the nonnegative approximation, this sequence need not be monotone.
 
 Together with Corollary 2.6, this gives a useful characterization: measurable functions are exactly the pointwise limits of measurable simple functions.
-
----
 
 ## 4. Littlewood's Principles: Egorov and Lusin
 
