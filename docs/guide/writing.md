@@ -1,5 +1,6 @@
 ---
 title: Adding a note
+order: 10
 description: Create a Markdown file, preview it, and publish.
 ---
 
@@ -11,9 +12,10 @@ The content of this site lives in plain Markdown files. Category lists, the side
 
 | Topic | Folder |
 | --- | --- |
-| Mathematics and numerical methods | `docs/math/` |
-| Scientific machine learning | `docs/scientific-ml/` |
-| Paper notes | `docs/papers/` |
+| Mathematics | `docs/math/` |
+| Numerical methods and scientific computing | `docs/math/numerical-methods/` |
+| Mechanics | `docs/mechanics/` |
+| Machine learning | `docs/machine-learning/` |
 | Images and attachments | `docs/public/images/` |
 
 For example, save a note as `docs/math/linear-algebra.md`. Use lowercase names with hyphens for files. The text itself can be in any language.
@@ -25,6 +27,7 @@ Copy this template into a new file. The section between the two `---` lines cont
 ```md
 ---
 title: Linear algebra notes
+order: 20
 description: From vector spaces to linear maps.
 ---
 
@@ -50,9 +53,48 @@ Define the notation, state the assumptions, and work through the steps.
 - [Source title](https://example.com)
 ```
 
-The first `# Heading` is used in category lists and the sidebar. Second- and third-level headings appear in the page outline.
+The `title` metadata is used in category lists and the sidebar, falling back to the first `# Heading` when omitted. Second- and third-level headings appear in the page outline.
 
 New Markdown files are picked up on the next build. If a newly added page is missing from the sidebar during local development, restart the development server.
+
+## Topics and chapters
+
+A single-file topic and a topic split into chapters can sit next to each other:
+
+```text
+docs/math/
+├── index.md
+├── complex-analysis.md
+└── real-analysis/
+    ├── index.md
+    ├── measure.md
+    └── integration.md
+```
+
+These are organizational examples, not existing notes. Start with one file if that is enough; split it into chapters when sections become useful to read and edit independently.
+
+Use a folder's `index.md` for its introduction, title, and order. Add a chapter list to it with:
+
+```html
+<CollectionNotes collection="math/real-analysis" />
+```
+
+The sidebar preserves the folder hierarchy. A folder with `index.md` is clickable; a folder without it still groups its chapters. Files and folders can appear together at every level.
+
+## Chapter order
+
+Set a numeric `order` in each page's metadata. For a folder, set it in that folder's `index.md`:
+
+```yaml
+---
+title: Integration
+order: 20
+---
+```
+
+Smaller numbers come first among siblings, including folders and individual documents. Use 10, 20, 30 to leave room for additions. Entries without `order` appear last; ties are sorted by title. Use numbers without quotation marks. Changing order does not require renaming files or changing links.
+
+Paper notes belong under their subject. Link between related topics instead of duplicating notes.
 
 ## Preview locally
 
