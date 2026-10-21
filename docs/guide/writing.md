@@ -13,7 +13,7 @@ The content of this site lives in plain Markdown files. Category lists, the side
 | Topic | Folder |
 | --- | --- |
 | Mathematics | `docs/math/` |
-| Numerical methods and scientific computing | `docs/math/numerical-methods/` |
+| Numerical Methods | `docs/numerical-methods/` |
 | Mechanics | `docs/mechanics/` |
 | Machine learning | `docs/machine-learning/` |
 | Images and attachments | `docs/public/images/` |
