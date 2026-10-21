@@ -1,10 +1,10 @@
 import { defineConfig } from 'vitepress'
-import { collections, scan } from './catalog'
+import { collections, scan, sidebarItems } from './catalog'
 
 const notes = scan()
 export default defineConfig({
   title: 'Shengze Ding — Notes',
-  description: 'Notes on mathematics, scientific machine learning, and research papers.',
+  description: 'Notes on mathematics, mechanics, and machine learning.',
   lang: 'en-US',
   base: '/notes/',
   cleanUrls: false,
@@ -29,9 +29,9 @@ export default defineConfig({
       { text: 'Notes', items: [{ text: 'All notes', link: '/' }] },
       ...collections.map(c => ({ text: c.name, collapsed: false, items: [
         { text: 'Overview', link: `/${c.id}/` },
-        ...notes.filter(n => n.collection === c.id).map(n => ({ text: n.title, link: n.url }))
+        ...sidebarItems(notes.find(n => n.path === c.id)?.children ?? [])
       ] })),
-      { text: 'Writing', items: notes.filter(n => n.collection === 'guide').map(n => ({ text: n.title, link: n.url })) }
+      { text: 'Writing', items: sidebarItems(notes.find(n => n.path === 'guide')?.children ?? []) }
     ],
     outline: { label: 'On this page', level: [2, 3] },
     search: { provider: 'local', options: {
