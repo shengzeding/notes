@@ -132,3 +132,48 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
   pointer-events: none;
   z-index: 3;
 }
+
+/* A quiet contents page; article layouts keep their existing reading width. */
+.notes-index .VPDoc .content { max-width: 760px; }
+.notes-index .VPDoc .content-container { max-width: 680px !important; }
+.notes-index .VPDoc { padding-top: 80px; }
+.notes-index .vp-doc h1 {
+  margin-bottom: 48px;
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: .02em;
+}
+.notes-index .vp-doc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--vp-c-divider);
+}
+.notes-index .vp-doc li { margin: 0; border-bottom: 1px solid var(--vp-c-divider); }
+.notes-index .vp-doc li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 25px 2px;
+  color: #222;
+  font-size: 23px;
+  line-height: 1.4;
+  font-weight: 400;
+  text-decoration: none;
+}
+.notes-index .vp-doc li a::after {
+  content: "→";
+  color: #999;
+  font-family: Arial, sans-serif;
+  font-size: 21px;
+}
+.notes-index .vp-doc li a:hover,
+.notes-index .vp-doc li a:focus-visible { color: #111; background: #fafafa; }
+.notes-index .vp-doc li a:hover::after,
+.notes-index .vp-doc li a:focus-visible::after { color: #111; }
+@media (max-width: 767px) {
+  .notes-index .VPDoc { padding-top: 48px; }
+  .notes-index .vp-doc h1 { font-size: 32px; margin-bottom: 32px; }
+  .notes-index .vp-doc li a { padding: 22px 2px; font-size: 20px; }
+}
