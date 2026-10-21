@@ -1,3 +1,8 @@
+---
+title: Foundations of Lebesgue Measure
+order: 2
+---
+
 # Foundations of Lebesgue Measure
 
 We begin with the volume of rectangles and use countable coverings to assign an outer measure to every subset of $\mathbb{R}^n$. Restricting to measurable sets gives countable additivity. Approximation theorems then explain the structure of these sets, while nonmeasurable sets show why the restriction is necessary. The final section introduces measurable functions.
