@@ -1,8 +1,10 @@
+---
+title: Fluid Properties and Continuum Models
+order: 1
+---
+
 # Fluid Properties and Continuum Models
 
-Throughout, $\rho$ denotes density, $\mu$ dynamic viscosity, $\nu=\mu/\rho$ kinematic viscosity, and $g$ gravitational acceleration. Temperature $T$ is absolute temperature. Material properties are evaluated at the conditions of the flow.
-
----
 
 ## 1. The Continuum Description
 
