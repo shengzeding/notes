@@ -1,5 +1,5 @@
-import { scan, collections } from '../catalog'
+import { folderContents } from '../catalog'
 export default {
   watch: ['../../**/*.md'],
-  load() { return { notes: scan(), collections } }
+  load() { return { folders: folderContents() } }
 }
