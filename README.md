@@ -25,11 +25,13 @@ Build with `pnpm build`; preview with `pnpm preview`.
 
 ## Add notes
 
-Create `.md` files in `docs/math/`, `docs/scientific-ml/`, or `docs/papers/`. Give each file a `# Heading` and optional `title` / `description` frontmatter. The sidebar, category lists, and search index update at build time.
+Create `.md` files in `docs/math/`, `docs/mechanics/`, or `docs/machine-learning/`. Give each file a `# Heading` and optional `title` / `description` frontmatter. The sidebar, category lists, and search index update at build time.
 
-To add another topic, update `collections` in `docs/.vitepress/catalog.ts`, add its category index, and add a corresponding section to `docs/index.md`.
+Files and subfolders can coexist. A folder’s `index.md` defines its title and introduction; numeric `order` metadata controls sibling ordering for both folders and files. The sidebar and topic lists preserve the hierarchy.
 
-The topic folders are initially empty. The only starter content is a writing guide and an explicitly labeled formatting example.
+To add another top-level category, update `collections` in `docs/.vitepress/catalog.ts`, add its category index, and add a corresponding section to `docs/index.md`.
+
+Numerical methods live under `docs/math/numerical-methods/`. Topic folders contain no research notes yet. The only starter content is a writing guide and an explicitly labeled formatting example.
 
 ## Deployment
 
