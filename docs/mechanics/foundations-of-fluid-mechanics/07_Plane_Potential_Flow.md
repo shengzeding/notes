@@ -1,8 +1,11 @@
+---
+title: Plane Potential Flow
+order: 7
+---
+
+
 # Incompressible Plane Potential Flow
 
-Throughout, $\mathbf v=(u,v)$, $z=x+iy$, and polar angle $\theta$ increases counterclockwise. The default circulation $\Gamma=\oint_C\mathbf v\cdot d\mathbf r$ is positive counterclockwise. Forces on two-dimensional bodies are quoted per unit span.
-
----
 
 ## 1. Potential-Flow Framework
 
