@@ -4,22 +4,13 @@ editLink: false
 lastUpdated: false
 prev: false
 next: false
+sidebar: false
+outline: false
 ---
 
 # Notes
 
-## [Mathematics](./math/index.md)
-
-<CollectionNotes collection="math" />
-
-## [Mechanics](./mechanics/index.md)
-
-<CollectionNotes collection="mechanics" />
-
-## [Machine Learning](./machine-learning/index.md)
-
-<CollectionNotes collection="machine-learning" />
-
-## Writing
-
-<CollectionNotes collection="guide" />
+- [Mathematics](./math/index.md)
+- [Numerical Methods](./numerical-methods/index.md)
+- [Mechanics](./mechanics/index.md)
+- [Machine Learning](./machine-learning/index.md)
