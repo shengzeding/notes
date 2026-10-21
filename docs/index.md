@@ -6,6 +6,8 @@ prev: false
 next: false
 sidebar: false
 outline: false
+aside: false
+pageClass: notes-index
 ---
 
 # Notes
