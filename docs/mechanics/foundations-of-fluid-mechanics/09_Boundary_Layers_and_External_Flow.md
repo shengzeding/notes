@@ -1,8 +1,12 @@
+---
+title: Boundary Layers
+order: 9
+---
+
+
 # Boundary Layers, External Drag, and Free Jets
 
-Throughout, $x$ is streamwise and $y$ is measured from a stationary wall into the fluid. The outer speed is $U(x)$; $\mathrm{Re}_x=Ux/\nu$ and $\mathrm{Re}_l=Ul/\nu$ when $U$ is constant. Wall shear $\tau_w$ is positive for the usual attached flow. Flat-plate drag coefficients refer to one wetted side unless stated otherwise.
 
----
 
 ## 1. The Boundary-Layer Approximation
 
