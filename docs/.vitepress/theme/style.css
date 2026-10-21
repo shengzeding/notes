@@ -177,3 +177,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
   .notes-index .vp-doc h1 { font-size: 32px; margin-bottom: 32px; }
   .notes-index .vp-doc li a { padding: 22px 2px; font-size: 20px; }
 }
+
+/* Separate headings with whitespace, not rules. Keep other content dividers. */
+.vp-doc h1, .vp-doc h2 { border: 0; }
+.vp-doc h2 { padding-top: 0; }
+.vp-doc hr:has(+ h1),
+.vp-doc hr:has(+ h2),
+.vp-doc h1 + hr,
+.vp-doc h2 + hr { display: none; }
