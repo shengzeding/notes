@@ -20,7 +20,7 @@
   --vp-sidebar-width: 260px;
 }
 body { font-size: 16px; line-height: 1.8; }
-.VPNavBar { box-shadow: 0 1px 6px rgba(0,0,0,.06); }
+.VPNavBar { box-shadow: none; }
 .VPNavBarTitle .title { font-size: 14px; font-weight: 500; letter-spacing: .12em; }
 .VPNavBarMenuLink { font-size: 12px !important; font-weight: 600 !important; letter-spacing: .12em; }
 .VPNavBarMenuLink.active { color: #111 !important; background: #f4f4f4; }
@@ -118,5 +118,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
 
 /* The header must stay opaque even when the sidebar no longer covers its left edge. */
 .VPNav .VPNavBar { background-color: var(--vp-c-bg) !important; }
-.VPNavBar.has-sidebar .divider { padding-left: 0; }
-.VPNavBarTitle.has-sidebar .title { border-bottom-color: transparent; }
+/* One full-width rule instead of the theme's separate title/content borders. */
+.VPNavBar .divider { display: none; }
+.VPNavBar .VPNavBarTitle .title { border-bottom: 0 !important; }
+.VPNavBar::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--vp-c-divider);
+  pointer-events: none;
+  z-index: 3;
+}
