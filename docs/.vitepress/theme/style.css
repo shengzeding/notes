@@ -11,10 +11,10 @@
   --vp-c-bg-elv: #fff;
   --vp-c-divider: #e7e7e7;
   --vp-c-gutter: #e7e7e7;
-  --vp-c-brand-1: #1f5f8b;
-  --vp-c-brand-2: #0b3855;
-  --vp-c-brand-3: #1f5f8b;
-  --vp-c-brand-soft: rgba(31,95,139,.06);
+  --vp-c-brand-1: #111;
+  --vp-c-brand-2: #444;
+  --vp-c-brand-3: #111;
+  --vp-c-brand-soft: rgba(0,0,0,.06);
   --vp-nav-height: 58px;
   --vp-layout-max-width: 1440px;
   --vp-sidebar-width: 260px;
@@ -35,7 +35,8 @@ body { font-size: 16px; line-height: 1.8; }
 .vp-doc h3 { font-size: 17px; font-weight: 600; }
 .vp-doc p, .vp-doc li { line-height: 1.8; }
 .vp-doc p { margin: 16px 0; }
-.vp-doc a { font-weight: 400; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.vp-doc a { color: #111; font-weight: 400; text-decoration: none; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.vp-doc a:hover, .vp-doc a:focus-visible { color: #111; text-decoration: underline; }
 .vp-doc .header-anchor { text-decoration: none; }
 .vp-doc .empty-collection { color: #757575; font-size: 14px; margin-top: 8px; }
 .vp-doc .note-list { padding-left: 20px; }
@@ -46,7 +47,7 @@ body { font-size: 16px; line-height: 1.8; }
 .vp-doc mjx-container { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 6px 0; }
 .VPDocFooter .pager-link { border-radius: 3px; }
 .VPFooter { border-top: 1px solid #e7e7e7; }
-a:focus-visible, button:focus-visible { outline: 2px solid #1f5f8b; outline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
 @media (max-width: 767px) {
   .VPNavBarTitle .title { font-size: 12px; letter-spacing: .08em; }
   .vp-doc h1 { font-size: 28px; }
