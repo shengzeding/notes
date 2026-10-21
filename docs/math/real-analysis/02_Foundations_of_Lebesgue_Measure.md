@@ -5,7 +5,6 @@ order: 2
 
 # Foundations of Lebesgue Measure
 
----
 
 ## 1. Rectangles and Outer Measure
 
