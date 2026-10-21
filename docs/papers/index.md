@@ -1,10 +1,11 @@
 ---
 title: Paper notes
-description: Reading notes, key ideas, and open questions.
+search: false
+sidebar: false
+prev: false
+next: false
 ---
 
 # Paper notes
 
-Reading notes, key ideas, and open questions.
-
-<CollectionNotes collection="papers" />
+Paper notes are now organized by subject: [Mathematics](../math/index.md), [Mechanics](../mechanics/index.md), and [Machine Learning](../machine-learning/index.md).
