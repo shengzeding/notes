@@ -1,8 +1,11 @@
+---
+title: Flow Descriptions and Kinematics
+order: 1
+---
+
+
 # Flow Descriptions and Kinematics
 
-Throughout, write $\mathbf v=u\mathbf i+v\mathbf j+w\mathbf k$. Bold $\mathbf v$ is the velocity vector; italic $v$ is its $y$ component. The scalar speed is $q=|\mathbf v|$, and $V$ denotes a cross-sectional mean speed.
-
----
 
 ## 1. Describing a Flow
 
