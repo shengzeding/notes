@@ -1,8 +1,10 @@
+---
+title: Dimensional Analysis and Similarity
+order: 5
+---
+
 # Dimensional Analysis and Similarity
 
-Throughout, $M,L,T$ denote mass, length, and time dimensions. Characteristic scales are $l$ for length and $V$ for speed. Ordinary frequency $f$ is measured in cycles per time; angular frequency is $\omega=2\pi f$.
-
----
 
 ## 1. Dimensions and Nondimensionalization
 
