@@ -1,10 +1,10 @@
-# Measurable Functions and Approximation
-
-Measurable functions are stable under many operations and limits, and can be approximated by simple functions. Littlewood's principles explain how measurability and pointwise convergence relate to more familiar notions of regularity. Egorov's theorem gives uniform convergence outside a small exceptional set, and Lusin's theorem gives continuity after restricting to a large closed subset.
-
-Throughout, $E\subseteq\mathbb{R}^n$ is measurable and functions may take values in $\overline{\mathbb{R}}=\mathbb{R}\cup\{-\infty,+\infty\}$ unless stated otherwise. Recall that $f:E\to\overline{\mathbb{R}}$ is measurable exactly when $\{f>a\}$ is measurable for every real $a$. The equivalent tests using $\{f\ge a\}$, $\{f<a\}$, or $\{f\le a\}$ were established in *Foundations of Lebesgue Measure*.
-
 ---
+title: Measurable Functions
+order: 3
+---
+
+# Measurable Functions
+
 
 ## 1. Measurability and Almost Everywhere Statements
 
