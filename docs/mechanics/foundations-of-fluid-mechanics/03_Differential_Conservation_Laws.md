@@ -1,8 +1,11 @@
+---
+title: Differential Conservation Laws
+order: 3
+---
+
+
 # Differential Conservation Laws
 
-Throughout, $\mathbf v=(u,v,w)$, $\mathbf f$ is body force per unit mass, and $\boldsymbol\sigma$ is the total Cauchy stress tensor. The coordinate $z$ points upward when gravity is present. Fields are assumed sufficiently smooth for the derivatives used below.
-
----
 
 ## 1. Conservation of Mass
 
