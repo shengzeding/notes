@@ -1,6 +1,6 @@
 ---
 title: Notes
-description: Notes on mathematics, scientific machine learning, and research papers.
+description: Notes on mathematics, mechanics, and machine learning.
 editLink: false
 lastUpdated: false
 prev: false
@@ -9,26 +9,26 @@ next: false
 
 # Notes
 
-Notes on mathematics, scientific machine learning, and research papers.
+Notes on mathematics, mechanics, and machine learning.
 Browse by topic below, or use the search at the top of the page.
 
-## Mathematics & methods
+## [Mathematics](./math/index.md)
 
-Mathematical foundations, derivations, and numerical methods.
+Mathematical foundations, numerical methods, scientific computing, and optimization.
 
 <CollectionNotes collection="math" />
 
-## Scientific machine learning
+## [Mechanics](./mechanics/index.md)
 
-Physics-based models, machine learning, and differentiable simulation.
+Foundations of mechanics, fluid mechanics, and computational fluid dynamics.
 
-<CollectionNotes collection="scientific-ml" />
+<CollectionNotes collection="mechanics" />
 
-## Paper notes
+## [Machine Learning](./machine-learning/index.md)
 
-Reading notes, key ideas, and open questions.
+Machine learning foundations, statistical learning, and neural networks.
 
-<CollectionNotes collection="papers" />
+<CollectionNotes collection="machine-learning" />
 
 ## Writing
 
