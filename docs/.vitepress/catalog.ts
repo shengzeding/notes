@@ -5,7 +5,8 @@ import matter from 'gray-matter'
 
 export const docsRoot = fileURLToPath(new URL('../', import.meta.url))
 export const collections = [
-  { id: 'math', name: 'Mathematics', description: 'Mathematical foundations, numerical methods, scientific computing, and optimization.' },
+  { id: 'math', name: 'Mathematics', description: 'Mathematical foundations.' },
+  { id: 'numerical-methods', name: 'Numerical Methods', description: '' },
   { id: 'mechanics', name: 'Mechanics', description: 'Foundations of mechanics, fluid mechanics, and computational fluid dynamics.' },
   { id: 'machine-learning', name: 'Machine Learning', description: 'Machine learning foundations, statistical learning, and neural networks.' }
 ]
