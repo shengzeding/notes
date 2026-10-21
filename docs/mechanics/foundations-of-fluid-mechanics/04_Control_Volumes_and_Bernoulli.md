@@ -1,8 +1,10 @@
+---
+title: Control Volumes, Bernoulli's Eqn., and Momentum
+order: 4
+---
+
 # Control Volumes, Bernoulli's Equation, and Momentum
 
-Throughout, $\mathbf n$ is the outward unit normal on a control surface, $q=|\mathbf v|$ is local speed, $V$ is section-mean speed, and $z$ is elevation. Unless explicitly stated otherwise, the control volume is fixed in an inertial frame and the fluid has constant density.
-
----
 
 ## 1. Reynolds Transport Theorem
 
