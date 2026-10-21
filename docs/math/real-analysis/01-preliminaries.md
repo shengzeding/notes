@@ -2,6 +2,7 @@
 title: Preliminaries
 order: 1
 ---
+# Preliminaries
 
 ## 1. Limitations of Riemann Integration
 
