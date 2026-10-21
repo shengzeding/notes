@@ -1,3 +1,8 @@
+---
+title: Foundations of Lebesgue Measure
+order: 1
+---
+
 # Foundations of Lebesgue Measure
 
 The main problem is to extend length and volume to complicated sets while keeping the rule that disjoint pieces add up. The construction develops in five steps:
