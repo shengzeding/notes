@@ -1,8 +1,11 @@
+---
+title: Viscous Internal Flow
+order: 8
+---
+
+
 # Incompressible Viscous Internal Flow
 
-Throughout, $V$ is section-mean speed, $d=2R$ is circular-pipe diameter, $\nu=\mu/\rho$, and $\lambda$ is the **Darcy** friction factor. The fluid is Newtonian with constant density and viscosity unless otherwise stated. Plane-flow discharges $Q'$ are per unit width.
-
----
 
 ## 1. Entrance Flow and Fully Developed Motion
 
