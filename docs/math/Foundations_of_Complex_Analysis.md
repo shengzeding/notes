@@ -5,9 +5,6 @@ order: 10
 
 # Foundations of Complex Analysis
 
-Throughout, write $z=x+iy$, where $x,y\in\mathbb R$ and $i^2=-1$. Unless stated otherwise, contours are piecewise smooth and positively oriented means counterclockwise.
-
----
 
 ## 1. Complex Numbers and Elementary Functions
 
