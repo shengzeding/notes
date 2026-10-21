@@ -1,10 +1,11 @@
 ---
-title: Scientific machine learning
-description: Physics-based models, machine learning, and differentiable simulation.
+title: Machine Learning
+search: false
+sidebar: false
+prev: false
+next: false
 ---
 
-# Scientific machine learning
+# Machine Learning
 
-Physics-based models, machine learning, and differentiable simulation.
-
-<CollectionNotes collection="scientific-ml" />
+This section has moved to [Machine Learning](../machine-learning/index.md).
