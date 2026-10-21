@@ -31,7 +31,7 @@ Files and subfolders can coexist. A folder’s `index.md` defines its title and 
 
 To add another top-level category, update `collections` in `docs/.vitepress/catalog.ts`, add its category index, and add a corresponding section to `docs/index.md`.
 
-Numerical methods live under `docs/math/numerical-methods/`. Topic folders contain no research notes yet. The only starter content is a writing guide and an explicitly labeled formatting example.
+Numerical methods live under `docs/numerical-methods/`. Topic folders contain no research notes yet. The only starter content is a writing guide and an explicitly labeled formatting example.
 
 ## Deployment
 
