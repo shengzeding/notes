@@ -337,24 +337,24 @@ Thus counterclockwise circulation produces downward force in this convention, wh
 
 For a smooth impermeable body with no net source flux and uniform flow $U$ along $+x$, write $q(z)=dW/dz$. Bernoulli's equation and the tangency of velocity to the body give Blasius' force formula,
 
-$
+$$
 F_x'-iF_y'=\frac{i\rho}{2}\oint_C q(z)^2\,dz,
-$
+$$
 
 where $C$ encircles the body counterclockwise. In the regular exterior flow, the contour may be deformed to a sufficiently large circle. There,
 
-$
+$$
 q(z)=U-\frac{i\Gamma}{2\pi z}+O(z^{-2}),
 \qquad
 q(z)^2=U^2-\frac{iU\Gamma}{\pi z}+O(z^{-2}).
-$
+$$
 
 Applying the [residue theorem](../../math/Foundations_of_Complex_Analysis.md#residue-theorem "concept:residue-theorem") at infinity, or integrating the Laurent series term by term, only the $z^{-1}$ coefficient contributes:
 
-$
+$$
 \oint_C q(z)^2\,dz
 =2\pi i\left(-\frac{iU\Gamma}{\pi}\right)=2U\Gamma.
-$
+$$
 
 Thus $F_x'-iF_y'=i\rho U\Gamma$, recovering $F_x'=0$ and $F_y'=-\rho U\Gamma$ with the stated circulation convention.
 
