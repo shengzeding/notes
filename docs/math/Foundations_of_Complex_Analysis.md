@@ -272,6 +272,8 @@ By contrast, $u=x^2+y^2$ is not harmonic ($\Delta u=4$), so it cannot be the rea
 
 ---
 
+<span id="conformal-mapping"></span>
+
 ## 3. Conformal Mappings
 
 Complex differentiability has a geometric consequence. Near a point where the derivative is nonzero, an analytic function behaves like a rotation followed by a uniform scaling. This leads to **conformal mappings**: maps that preserve angles between intersecting curves, including their orientation.
@@ -604,6 +606,8 @@ $$
 $$
 
 The reason for selecting precisely this coefficient is the identity from Chapter 4: for an integer $n\ne-1$, the integral of $(z-z_0)^n$ around a positively oriented circle vanishes, whereas the $n=-1$ term contributes $2\pi i$.
+
+<span id="residue-theorem"></span>
 
 **Theorem 5 (Residue theorem).** Suppose $f$ is analytic on and inside a positively oriented simple closed contour $C$, except for finitely many isolated singularities $z_1,\ldots,z_N$ in the interior. Then
 
