@@ -220,6 +220,8 @@ At every nonzero point, however, the C–R equations fail. Hence $f$ is differen
 
 Analyticity is *not defined* as the existence of a second derivative. Instead, one of the remarkable theorems of complex analysis states that analyticity on an open set automatically implies the existence of derivatives of **all orders**, as well as a local convergent Taylor series.
 
+<span id="harmonic-conjugate"></span>
+
 ### 2.4 Harmonic and conjugate harmonic functions
 
 A twice continuously differentiable real function $u(x,y)$ is **harmonic** on a domain if it satisfies Laplace's equation:

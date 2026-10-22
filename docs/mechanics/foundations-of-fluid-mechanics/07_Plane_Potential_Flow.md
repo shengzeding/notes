@@ -9,6 +9,8 @@ order: 7
 
 ## 1. Potential-Flow Framework
 
+<span id="potential-flow-model"></span>
+
 ### 1.1 Assumptions and Bernoulli's equation
 
 The basic model combines inviscid motion in the region of interest with
@@ -62,6 +64,8 @@ with the cross-section orientation chosen consistently. Its magnitude is the abs
 
 **Global qualification.** A single-valued potential is guaranteed on a simply connected irrotational domain. A vortex in a punctured plane is irrotational away from the origin but has a multivalued angle potential.
 
+<span id="complex-potential"></span>
+
 ### 1.3 Laplace's equation and complex potential
 
 Incompressibility of $\nabla\Phi$ and irrotationality of the stream-function velocity give
@@ -88,7 +92,7 @@ $$
 \boxed{W(z)=\Phi+i\Psi,\qquad \frac{dW}{dz}=u-iv.}
 $$
 
-The potential and stream function satisfy the Cauchy-Riemann equations. Harmonic-function methods, images, conformal mappings, and residue calculus are therefore useful tools.
+The potential and stream function are [harmonic conjugates](../../math/Foundations_of_Complex_Analysis.md#harmonic-conjugate "concept:harmonic-conjugate") and satisfy the Cauchy-Riemann equations. Harmonic-function methods, images, conformal mappings, and residue calculus are therefore useful tools.
 
 **Method note.** Images enforce selected boundaries through symmetry. Conformal mapping transfers an analytic potential to another domain; the chain rule transforms velocity. For a map $z=z(\zeta)$,
 

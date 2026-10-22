@@ -8,6 +8,8 @@ order: 2
 
 ## 1. The Approximation Problem
 
+<span id="finite-dimensional-function-approximation"></span>
+
 ### 1.1 Function approximation and curve fitting
 
 Suppose a function $f$ is known on $[a,b]$, but evaluating it directly is inconvenient. The **function approximation problem** is to choose a simpler function $p$ that is as close as possible to $f$ under a prescribed measure of error.
@@ -481,9 +483,11 @@ $$
 
 A sequence is **monic** if the leading coefficient of every $p_n$ is one.
 
+<span id="orthogonal-polynomial-construction"></span>
+
 ### 4.2 Gram--Schmidt orthogonalization
 
-Starting from the monomial basis $1,x,x^2,\ldots$, define
+Starting from the monomial basis $1,x,x^2,\ldots$, apply the [Gram--Schmidt process](../math/linear-algebra/Elementary_Linear_Algebra.md#gram-schmidt-process "concept:gram-schmidt-process") with the weighted function inner product and define
 
 $$
 \boxed{\begin{aligned}
@@ -1143,6 +1147,8 @@ $$
 
 In the usual overdetermined setting, $m+1>n+1$; exact interpolation of every observation is neither required nor generally possible.
 
+<span id="discrete-least-squares"></span>
+
 ### 7.3 Normal equations for discrete least squares
 
 Differentiating the objective with respect to $a_k$ gives
@@ -1180,7 +1186,7 @@ $$
 (f-S^*,\varphi_k)_d=0\qquad(k=0,\ldots,n).
 $$
 
-The discrete least-squares solution is therefore an orthogonal projection under the discrete weighted inner product, just as in continuous best square approximation.
+The discrete least-squares solution is therefore an [orthogonal projection](../math/linear-algebra/Elementary_Linear_Algebra.md#orthogonal-projection "concept:orthogonal-projection") under the discrete weighted inner product, just as in continuous best square approximation.
 
 ### 7.4 Uniqueness and the Haar condition
 

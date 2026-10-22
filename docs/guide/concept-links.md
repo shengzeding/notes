@@ -137,7 +137,7 @@ This example is already registered; do not add it a second time. For a new relat
 
 The source passage must fall under the registered source concept: put its definition anchor before the heading, then an optional evidence anchor inside that section. A later heading starts a new section scope. The build checks this correspondence.
 
-Currently accepted relationship types are `derivation-uses`, `instance-of`, `equivalent-to`, and `generalizes`. Choose the direction deliberately. A reverse navigation link does not make a mathematical relationship symmetric.
+Currently accepted relationship types are `derivation-uses`, `instance-of`, `equivalent-to`, `generalizes`, and `model-complements`. Use `model-complements` when two models cover different parts of the same physical problem and neither is a generalization of the other. Choose the direction deliberately. A reverse navigation link does not make a mathematical relationship symmetric.
 
 ## Courses, domains, and the graph
 

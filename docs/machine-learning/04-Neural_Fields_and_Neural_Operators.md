@@ -200,6 +200,8 @@ The encoder $E_\phi$ may operate on function samples, a grid, a graph, or a know
 
 ## 3. Deep Operator Network (DeepONet)
 
+<span id="deeponet-branch-trunk"></span>
+
 ### 3.1 Branch–trunk construction
 
 DeepONet specifies two learned maps:
@@ -225,7 +227,7 @@ $$
 
 at fixed sensor positions $\xi_1,\ldots,\xi_m$. The trunk receives the output query coordinate $x\in\mathbb R^{d_x}$. Thus $m$ is the input sensor count and $p$ is the common branch/trunk feature width; they need not be equal.
 
-The $t_k(x)$ can be viewed as learned coordinate-dependent basis functions and $b_k(u_0)$ as coefficients determined by the input function. For fixed trunk parameters, the predicted outputs lie in the span of $\{t_k\}_{k=1}^p$. This finite separable representation is efficient but constrains the model at fixed $p$.
+The $t_k(x)$ can be viewed as learned coordinate-dependent basis functions and $b_k(u_0)$ as coefficients determined by the input function. For fixed trunk parameters, the predicted outputs lie in the span of $\{t_k\}_{k=1}^p$, so the branch--trunk output is a learned instance of [finite-dimensional function approximation](../numerical-methods/Function_Approximation_Numerical_Analysis.md#finite-dimensional-function-approximation "concept:finite-dimensional-function-approximation"). This finite separable representation is efficient but constrains the model at fixed $p$.
 
 ### 3.2 Training and representation limits
 
