@@ -418,42 +418,6 @@ $$
 
 This update rule avoids recomputing the existing coefficients when a new node is added.
 
-### 4.5 Example: Newton interpolation for $\ln(0.54)$
-
-Using the tabulated values at $x_0=0.5$ and $x_1=0.6$,
-
-$$
-f[x_0,x_1]=\frac{-0.5108-(-0.6931)}{0.6-0.5}=1.8230.
-$$
-
-Hence
-
-$$
-N_1(x)=-0.6931+1.8230(x-0.5),
-\qquad N_1(0.54)=-0.6202.
-$$
-
-For quadratic interpolation, include the value $f(0.7)\approx-0.3567$. The additional divided differences are
-
-$$
-f[0.6,0.7]=1.5410,
-\qquad f[0.5,0.6,0.7]=-1.4100.
-$$
-
-Thus
-
-$$
-N_2(x)=-0.6931+1.8230(x-0.5)
--1.4100(x-0.5)(x-0.6),
-$$
-
-and
-
-$$
-N_2(0.54)=-0.6931+1.8230(0.04)
--1.4100(0.04)(-0.06)\approx-0.6168.
-$$
-
 
 
 ## 5. Finite Differences and Equally Spaced Newton Interpolation
