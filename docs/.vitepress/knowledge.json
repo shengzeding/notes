@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "concepts": [
+    {
+      "id": "residue-theorem",
+      "label": "Residue theorem",
+      "aliases": [
+        "留数定理"
+      ],
+      "location": {
+        "path": "math/Foundations_of_Complex_Analysis.md",
+        "anchor": "residue-theorem"
+      }
+    },
+    {
+      "id": "conformal-mapping",
+      "label": "Conformal mapping",
+      "aliases": [
+        "Conformal transformation",
+        "保角变换"
+      ],
+      "location": {
+        "path": "math/Foundations_of_Complex_Analysis.md",
+        "anchor": "conformal-mapping"
+      }
+    },
+    {
+      "id": "kutta-joukowski-theorem",
+      "label": "Kutta–Joukowski theorem",
+      "aliases": [
+        "Kutta-Joukowski lift theorem",
+        "升力定理"
+      ],
+      "location": {
+        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
+        "anchor": "kutta-joukowski-theorem"
+      }
+    },
+    {
+      "id": "joukowski-map",
+      "label": "Joukowski map",
+      "aliases": [
+        "Joukowski transformation",
+        "儒可夫斯基变换"
+      ],
+      "location": {
+        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
+        "anchor": "joukowski-map"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "source": "kutta-joukowski-theorem",
+      "target": "residue-theorem",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
+        "anchor": "lift-residue-proof"
+      },
+      "note": "This exterior-flow derivation evaluates the Blasius integral using the residue at infinity. It does not assert that every proof requires residue calculus.",
+      "sources": [
+        {
+          "title": "Classical aerofoil theory, sections 20.3–20.4",
+          "url": "https://ocw.mit.edu/courses/18-354j-nonlinear-dynamics-ii-continuum-systems-spring-2015/62405b4d167552f452b8df52513a0ef8_MIT18_354JS15_Ch20.pdf"
+        }
+      ]
+    },
+    {
+      "source": "joukowski-map",
+      "target": "conformal-mapping",
+      "type": "instance-of",
+      "evidence": {
+        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
+        "anchor": "joukowski-map"
+      },
+      "note": "Conformal away from the pole and critical points; global use requires a suitable one-to-one domain."
+    }
+  ]
+}
