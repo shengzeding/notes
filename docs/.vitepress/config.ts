@@ -1,4 +1,7 @@
 import { defineConfig } from 'vitepress'
+import { writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { conceptLinks, buildKnowledge } from './knowledge'
 import { collections, scan, sidebarItems } from './catalog'
 
 const notes = scan()
@@ -17,7 +20,10 @@ export default defineConfig({
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap' }]
   ],
   sitemap: { hostname: 'https://shengzeding.github.io/notes/' },
-  markdown: { math: true, lineNumbers: true },
+  markdown: { math: true, lineNumbers: true, config: conceptLinks },
+  async buildEnd(site) {
+    writeFileSync(join(site.outDir, 'knowledge-graph.json'), JSON.stringify(await buildKnowledge(), null, 2))
+  },
   themeConfig: {
     siteTitle: 'SHENGZE DING',
     nav: [
