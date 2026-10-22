@@ -48,7 +48,7 @@ Each relationship includes an evidence location. Where useful, it also includes 
 
 The normal site build checks concept IDs, explicit anchors, citation destinations, and supporting citations for recorded relationships. Fix reported errors before publishing.
 
-Every build exports `knowledge-graph.json` at the site root, containing concepts, curated relationships, and generated mentions. This is the data foundation for a later graph view; no graph database is required.
+Every build exports `knowledge-graph.json` at the site root, containing concepts, curated relationships, and generated mentions. This also supplies the interactive graph; no graph database is required.
 
 Keep normal Markdown links so the notes remain readable outside this website. The custom concept title is used by this site; it is not an Obsidian plugin or a promise of Obsidian graph compatibility.
 
@@ -142,6 +142,10 @@ Currently accepted relationship types are `derivation-uses`, `instance-of`, `equ
 ## Courses, domains, and the graph
 
 The [knowledge graph](../graph.md) displays courses as large nodes and concepts as small nodes. Dashed lines connect a concept to its courses; solid arrows show checked mathematical relationships. Domain colors and a gentle grouping force keep related subjects near each other.
+
+Concept size grows slowly with the number of distinct registered concepts citing it, capped at 70% of the course-node radius. Repeated citations from one concept count once; course connections, self-citations, and passages without a registered source concept do not count. The count appears on hover and in the selected concept's details. Size reflects coverage in these notes, not mathematical importance.
+
+Course connections remain straight and dashed. Concept relationships use gentle curves; multiple or reverse relationships between a pair use separate curves. Connections stay faint until a node or domain is selected. Course names remain visible; dense views prioritize cited concepts and reveal more labels when zoomed in. Selecting a node reveals its neighbors' names, and hovering or focusing any node reveals its label.
 
 Drag nodes to arrange them, drag the background to pan, and use the zoom controls. Select a node to inspect its connections and open the notes. Keyboard users can Tab to a node and press Enter, or use **Browse all nodes**.
 
