@@ -65,6 +65,21 @@ export async function buildKnowledge() {
     ids.add(c.id)
     checkLocation(c.location)
   }
+  const domainIds = new Set<string>()
+  for (const d of data.domains || []) {
+    if (domainIds.has(d.id) || !/^#[0-9a-f]{6}$/i.test(d.color)) throw new Error('Invalid graph domain: ' + d.id)
+    domainIds.add(d.id)
+  }
+  const courseIds = new Set<string>()
+  for (const c of data.courses || []) {
+    if (courseIds.has(c.id) || ids.has(c.id) || !domainIds.has(c.domain) || !parsed.has(c.path))
+      throw new Error('Invalid graph course: ' + c.id)
+    courseIds.add(c.id)
+  }
+  for (const c of data.concepts) {
+    if (c.domain && !domainIds.has(c.domain)) throw new Error('Unknown concept domain: ' + c.id)
+    if ((c.courses || []).some((id: string) => !courseIds.has(id))) throw new Error('Unknown concept course: ' + c.id)
+  }
   const mentions: any[] = []
   for (const [path, page] of parsed) {
     let anchor = ''
