@@ -185,3 +185,49 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
 .vp-doc hr:has(+ h2),
 .vp-doc h1 + hr,
 .vp-doc h2 + hr { display: none; }
+
+/* Focus mode overlays navigation without moving the article when revealed. */
+.focus-toggle, .focus-exit {
+  padding: 4px 10px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 3px;
+  background: var(--vp-c-bg);
+  color: #666;
+  font-size: 12px;
+  line-height: 24px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.focus-toggle { margin-right: 12px; flex-shrink: 0; }
+.focus-toggle:hover, .focus-exit:hover { color: #111; }
+.focus-exit {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 29;
+  opacity: .3;
+}
+.focus-exit:hover, .focus-exit:focus-visible { opacity: 1; }
+.notes-focus .VPNav {
+  position: fixed;
+  visibility: hidden;
+  transform: translateY(-100%);
+}
+.notes-focus.notes-nav-revealed .VPNav,
+.notes-focus .VPNav:focus-within {
+  visibility: visible;
+  transform: translateY(0);
+}
+.notes-focus .VPSidebar,
+.notes-focus .VPLocalNav,
+.notes-focus .sidebar-toggle { display: none !important; }
+.notes-focus .VPContent { padding-top: 0 !important; }
+.notes-focus .VPContent.has-sidebar {
+  padding-left: max(0px, calc((100vw - var(--vp-layout-max-width)) / 2));
+  padding-right: max(0px, calc((100vw - var(--vp-layout-max-width)) / 2));
+}
+.notes-focus .VPDoc { padding-top: 48px; }
+.notes-focus .VPDoc .aside-container { top: 24px; }
+@media (max-width: 767px) {
+  .focus-toggle { margin-right: 4px; padding: 2px 6px; }
+}
