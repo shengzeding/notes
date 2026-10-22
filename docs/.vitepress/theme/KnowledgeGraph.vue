@@ -23,7 +23,8 @@ const color = (domain?: string) => data.domains.find(d => d.id === domain)?.colo
 const domainName = (domain?: string) => data.domains.find(d => d.id === domain)?.label || 'Unassigned'
 const relationName = (type: string) => ({
   'derivation-uses':'This derivation uses','instance-of':'Is an instance of',
-  'equivalent-to':'Is equivalent to','generalizes':'Generalizes'
+  'equivalent-to':'Is equivalent to','generalizes':'Generalizes',
+  'model-complements':'Complements'
 }[type] || type)
 const url = (path: string, anchor?: string) => withBase('/' + path.replace(/\/index\.md$/, '/').replace(/\.md$/, '.html') + (anchor ? '#' + anchor : ''))
 const nodeUrl = computed(() => selected.value?.location

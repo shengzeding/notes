@@ -913,6 +913,8 @@ $$
 
 is its component in the orthogonal complement.
 
+<span id="orthogonal-projection"></span>
+
 ### 6.2 Projection onto a subspace
 
 Let $W\subseteq\mathbb R^n$ have basis $\alpha_1,\ldots,\alpha_m$, and form the full-column-rank matrix
@@ -1186,6 +1188,8 @@ $$
 and produces an orthonormal basis of the same space.
 
 The construction has two stages: first make the vectors orthogonal, then normalize their lengths. Normalization by a positive length does not change a real vector's direction or its orthogonality relations.
+
+<span id="gram-schmidt-process"></span>
 
 ### 7.2 Deriving the coefficients
 

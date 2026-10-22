@@ -63,6 +63,228 @@
       "courses": [
         "fluid-mechanics"
       ]
+    },
+    {
+      "id": "orthogonal-projection",
+      "label": "Orthogonal projection",
+      "aliases": [
+        "正交投影"
+      ],
+      "location": {
+        "path": "math/linear-algebra/Elementary_Linear_Algebra.md",
+        "anchor": "orthogonal-projection"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "linear-algebra"
+      ]
+    },
+    {
+      "id": "discrete-least-squares",
+      "label": "Discrete least squares",
+      "aliases": [
+        "Weighted discrete least squares",
+        "离散最小二乘"
+      ],
+      "location": {
+        "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
+        "anchor": "discrete-least-squares"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "numerical-methods"
+      ]
+    },
+    {
+      "id": "gram-schmidt-process",
+      "label": "Gram–Schmidt process",
+      "aliases": [
+        "Gram-Schmidt orthogonalization",
+        "施密特正交化"
+      ],
+      "location": {
+        "path": "math/linear-algebra/Elementary_Linear_Algebra.md",
+        "anchor": "gram-schmidt-process"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "linear-algebra"
+      ]
+    },
+    {
+      "id": "orthogonal-polynomial-construction",
+      "label": "Orthogonal-polynomial construction",
+      "aliases": [
+        "Gram-Schmidt construction of orthogonal polynomials",
+        "正交多项式构造"
+      ],
+      "location": {
+        "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
+        "anchor": "orthogonal-polynomial-construction"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "numerical-methods"
+      ]
+    },
+    {
+      "id": "polynomial-root-bound",
+      "label": "Polynomial root bound",
+      "aliases": [
+        "Degree bound on roots",
+        "多项式根数界"
+      ],
+      "location": {
+        "path": "math/linear-algebra/polynomial-theory.md",
+        "anchor": "polynomial-root-bound"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "polynomial-theory"
+      ]
+    },
+    {
+      "id": "polynomial-interpolation-uniqueness",
+      "label": "Polynomial interpolation uniqueness",
+      "aliases": [
+        "Uniqueness of polynomial interpolation",
+        "多项式插值唯一性"
+      ],
+      "location": {
+        "path": "numerical-methods/Interpolation_Numerical_Analysis.md",
+        "anchor": "polynomial-interpolation-uniqueness"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "numerical-methods"
+      ]
+    },
+    {
+      "id": "root-multiplicity",
+      "label": "Polynomial root multiplicity",
+      "aliases": [
+        "Multiplicity test",
+        "多项式根的重数"
+      ],
+      "location": {
+        "path": "math/linear-algebra/polynomial-theory.md",
+        "anchor": "root-multiplicity"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "polynomial-theory"
+      ]
+    },
+    {
+      "id": "hermite-interpolation-uniqueness",
+      "label": "Hermite interpolation uniqueness",
+      "aliases": [
+        "Uniqueness of Hermite interpolation",
+        "Hermite 插值唯一性"
+      ],
+      "location": {
+        "path": "numerical-methods/Interpolation_Numerical_Analysis.md",
+        "anchor": "hermite-interpolation-uniqueness"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "numerical-methods"
+      ]
+    },
+    {
+      "id": "finite-dimensional-function-approximation",
+      "label": "Finite-dimensional function approximation",
+      "aliases": [
+        "Finite-dimensional approximation space",
+        "有限维函数逼近"
+      ],
+      "location": {
+        "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
+        "anchor": "finite-dimensional-function-approximation"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "numerical-methods"
+      ]
+    },
+    {
+      "id": "deeponet-branch-trunk",
+      "label": "DeepONet branch–trunk representation",
+      "aliases": [
+        "DeepONet",
+        "Branch-trunk representation"
+      ],
+      "location": {
+        "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
+        "anchor": "deeponet-branch-trunk"
+      },
+      "domain": "machine-learning",
+      "courses": [
+        "machine-learning"
+      ]
+    },
+    {
+      "id": "harmonic-conjugate",
+      "label": "Harmonic conjugate",
+      "aliases": [
+        "Conjugate harmonic function",
+        "调和共轭"
+      ],
+      "location": {
+        "path": "math/Foundations_of_Complex_Analysis.md",
+        "anchor": "harmonic-conjugate"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "complex-analysis"
+      ]
+    },
+    {
+      "id": "complex-potential",
+      "label": "Complex potential",
+      "aliases": [
+        "复势"
+      ],
+      "location": {
+        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
+        "anchor": "complex-potential"
+      },
+      "domain": "mechanics",
+      "courses": [
+        "fluid-mechanics"
+      ]
+    },
+    {
+      "id": "potential-flow-model",
+      "label": "Potential-flow model",
+      "aliases": [
+        "Inviscid potential flow",
+        "势流模型"
+      ],
+      "location": {
+        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
+        "anchor": "potential-flow-model"
+      },
+      "domain": "mechanics",
+      "courses": [
+        "fluid-mechanics"
+      ]
+    },
+    {
+      "id": "boundary-layer-model",
+      "label": "Boundary-layer model",
+      "aliases": [
+        "Boundary-layer approximation",
+        "边界层模型"
+      ],
+      "location": {
+        "path": "mechanics/foundations-of-fluid-mechanics/09_Boundary_Layers_and_External_Flow.md",
+        "anchor": "boundary-layer-model"
+      },
+      "domain": "mechanics",
+      "courses": [
+        "fluid-mechanics"
+      ]
     }
   ],
   "relations": [
@@ -91,6 +313,76 @@
         "anchor": "joukowski-map"
       },
       "note": "Conformal away from the pole and critical points; global use requires a suitable one-to-one domain."
+    },
+    {
+      "source": "discrete-least-squares",
+      "target": "orthogonal-projection",
+      "type": "instance-of",
+      "evidence": {
+        "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
+        "anchor": "discrete-least-squares"
+      },
+      "note": "The residual is orthogonal to the sampled approximation space under the discrete weighted inner product. Coefficient uniqueness additionally requires independent design-matrix columns on the positively weighted nodes."
+    },
+    {
+      "source": "orthogonal-polynomial-construction",
+      "target": "gram-schmidt-process",
+      "type": "instance-of",
+      "evidence": {
+        "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
+        "anchor": "orthogonal-polynomial-construction"
+      },
+      "note": "The monomial basis is orthogonalized with the weighted function inner product; the input polynomials must remain linearly independent under that inner product."
+    },
+    {
+      "source": "polynomial-interpolation-uniqueness",
+      "target": "polynomial-root-bound",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "numerical-methods/Interpolation_Numerical_Analysis.md",
+        "anchor": "polynomial-interpolation-uniqueness"
+      },
+      "note": "The difference of two degree-at-most-n interpolants has n+1 distinct roots and must therefore be the zero polynomial."
+    },
+    {
+      "source": "hermite-interpolation-uniqueness",
+      "target": "root-multiplicity",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "numerical-methods/Interpolation_Numerical_Analysis.md",
+        "anchor": "hermite-interpolation-uniqueness"
+      },
+      "note": "Matching both values and first derivatives makes every interpolation node a root of multiplicity at least two in the difference polynomial."
+    },
+    {
+      "source": "deeponet-branch-trunk",
+      "target": "finite-dimensional-function-approximation",
+      "type": "instance-of",
+      "evidence": {
+        "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
+        "anchor": "deeponet-branch-trunk"
+      },
+      "note": "For fixed trunk parameters and width p, the output lies in the span of p learned coordinate-dependent functions; the coefficients depend on the input function."
+    },
+    {
+      "source": "complex-potential",
+      "target": "harmonic-conjugate",
+      "type": "instance-of",
+      "evidence": {
+        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
+        "anchor": "complex-potential"
+      },
+      "note": "In two-dimensional incompressible irrotational flow, the velocity potential and stream function satisfy the Cauchy–Riemann equations. A global single-valued conjugate additionally requires a suitable domain."
+    },
+    {
+      "source": "boundary-layer-model",
+      "target": "potential-flow-model",
+      "type": "model-complements",
+      "evidence": {
+        "path": "mechanics/foundations-of-fluid-mechanics/09_Boundary_Layers_and_External_Flow.md",
+        "anchor": "boundary-layer-model"
+      },
+      "note": "At high Reynolds number in an attached external flow, potential flow describes the approximately inviscid outer region while the boundary-layer approximation retains near-wall viscous effects. Separation, wakes, and turbulence require further modeling."
     }
   ],
   "domains": [
@@ -103,6 +395,11 @@
       "id": "mechanics",
       "label": "Mechanics",
       "color": "#a66d50"
+    },
+    {
+      "id": "machine-learning",
+      "label": "Machine Learning",
+      "color": "#756b9b"
     }
   ],
   "courses": [
@@ -117,6 +414,30 @@
       "label": "Fluid Mechanics",
       "domain": "mechanics",
       "path": "mechanics/foundations-of-fluid-mechanics/index.md"
+    },
+    {
+      "id": "linear-algebra",
+      "label": "Linear Algebra",
+      "domain": "mathematics",
+      "path": "math/linear-algebra/index.md"
+    },
+    {
+      "id": "polynomial-theory",
+      "label": "Polynomial Theory",
+      "domain": "mathematics",
+      "path": "math/linear-algebra/polynomial-theory.md"
+    },
+    {
+      "id": "numerical-methods",
+      "label": "Numerical Methods",
+      "domain": "mathematics",
+      "path": "numerical-methods/index.md"
+    },
+    {
+      "id": "machine-learning",
+      "label": "Machine Learning",
+      "domain": "machine-learning",
+      "path": "machine-learning/index.md"
     }
   ]
 }

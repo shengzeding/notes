@@ -120,7 +120,7 @@ export async function buildKnowledge() {
   }
   for (const r of data.relations) {
     if (!ids.has(r.source) || !ids.has(r.target)) throw new Error('Unknown relation endpoint')
-    if (!['derivation-uses', 'instance-of', 'equivalent-to', 'generalizes'].includes(r.type))
+    if (!['derivation-uses', 'instance-of', 'equivalent-to', 'generalizes', 'model-complements'].includes(r.type))
       throw new Error('Unknown relation type: ' + r.type)
     checkLocation(r.evidence)
     if (!mentions.some(m => m.sourceConcept === r.source && m.concept === r.target &&

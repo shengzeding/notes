@@ -58,6 +58,8 @@ $$
 
 ## 2. Polynomial Interpolation
 
+<span id="polynomial-interpolation-uniqueness"></span>
+
 ### 2.1 Existence and uniqueness
 
 **Definition (Polynomial interpolation).** Given $n+1$ distinct nodes $x_0,\ldots,x_n$, seek a polynomial
@@ -89,6 +91,8 @@ $$
 $$
 
 because the nodes are distinct. The linear system therefore has a unique solution.
+
+There is an equivalent uniqueness argument that does not compute the determinant. If $P$ and $Q$ both interpolate the data, then $P-Q$ has the $n+1$ distinct roots $x_0,\ldots,x_n$ while having degree at most $n$. The [polynomial root bound](../math/linear-algebra/polynomial-theory.md#polynomial-root-bound "concept:polynomial-root-bound") forces $P-Q=0$.
 
 **Remark.** Directly solving for the monomial coefficients is possible, but more convenient constructions that avoid repeatedly solving a Vandermonde system: the Lagrange and Newton forms.
 
@@ -600,6 +604,8 @@ with higher central differences defined by repeated application of $\delta$. The
 Ordinary interpolation requires $p(x_i)=f(x_i)$. **Hermite interpolation** also matches specified derivatives, possibly of higher order. A common case is that both values and first derivatives are known.
 
 
+<span id="hermite-interpolation-uniqueness"></span>
+
 ### 6.2 General first-derivative Hermite interpolation
 
 Suppose $x_0,\ldots,x_n$ are distinct, and we are given
@@ -668,7 +674,7 @@ $$
 Q(x_i)=Q'(x_i)=0,\qquad i=0,\ldots,n.
 $$
 
-Each node is a root of multiplicity at least two, so
+By the [root-multiplicity criterion](../math/linear-algebra/polynomial-theory.md#root-multiplicity "concept:root-multiplicity"), each node is a root of multiplicity at least two, so
 
 $$
 Q(x)=c\prod_{i=0}^n(x-x_i)^2.

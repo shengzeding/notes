@@ -505,6 +505,8 @@ $$
 
 Divide $f$ by $x-c$. The remainder is a constant because its degree is below $1$; evaluation at $c$ identifies that constant as $f(c)$.
 
+<span id="polynomial-root-bound"></span>
+
 ### 5.2 A degree bound controls the number of roots
 
 **Theorem 5.2.** A nonzero polynomial of degree $n$ over a field has at most $n$ distinct roots in that field.
@@ -540,6 +542,8 @@ has the four distinct roots $0,2,3,5$ modulo $6$, despite having degree $2$. For
 **Example over a finite field.** In $\mathbb F_2[x]$, the polynomials $x^3$ and $x$ are distinct, but they define the same function on $\mathbb F_2=\{0,1\}$.
 
 **Keep the distinction:** the root bound and the $n+1$-point identity theorem remain valid over finite fields. What can fail is the identification of all formal polynomials with their functions, because the field may have too few evaluation points.
+
+<span id="root-multiplicity"></span>
 
 ### 5.4 Repeated roots and derivatives
 
