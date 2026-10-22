@@ -90,7 +90,7 @@ $$
 
 because the nodes are distinct. The linear system therefore has a unique solution.
 
-**Remark.** Directly solving for the monomial coefficients is possible, but the slides motivate more convenient constructions that avoid repeatedly solving a Vandermonde system: the Lagrange and Newton forms.
+**Remark.** Directly solving for the monomial coefficients is possible, but more convenient constructions that avoid repeatedly solving a Vandermonde system: the Lagrange and Newton forms.
 
 ### 2.2 Linear interpolation
 
@@ -416,7 +416,7 @@ N_{n+1}(x)=N_n(x)
 +f[x_0,\ldots,x_{n+1}]\prod_{j=0}^n(x-x_j).
 $$
 
-This is the practical advantage emphasized in the slides.
+This update rule avoids recomputing the existing coefficients when a new node is added.
 
 ### 4.5 Example: Newton interpolation for $\ln(0.54)$
 
@@ -433,36 +433,26 @@ N_1(x)=-0.6931+1.8230(x-0.5),
 \qquad N_1(0.54)=-0.6202.
 $$
 
-For quadratic interpolation, the slides display the additional coefficients
-
-$$
-f[x_1,x_2]=2.0510,
-\qquad f[x_0,x_1,x_2]=1.1400,
-$$
-
-and thus report
-
-$$
-N_2(x)=-0.6931+1.8230(x-0.5)
-+1.1400(x-0.5)(x-0.6),
-\qquad N_2(0.54)=-0.6229.
-$$
-
-**Source-data discrepancy.** Those quadratic coefficients use the value $-0.3057$ at $x_2=0.7$ in the slide's small divided-difference table, whereas the main data table states $\ln(0.7)\approx-0.3567$. With the main table's value, the correct divided differences are
+For quadratic interpolation, include the value $f(0.7)\approx-0.3567$. The additional divided differences are
 
 $$
 f[0.6,0.7]=1.5410,
-\qquad f[0.5,0.6,0.7]=-1.4100,
+\qquad f[0.5,0.6,0.7]=-1.4100.
 $$
 
-which instead yield
+Thus
+
+$$
+N_2(x)=-0.6931+1.8230(x-0.5)
+-1.4100(x-0.5)(x-0.6),
+$$
+
+and
 
 $$
 N_2(0.54)=-0.6931+1.8230(0.04)
--1.4100(0.04)(-0.06)=-0.6168.
+-1.4100(0.04)(-0.06)\approx-0.6168.
 $$
-
-The first quadratic result is preserved here as the **result printed in the slides**, not as the result of the stated main data table.
 
 
 
@@ -617,7 +607,7 @@ where $\xi$ lies in the interval spanned by the nodes and $x$.
 
 ### 5.6 Example: fourth-degree forward interpolation of $\cos x$
 
-The slides use $f(x)=\cos x$ on the equally spaced nodes $0,0.1,0.2,0.3,0.4,0.5$, with $h=0.1$. For a degree-four interpolant, take the first five nodes:
+Consider $f(x)=\cos x$ on the equally spaced nodes $0,0.1,0.2,0.3,0.4,0.5$, with $h=0.1$. For a degree-four interpolant, take the first five nodes:
 
 | $x_i$ | $f_i$ | $\Delta f_i$ | $\Delta^2f_i$ | $\Delta^3f_i$ | $\Delta^4f_i$ |
 |---:|---:|---:|---:|---:|---:|
@@ -627,7 +617,7 @@ The slides use $f(x)=\cos x$ on the equally spaced nodes $0,0.1,0.2,0.3,0.4,0.5$
 | $0.3$ | $0.95534$ | $-0.03428$ | | | |
 | $0.4$ | $0.92106$ | | | | |
 
-*The tabulated values and differences are displayed to five decimal places; rounding affects the final digits of higher differences. The slides print negative third and fourth differences, but their recursive forward-difference definition and the listed function values give the positive signs shown here.*
+*The tabulated values and differences are displayed to five decimal places; rounding affects the final digits of higher differences. The signs of the higher differences follow directly from the recursive forward-difference definition.*
 
 At $x=0.048$,
 
@@ -635,7 +625,7 @@ $$
 t=\frac{0.048-0}{0.1}=0.48.
 $$
 
-Substituting into the forward interpolation formula gives the result stated in the slides:
+Substituting into the forward interpolation formula gives:
 
 $$
 \boxed{N_4(0.048)\approx0.99884.}
@@ -649,7 +639,7 @@ $$
 |t(t-1)(t-2)(t-3)(t-4)|,
 $$
 
-where $M_5=\max_{0\le u\le0.4}|f^{(5)}(u)|$. For $f=\cos x$, $f^{(5)}(u)=-\sin u$, and the slides give the bound
+where $M_5=\max_{0\le u\le0.4}|f^{(5)}(u)|$. For $f=\cos x$, $f^{(5)}(u)=-\sin u$, which gives the bound
 
 $$
 \boxed{|R_4(0.048)|\le1.09212\times10^{-7}.}
@@ -659,7 +649,7 @@ This is the **interpolation remainder bound for exact nodal data**; rounding the
 
 ### 5.7 Backward and central differences
 
-The slides also introduce two related operators.
+Two related operators are backward and central differences.
 
 **Definition (Backward difference).**
 
@@ -684,7 +674,7 @@ with higher central differences defined by repeated application of $\delta$. The
 
 ### 6.1 Matching both function values and derivatives
 
-Ordinary interpolation requires $p(x_i)=f(x_i)$. **Hermite interpolation** also matches specified derivatives, possibly of higher order. The slides emphasize the common case in which both values and first derivatives are known.
+Ordinary interpolation requires $p(x_i)=f(x_i)$. **Hermite interpolation** also matches specified derivatives, possibly of higher order. A common case is that both values and first derivatives are known.
 
 **Example (Vehicle data).** Measurements of a car traveling along a straight road are given by
 
@@ -693,7 +683,7 @@ Ordinary interpolation requires $p(x_i)=f(x_i)$. **Hermite interpolation** also 
 | Distance (ft) | $0$ | $225$ | $385$ | $623$ | $993$ |
 | Speed (ft/s) | $75$ | $77$ | $80$ | $74$ | $72$ |
 
-The slides propose using Hermite interpolation to estimate the position and speed at $10$ seconds, to investigate whether the speed exceeds $55$ miles per hour, and to estimate the maximum speed. These are posed as questions, rather than worked numerical solutions.
+**Exercise.** Use Hermite interpolation to estimate the position and speed at $10$ seconds, investigate whether the speed exceeds $55$ miles per hour, and estimate the maximum speed.
 
 ### 6.2 General first-derivative Hermite interpolation
 
@@ -800,7 +790,7 @@ $$
 
 This is the special case $n=1$ of Theorem 6.1. It reproduces $y_0,y_1$ and $m_0,m_1$ at the two endpoints.
 
-**Additional exercise from the slides.** Another Hermite setup prescribes $p(x_i)=y_i$ for $i=0,1,2$ and a single derivative condition $p'(x_1)=m_1$. The slides state this problem as a construction exercise without displaying its derivation. These four conditions determine a polynomial of degree at most three when the nodes are distinct.
+**Additional exercise.** Another Hermite setup prescribes $p(x_i)=y_i$ for $i=0,1,2$ and a single derivative condition $p'(x_1)=m_1$. Construct the interpolating polynomial. These four conditions determine a polynomial of degree at most three when the nodes are distinct.
 
 
 
@@ -808,7 +798,7 @@ This is the special case $n=1$ of Theorem 6.1. It reproduces $y_0,y_1$ and $m_0,
 
 ### 7.1 Why use piecewise polynomials?
 
-A higher-degree global interpolating polynomial is **not automatically more accurate**. The slides demonstrate **Runge's phenomenon** with
+A higher-degree global interpolating polynomial is **not automatically more accurate**. **Runge's phenomenon** can be illustrated by
 
 $$
 f(x)=\frac{1}{1+x^2},\qquad -5\le x\le5,
@@ -916,7 +906,7 @@ I_h(x)=f_k\alpha_k(x)+f_{k+1}\alpha_{k+1}(x)
 +m_k\beta_k(x)+m_{k+1}\beta_{k+1}(x).
 $$
 
-The slides give the bounds
+The basis functions satisfy the bounds
 
 $$
 0\le\alpha_k,\alpha_{k+1}\le1,
@@ -974,7 +964,7 @@ Together these are $4n-2$ conditions. **Two additional boundary conditions** are
 
 ### 8.2 Three types of boundary conditions
 
-The slides distinguish the following standard types.
+Three standard types of boundary conditions are:
 
 **Type I (Prescribed first derivatives, or clamped boundary conditions).** Given endpoint derivatives,
 
@@ -988,7 +978,7 @@ $$
 \boxed{S''(x_0)=f''(x_0),\qquad S''(x_n)=f''(x_n).}
 $$
 
-The choice $S''(x_0)=S''(x_n)=0$ is the special **natural spline** condition; the slides describe the more general prescription of second derivatives.
+The choice $S''(x_0)=S''(x_n)=0$ is the special **natural spline** condition; Type II allows general prescribed second derivatives.
 
 **Type III (Periodic boundary conditions).** When the data describe a function with period $b-a$, impose matching values and derivatives at the endpoints:
 
@@ -1000,7 +990,7 @@ For a genuinely periodic data set, $y_0=y_n$ is part of the compatibility condit
 
 ### 8.3 The three-angle / first-derivative construction
 
-The slides call the following derivation the **three-angle method** (*三转角法*). Introduce the unknown knot slopes
+The **three-angle method** (*三转角法*) constructs the spline in terms of its first derivatives at the knots. Introduce the unknown knot slopes
 
 $$
 m_i=S'(x_i),\qquad i=0,\ldots,n.
@@ -1120,7 +1110,7 @@ Type II and Type III boundary conditions lead to different endpoint equations, b
 
 ### 8.6 Infinity norms and a matrix estimate
 
-The convergence proof in the slides introduces three norms.
+The convergence proof uses three norms.
 
 For a vector $\boldsymbol v\in\mathbb R^m$,
 
@@ -1189,9 +1179,9 @@ $$
 \frac h\delta\le C<\infty
 $$
 
-with a constant independent of mesh refinement. If the endpoint slope data are those prescribed in the slides and the mesh is refined with $h\to0$, the resulting cubic splines converge uniformly to $f$ on $[a,b]$.
+with a constant independent of mesh refinement. If the prescribed endpoint slopes remain bounded as the mesh is refined with $h\to0$, the resulting cubic splines converge uniformly to $f$ on $[a,b]$.
 
-**Proof outline from the slides.** On $[x_i,x_{i+1}]$, use the nonnegative Hermite value basis and the derivative-basis bounds from Section 7:
+**Proof outline.** On $[x_i,x_{i+1}]$, use the nonnegative Hermite value basis and the derivative-basis bounds from Section 7:
 
 $$
 |f(x)-S(x)|
@@ -1239,7 +1229,7 @@ $$
 }
 $$
 
-The slides display the shorter estimate $\|f-S\|_\infty\le(1+8h/(9\delta))\omega_f(h)$, without a separate endpoint-slope term. The additional term above makes the **clamped-boundary treatment explicit**. It still tends to zero when the prescribed endpoint slopes remain bounded, because $h\to0$. If $h/\delta$ stays bounded, the factor in parentheses is bounded; uniform continuity gives $\omega_f(h)\to0$, proving $\|f-S\|_\infty\to0$.
+The endpoint-slope term accounts explicitly for the **clamped boundary conditions**. It tends to zero when the prescribed endpoint slopes remain bounded, because $h\to0$. If $h/\delta$ stays bounded, the factor in parentheses is bounded; uniform continuity gives $\omega_f(h)\to0$, proving $\|f-S\|_\infty\to0$.
 
 
 
