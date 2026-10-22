@@ -93,7 +93,6 @@ $$
 
 For sufficiently smooth $f$, the derivatives of Bernstein polynomials also converge to the corresponding derivatives. If $f$ is convex on $[0,1]$, then $B_n(f;\cdot)$ is convex as well.
 
----
 
 ## 2. Best Uniform Polynomial Approximation
 
@@ -218,7 +217,6 @@ $$
 
 This construction uses the endpoints and the unique interior stationary point of the error.
 
----
 
 ## 3. Best Square Approximation
 
@@ -451,7 +449,6 @@ $$
 \boxed{\displaystyle S_1^*(x)\approx0.6644x+0.1148.}
 $$
 
----
 ## 4. Orthogonal Polynomials
 
 ### 4.1 Orthogonal functions and orthogonal polynomial sequences
@@ -756,7 +753,7 @@ Equality holds only when every $c_k=0$.
 
 The distinction is important: the **monic Chebyshev polynomial minimizes the maximum norm**, while the **monic Legendre polynomial minimizes the square norm** on $[-1,1]$ with their respective criteria.
 
----
+
 ## 5. Chebyshev Nodes and Interpolation Error
 
 ### 5.1 Choosing interpolation nodes
@@ -895,7 +892,6 @@ $$
 
 These points are more concentrated near $-5$ and $5$. The degree-ten interpolant constructed from them avoids the pronounced endpoint oscillations seen in the corresponding equally spaced interpolation example. This is a practical reason to prefer Chebyshev-type nodes in high-degree polynomial interpolation.
 
----
 
 ## 6. Orthogonal Expansion and Best Square Approximation
 
@@ -1072,7 +1068,7 @@ $$
 \lim_{n\to\infty}\max_{x\in[-1,1]}|f(x)-C_n(x)|=0.
 $$
 
----
+
 ## 7. Least-Squares Curve Fitting
 
 ### 7.1 Why fitting differs from interpolation
@@ -1386,71 +1382,4 @@ $$
 \beta_k=\frac{(P_k,P_k)_d}{(P_{k-1},P_{k-1})_d}\quad(k\ge1).
 $$
 
-Because the recurrence produces monic orthogonal polynomials, the fitted curve can be constructed incrementally by adding $a_k^*P_k(x)$ at each degree. The squared-error formula also indicates how much the residual decreases with each added component.
-
-### 7.8 Example: quadratic discrete orthogonal fit
-
-Consider five equally weighted data points:
-
-| $i$ | $0$ | $1$ | $2$ | $3$ | $4$ |
-|---|---:|---:|---:|---:|---:|
-| $x_i$ | $0$ | $0.25$ | $0.50$ | $0.75$ | $1.00$ |
-| $y_i$ | $1.0000$ | $1.2840$ | $1.6487$ | $2.1170$ | $2.7183$ |
-| $\omega_i$ | $1$ | $1$ | $1$ | $1$ | $1$ |
-
-Construct a discrete orthogonal basis of degree at most two. The recurrence gives
-
-$$
-\begin{aligned}
-P_0(x)&=1,\\
-\alpha_0&=\frac{\sum_i x_i}{5}=\frac12,\\
-P_1(x)&=x-\frac12.
-\end{aligned}
-$$
-
-By symmetry of the nodes,
-
-$$
-\alpha_1=\frac{(xP_1,P_1)_d}{(P_1,P_1)_d}=\frac12,
-\qquad
-\beta_1=\frac{(P_1,P_1)_d}{(P_0,P_0)_d}=\frac18.
-$$
-
-Consequently,
-
-$$
-\boxed{\displaystyle P_2(x)=\left(x-\frac12\right)^2-\frac18.}
-$$
-
-The coefficients are
-
-$$
-\begin{aligned}
-a_0^*&=\frac{\sum_i y_i}{5}\approx1.7536,\\
-a_1^*&=\frac{\sum_i y_i(x_i-1/2)}{\sum_i(x_i-1/2)^2}\approx1.7078,\\
-a_2^*&=\frac{\sum_i y_i[(x_i-1/2)^2-1/8]}{\sum_i[(x_i-1/2)^2-1/8]^2}\approx0.8437.
-\end{aligned}
-$$
-
-Hence the quadratic best square fit in this discrete inner product is
-
-$$
-\boxed{\displaystyle
-S_2^*(x)\approx1.7536+1.7078\left(x-\frac12\right)
-+0.8437\left[\left(x-\frac12\right)^2-\frac18\right].}
-$$
-
-This basis avoids forming a dense normal-equation matrix in the monomials $1,x,x^2$.
-
----
-
-## 8. Comparison of the Approximation Methods
-
-| Problem | Data | Objective | Characterization | Useful basis or construction |
-|---|---|---|---|---|
-| Interpolation | Exact nodal values | $p(x_i)=y_i$ | Interpolation conditions | Lagrange or Newton form |
-| Best uniform approximation | A function on $[a,b]$ | $\min\|f-p\|_\infty$ | $n+2$ alternating extrema | Chebyshev alternation |
-| Best square approximation | A function on $[a,b]$ | $\min\int\rho(f-p)^2$ | Orthogonality of the residual | Legendre or other orthogonal polynomials |
-| Discrete least squares | Measured data $(x_i,y_i)$ | $\min\sum\omega_i[y_i-p(x_i)]^2$ | Discrete normal equations | Discrete orthogonal polynomials |
-
-The common principle is to choose a tractable approximation space and an error criterion. The error criterion determines which approximation is optimal: the polynomial that minimizes the worst-case deviation need not minimize the integrated squared error, and a least-squares fit need not pass through the observations.
+Because the recurrence produces monic orthogonal polynomials, the fitted curve can be constructed incrementally by adding $a_k^*P_k(x)$ at each degree. The squared-error formula also
