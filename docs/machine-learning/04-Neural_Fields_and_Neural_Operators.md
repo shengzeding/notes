@@ -1,10 +1,12 @@
+---
+title: Neural Fields and Neural Operators
+order: 4
+---
+
 # Neural Fields and Neural Operators
 
 A **neural field** represents a particular function by mapping continuous coordinates to field values. A **neural operator** approximates a map between functions. This chapter develops coordinate-based representations, conditioning mechanisms, and three operator architectures: DeepONet, the Graph Neural Operator (GNO), and the Fourier Neural Operator (FNO).
 
-Write $D$ for the spatial domain, $x,y\in D$ for coordinates, and $\mathcal G:\mathcal U\to\mathcal V$ for an operator between spaces of functions. The subscript $\theta$ denotes learned parameters. Different architectures represent or discretize $\mathcal G_\theta$ differently; the term *operator* does not prescribe a particular neural-network layer.
-
----
 
 ## 1. Neural Fields: Coordinate-Based Function Representations
 
@@ -81,7 +83,6 @@ The sinusoidal activation can generate oscillatory features within every hidden 
 | Fourier-feature MLP | Fixed multi-frequency sine/cosine features | Conventional MLP activation | Frequencies and their scales |
 | SIREN | Raw coordinates or an input transform | Sine in hidden layers | Frequency scale and initialization |
 
----
 
 ## 2. Conditional Neural Fields
 
@@ -184,12 +185,6 @@ $$
 
 The query comes from the output coordinate; keys and values come from the conditioning tokens. Consequently, the retrieved information $c(x,Z)$ can change with $x$ even if $Z$ remains fixed. The attention projections are shared trainable parameters, while $\alpha_j$ are input-dependent coefficients.
 
-| Mechanism | Information produced from the condition | Where it enters the coordinate model |
-|---|---|---|
-| Concatenation | The vector $z$ itself | Initial MLP input |
-| FiLM | Channel-wise $\gamma(z),\beta(z)$ | Hidden activations |
-| Hypernetwork | Parameters $W(z)$ | Main-network weights |
-| Cross-attention | Query-dependent summary $c(x,Z)$ | Conditioning input or features |
 
 ### 2.6 From conditional field to operator
 
@@ -202,7 +197,6 @@ $$
 
 The encoder $E_\phi$ may operate on function samples, a grid, a graph, or a known parameterization; the decoder evaluates the output field at the requested coordinate. A continuous-coordinate decoder permits arbitrary **output** queries, but input-resolution flexibility depends separately on the encoder. This distinction matters when evaluating claims of resolution invariance.
 
----
 
 ## 3. Deep Operator Network (DeepONet)
 
@@ -247,7 +241,6 @@ For one predicted value, $\partial\hat u/\partial b=t$ and $\partial\hat u/\part
 
 The trunk supports arbitrary output coordinates, whereas a classical branch MLP commonly expects a fixed input sensor layout. General operator-approximation results provide a theoretical basis for branch–trunk representations under appropriate continuity and compactness assumptions; they do not remove finite-capacity or sampling limitations.
 
----
 
 ## 4. Graph Neural Operator (GNO)
 
@@ -315,7 +308,6 @@ A convergent GNO discretization requires a coordinate-defined kernel, quadrature
 
 GNO can accommodate irregular samples and geometries. Its principal computational costs arise from constructing neighborhoods and evaluating the kernel over source–target pairs.
 
----
 
 ## 5. Fourier Neural Operator (FNO)
 
@@ -404,18 +396,4 @@ Low-mode truncation reduces spectral parameter cost and is effective for relativ
 
 The regular-grid FFT also builds in a periodic-extension structure. Standard FNO is consequently most natural on regular, approximately periodic domains; irregular geometries and nonperiodic boundaries typically require additional handling such as padding, mappings, or modified architectures. For $N$ total grid points, FFT computation scales approximately as $O(N\log N)$, in addition to channel operations and retained-mode multiplications.
 
----
 
-## 6. Architecture Comparison
-
-| Architecture | Structural computation | Input representation | Output representation | Main resolution caveat |
-|---|---|---|---|---|
-| Neural field | Coordinate MLP | Coordinate $x$ | Value $u_\theta(x)$ | One fixed field; coordinate query does not ensure accuracy |
-| Conditional neural field | Coordinate network modulated by $z$ | Condition and coordinate | Value $u_\theta(x;z)$ | Input encoder may be discretization-dependent |
-| DeepONet | Branch–trunk dot product | Input-function samples and coordinate | Value $\mathcal G_\theta(u_0)(x)$ | Fixed branch sensor layout in classical design |
-| GNO | Quadrature of learned spatial kernel | Sampled field and coordinates/graph | Field at sampled positions | Consistent quadrature and neighborhoods required |
-| FNO | Fourier-mode channel transforms | Field on regular grid | Field on regular grid | FFT grid and boundary assumptions |
-
-A conventional CNN or GNN can also approximate a function-to-function map; an operator-learning problem alone does not make a network resolution-invariant. Conversely, standard convolutional parameter sharing can permit CNNs to run at several spatial sizes. The more specific distinction is whether changing the discretization preserves a meaningful approximation to the **same continuous operator**.
-
-DeepONet and conditional neural fields represent output values through coordinate queries. GNO and FNO construct operator-like layers for updating entire sampled fields. GNO parameterizes interactions by spatial kernel evaluations and numerical quadrature; FNO parameterizes a frequency-domain transformation with a fixed set of learned modes.
