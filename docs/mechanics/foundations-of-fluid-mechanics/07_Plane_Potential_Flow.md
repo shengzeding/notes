@@ -308,6 +308,8 @@ $$
 
 ## 5. Lift, Airfoils, and Cascades
 
+<span id="kutta-joukowski-theorem"></span>
+
 ### 5.1 Kutta-Joukowski lift theorem
 
 **Theorem (Kutta-Joukowski).** For the steady two-dimensional ideal-flow model with a uniform far field, lift per unit span has magnitude
@@ -329,6 +331,34 @@ F_x'=0,\qquad F_y'=-\rho U\Gamma.
 $$
 
 Thus counterclockwise circulation produces downward force in this convention, while clockwise circulation produces upward force. The theorem determines force once the circulation is known; the inviscid field equations alone still admit a family of circulation values around an airfoil.
+
+
+<span id="lift-residue-proof"></span>
+
+For a smooth impermeable body with no net source flux and uniform flow $U$ along $+x$, write $q(z)=dW/dz$. Bernoulli's equation and the tangency of velocity to the body give Blasius' force formula,
+
+$
+F_x'-iF_y'=\frac{i\rho}{2}\oint_C q(z)^2\,dz,
+$
+
+where $C$ encircles the body counterclockwise. In the regular exterior flow, the contour may be deformed to a sufficiently large circle. There,
+
+$
+q(z)=U-\frac{i\Gamma}{2\pi z}+O(z^{-2}),
+\qquad
+q(z)^2=U^2-\frac{iU\Gamma}{\pi z}+O(z^{-2}).
+$
+
+Applying the [residue theorem](../../math/Foundations_of_Complex_Analysis.md#residue-theorem "concept:residue-theorem") at infinity, or integrating the Laurent series term by term, only the $z^{-1}$ coefficient contributes:
+
+$
+\oint_C q(z)^2\,dz
+=2\pi i\left(-\frac{iU\Gamma}{\pi}\right)=2U\Gamma.
+$
+
+Thus $F_x'-iF_y'=i\rho U\Gamma$, recovering $F_x'=0$ and $F_y'=-\rho U\Gamma$ with the stated circulation convention.
+
+<span id="joukowski-map"></span>
 
 ### 5.2 The Joukowski map
 
@@ -353,7 +383,7 @@ $$
 
 The complex potential $W(\zeta)$ describes the flow, whereas $z(\zeta)$ changes the geometry. Their similar algebraic forms in the zero-incidence cylinder solution do not make them the same object.
 
-The mapped complex velocity follows from the chain rule:
+Away from its critical points, the Joukowski map is a [conformal mapping](../../math/Foundations_of_Complex_Analysis.md#conformal-mapping "concept:conformal-mapping"). On the chosen exterior domain, its inverse transfers the circle-plane potential to the physical plane. The mapped complex velocity follows from the chain rule:
 
 $$
 \boxed{\frac{dW}{dz}
