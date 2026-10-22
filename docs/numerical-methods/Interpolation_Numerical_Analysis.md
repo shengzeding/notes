@@ -569,49 +569,8 @@ $$
 
 where $\xi$ lies in the interval spanned by the nodes and $x$.
 
-### 5.6 Example: fourth-degree forward interpolation of $\cos x$
 
-Consider $f(x)=\cos x$ on the equally spaced nodes $0,0.1,0.2,0.3,0.4,0.5$, with $h=0.1$. For a degree-four interpolant, take the first five nodes:
-
-| $x_i$ | $f_i$ | $\Delta f_i$ | $\Delta^2f_i$ | $\Delta^3f_i$ | $\Delta^4f_i$ |
-|---:|---:|---:|---:|---:|---:|
-| $0.0$ | $1.00000$ | $-0.00500$ | $-0.00993$ | $0.00013$ | $0.00012$ |
-| $0.1$ | $0.99500$ | $-0.01493$ | $-0.00980$ | $0.00025$ | |
-| $0.2$ | $0.98007$ | $-0.02473$ | $-0.00955$ | | |
-| $0.3$ | $0.95534$ | $-0.03428$ | | | |
-| $0.4$ | $0.92106$ | | | | |
-
-*The tabulated values and differences are displayed to five decimal places; rounding affects the final digits of higher differences. The signs of the higher differences follow directly from the recursive forward-difference definition.*
-
-At $x=0.048$,
-
-$$
-t=\frac{0.048-0}{0.1}=0.48.
-$$
-
-Substituting into the forward interpolation formula gives:
-
-$$
-\boxed{N_4(0.048)\approx0.99884.}
-$$
-
-The remainder estimate for interpolation of the unrounded function values is
-
-$$
-|R_4(0.048)|\le
-\frac{h^5M_5}{5!}
-|t(t-1)(t-2)(t-3)(t-4)|,
-$$
-
-where $M_5=\max_{0\le u\le0.4}|f^{(5)}(u)|$. For $f=\cos x$, $f^{(5)}(u)=-\sin u$, which gives the bound
-
-$$
-\boxed{|R_4(0.048)|\le1.09212\times10^{-7}.}
-$$
-
-This is the **interpolation remainder bound for exact nodal data**; rounding the tabulated values can introduce an additional error, which is not included in that bound.
-
-### 5.7 Backward and central differences
+### 5.6 Backward and central differences
 
 Two related operators are backward and central differences.
 
@@ -640,14 +599,6 @@ with higher central differences defined by repeated application of $\delta$. The
 
 Ordinary interpolation requires $p(x_i)=f(x_i)$. **Hermite interpolation** also matches specified derivatives, possibly of higher order. A common case is that both values and first derivatives are known.
 
-**Example (Vehicle data).** Measurements of a car traveling along a straight road are given by
-
-| Time (s) | $0$ | $3$ | $5$ | $8$ | $13$ |
-|---:|---:|---:|---:|---:|---:|
-| Distance (ft) | $0$ | $225$ | $385$ | $623$ | $993$ |
-| Speed (ft/s) | $75$ | $77$ | $80$ | $74$ | $72$ |
-
-**Exercise.** Use Hermite interpolation to estimate the position and speed at $10$ seconds, investigate whether the speed exceeds $55$ miles per hour, and estimate the maximum speed.
 
 ### 6.2 General first-derivative Hermite interpolation
 
