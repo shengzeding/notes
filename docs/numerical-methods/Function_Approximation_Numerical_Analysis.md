@@ -1,3 +1,9 @@
+---
+title: Function Approximation and Least Squares
+order: 2
+---
+
+
 # Function Approximation and Least Squares
 
 ## 1. The Approximation Problem
