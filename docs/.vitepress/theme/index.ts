@@ -2,6 +2,7 @@ import DefaultTheme from 'vitepress/theme'
 import { useData, useRoute } from 'vitepress'
 import { defineComponent, h, onMounted, onBeforeUnmount, ref, watch, nextTick } from 'vue'
 import CollectionNotes from './CollectionNotes.vue'
+import ConceptReferences from './ConceptReferences.vue'
 import './style.css'
 
 const ReadingLayout = defineComponent({
@@ -88,6 +89,7 @@ const ReadingLayout = defineComponent({
       try { localStorage.setItem('notes-sidebar-collapsed', String(collapsed.value)) } catch {}
     }
     return () => h(DefaultTheme.Layout, null, {
+      'doc-footer-before': () => h(ConceptReferences),
       'nav-bar-content-before': () => frontmatter.value.sidebar === false ? null : [h('button', {
         class: 'sidebar-toggle',
         type: 'button',
