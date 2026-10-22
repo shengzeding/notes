@@ -29,7 +29,7 @@ $$
 =\sqrt{\frac{\nu x}{U}}.
 $$
 
-A quoted transition scale is $\mathrm{Re}_{x,\mathrm{cr}}\approx3.2\times10^5$; an order-of-magnitude estimate around $5\times10^5$ is also common. Transition depends on disturbances, roughness, and pressure gradient, so these values are approximate.
+Transition depends on incoming disturbances, surface roughness, pressure gradient, and the criterion used to identify it. Reynolds number organizes the behavior, but a transition location must be estimated from experiment or an application-specific correlation.
 
 ### 1.2 Thickness measures
 
@@ -242,29 +242,9 @@ These values are close to the Blasius results without solving the differential e
 
 ## 5. Turbulent Flat-Plate Correlations
 
-For a smooth plate with an approximately fully turbulent, zero-pressure-gradient boundary layer, useful empirical relations are
+Turbulent boundary-layer thickness and skin-friction drag are usually estimated from empirical correlations. The appropriate relation depends on Reynolds number, surface roughness, pressure gradient, and whether the layer includes a laminar starting region.
 
-$$
-\boxed{\frac\delta x=\frac{0.382}{\mathrm{Re}_x^{1/5}},
-\qquad C_f=\frac{0.0593}{\mathrm{Re}_x^{1/5}},
-\qquad C_{Df}=\frac{0.074}{\mathrm{Re}_l^{1/5}}.}
-$$
-
-Another smooth-plate mean-drag correlation is
-
-$$
-C_{Df}=\frac{0.455}{(\log_{10}\mathrm{Re}_l)^{2.58}},
-\qquad \mathrm{Re}_l<10^9,
-$$
-
-within its turbulent applicability range. For a fully rough turbulent plate,
-
-$$
-\boxed{C_{Df}=
-\left[1.89-1.62\log_{10}\left(\frac\varepsilon l\right)\right]^{-2.5}.}
-$$
-
-**Important qualification.** These are empirical models, not universal laws. A plate with a substantial laminar starting region needs treatment of transition; simply applying a fully turbulent mean correlation from the leading edge changes the predicted total drag. Surface roughness and pressure gradient also affect applicability.
+These correlations are models with limited ranges, not universal laws. Their definition of local or mean drag, reference length, and treatment of transition must match the problem.
 
 ---
 
@@ -301,13 +281,7 @@ Separation changes the pressure distribution and can create substantial form dra
 
 For a circular cylinder, drag coefficient and wake structure depend strongly on Reynolds number. Transition of the boundary layer can shift separation and produce a **drag crisis**. Alternating vortex shedding forms a Karman vortex street.
 
-A representative range quoted for clear periodic cylinder shedding is
-
-$$
-60\lesssim\mathrm{Re}\lesssim5000.
-$$
-
-This is an approximate illustrative range, not an assertion that all shedding ceases outside it. The frequency is described by
+The range of clear periodic shedding and the corresponding frequency relation are empirical and depend on Reynolds number and experimental conditions. The frequency is described by
 
 $$
 \boxed{\mathrm{St}=\frac{fD}{U},}
@@ -315,7 +289,7 @@ $$
 
 where $f$ is ordinary shedding frequency. If angular frequency is used instead, $\omega D/U=2\pi\mathrm{St}$.
 
-A sphere also exhibits a drag crisis, with a representative scale near $\mathrm{Re}\approx3\times10^5$. The precise behavior depends on surface condition and incoming disturbances; no universal numerical drag curve is implied here.
+A sphere also exhibits a drag crisis. Its location and drag curve depend on surface condition and incoming disturbances and must be obtained from empirical data.
 
 ---
 
@@ -325,28 +299,11 @@ A sphere also exhibits a drag crisis, with a representative scale near $\mathrm{
 
 A plane free turbulent jet is another thin-shear-layer problem. Its transverse scale is small relative to its streamwise scale, transverse velocity gradients dominate longitudinal gradients, and the transverse pressure gradient is negligible to leading order.
 
-In the established main region, the jet spreads approximately linearly, streamwise momentum flux is conserved, and suitably normalized velocity profiles become self-similar. A representative outer-boundary fit is
-
-$$
-y_{\mathrm{edge}}\approx\pm0.22x.
-$$
-
-Equivalently, the positive half-width is $b\approx0.22x$. This empirical edge width need not coincide with a half-maximum width or another profile-based definition.
+In the established main region, the jet spreads approximately linearly, streamwise momentum flux is conserved, and suitably normalized velocity profiles become self-similar. The spreading rate is empirical and depends on how jet width is defined.
 
 ### 7.2 Eddy-viscosity profile and momentum conservation
 
-A similarity profile is
-
-$$
-\eta=\sigma_j\frac yx,\qquad \sigma_j\approx7.67,
-$$
-
-$$
-\boxed{\frac{u}{u_m}=1-\tanh^2\eta
-=\operatorname{sech}^2\eta.}
-$$
-
-The coefficient $\sigma_j$ is a jet-spreading parameter, not surface tension. The centerline speed is $u_m$.
+Measured mean profiles are often represented by a self-similar shape with an empirical spreading parameter. The centerline speed and transverse width supply the velocity and length scales; the fitted profile is not fixed by momentum conservation alone.
 
 For a uniform inlet speed $u_0$ over area $A_0$, the mean-profile momentum model is
 
@@ -356,13 +313,4 @@ $$
 
 For the idealized plane jet, interpret this per unit span and integrate across $y$. The model neglects corrections such as streamwise fluctuation momentum and nonuniform pressure contributions.
 
-**Derivation (Centerline decay).** For the stated profile,
-
-$$
-J=\rho\int_{-\infty}^{\infty}u^2dy
-=\rho u_m^2\frac{x}{\sigma_j}
-\int_{-\infty}^{\infty}\operatorname{sech}^4\eta\,d\eta
-=\frac{4\rho u_m^2x}{3\sigma_j}.
-$$
-
-Constant $J$ therefore gives $u_m\propto x^{-1/2}$ while the width grows as $x$. The similarity profile and conserved momentum determine this decay once the spreading parameter is supplied; momentum conservation alone does not independently determine the spreading constant.
+If the jet width grows in proportion to $x$, conservation of momentum flux implies the centerline scaling $u_m\propto x^{-1/2}$. The numerical spreading rate and detailed profile shape still require empirical input.

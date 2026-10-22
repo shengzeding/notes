@@ -11,19 +11,7 @@ order: 8
 
 At a pipe entrance, no slip creates wall boundary layers that grow inward. Once they meet and the velocity profile stops changing with streamwise position, the flow is **fully developed**. Pressure can continue to fall even though the profile no longer changes.
 
-Representative entrance-length estimates are
-
-$$
-L_e\approx(60\text{--}138)d
-\quad\text{for laminar flow at }\mathrm{Re}\approx1000\text{--}2300,
-$$
-
-$$
-L_e\approx(20\text{--}40)d
-\quad\text{for turbulent flow at }\mathrm{Re}\approx10^4\text{--}10^6.
-$$
-
-These are approximate ranges, dependent on inlet conditions and the criterion for development. Entrance-region loss may be represented as developed-flow friction plus an additional entrance loss. Fully developed formulas should not silently be applied to the entire entrance region.
+Entrance length is not fixed by geometry alone. It depends on Reynolds number, inlet conditions, disturbances, and the chosen criterion for a developed profile, and is usually estimated from empirical correlations. Entrance-region loss may be represented as developed-flow friction plus an additional entrance loss. Fully developed formulas should not silently be applied to the entire entrance region.
 
 ---
 
@@ -193,21 +181,7 @@ u_* =\sqrt{\frac{\tau_w}{\rho}},
 \qquad y^+=\frac{yu_*}{\nu}.
 $$
 
-A useful logarithmic-region correlation is
-
-$$
-\boxed{\frac{\overline u}{u_*}
-=2.5\ln\left(\frac{yu_*}{\nu}\right)+5.5.}
-$$
-
-It is a log-region model and does not extend to $y=0$. An empirical approximation near $\mathrm{Re}\sim10^5$ is the one-seventh-power profile,
-
-$$
-\frac{\overline u}{u_{\max}}=
-\left(1-\frac rR\right)^{1/7}.
-$$
-
-This profile is convenient for section integrals but should not be differentiated at the wall to calculate wall stress.
+In the overlap region, experiments support a logarithmic mean-velocity profile expressed in wall units. Its constants and range of validity are empirical, and the relation does not extend to the wall. Power-law profiles are another convenient empirical approximation for section averages, but they should not be differentiated at the wall to calculate wall stress.
 
 ---
 
@@ -224,53 +198,17 @@ $$
 
 Here $\varepsilon$ is equivalent roughness and $\mathrm{Re}=Vd/\nu$. The Darcy friction factor is four times the Fanning factor.
 
-For circular laminar flow, comparison with Hagen-Poiseuille gives
-
-$$
-\boxed{\lambda=\frac{64}{\mathrm{Re}}\qquad(\mathrm{Re}<2300).}
-$$
-
-The approximate interval $2300<\mathrm{Re}<4000$ is transitional and has no single reliable universal correlation.
+For circular laminar flow, the friction factor follows directly from the Hagen-Poiseuille solution and varies inversely with Reynolds number. Transition occupies a range rather than a universal threshold.
 
 ### 5.2 Turbulent correlations
 
-For a smooth pipe over approximately $4000<\mathrm{Re}<10^5$, the Blasius correlation is
+In turbulent flow, $\lambda$ must be obtained from an empirical correlation or chart. It depends on Reynolds number and relative roughness, with distinct smooth-pipe, transitional-roughness, and fully rough behavior. Some correlations are implicit because the friction factor appears on both sides.
 
-$$
-\lambda=\frac{0.3164}{\mathrm{Re}^{1/4}}.
-$$
+The correlation must match the Darcy or Fanning convention, the roughness definition, and the applicable flow regime. A turbulent smooth-to-rough correlation does not describe laminar-to-turbulent transition.
 
-A wider-range smooth-pipe relation is
+### 5.3 Using a friction correlation
 
-$$
-\frac1{\sqrt\lambda}
-=2.0\log_{10}(\mathrm{Re}\sqrt\lambda)-0.8.
-$$
-
-For a fully rough turbulent pipe, one useful form is
-
-$$
-\lambda=\frac1{[1.74+2\log_{10}(d/(2\varepsilon))]^2}.
-$$
-
-For turbulent flow spanning hydraulically smooth to rough conditions, the Colebrook equation is
-
-$$
-\boxed{\frac1{\sqrt\lambda}
-=-2\log_{10}\left(
-\frac{2.51}{\mathrm{Re}\sqrt\lambda}
-+\frac{\varepsilon/d}{3.7}\right).}
-$$
-
-**Important qualification.** The smooth-to-rough transition described by Colebrook is within turbulent flow; it does not resolve the laminar-to-turbulent transition near $\mathrm{Re}=2300$ to $4000$.
-
-The Moody chart presents these dependencies graphically. Always match the friction-factor convention and roughness definition before using a chart or correlation.
-
-### 5.3 Direct and inverse calculations
-
-For given $d,\varepsilon,\nu,Q$, compute $V=4Q/(\pi d^2)$, then $\mathrm{Re}$ and $\lambda$, and finally $h_f$. An implicit friction relation may still require a scalar iteration even in this otherwise direct problem.
-
-For unknown $Q$ or $d$, the flow speed, Reynolds number, and friction factor are coupled. Guess the unknown, recompute all dependent quantities, evaluate the energy-balance residual, and iterate to a consistent solution. Check the flow regime after convergence.
+A pipe-flow calculation couples velocity, Reynolds number, friction factor, and head loss. If flow rate or diameter is unknown, these quantities generally require a consistent solution of the energy balance together with an appropriate empirical friction relation. The result should be checked against that relation's stated regime and assumptions.
 
 ---
 
@@ -284,27 +222,7 @@ $$
 \boxed{h_m=K\frac{V_{\mathrm{ref}}^2}{2g}.}
 $$
 
-The coefficient and reference velocity form a pair. For discharge into a large reservoir, the common value is $K_{\mathrm{exit}}=1$ when based on the exiting pipe speed with kinetic-energy correction taken as unity.
-
-For a sudden expansion from $A_1$ to $A_2>A_1$,
-
-$$
-\boxed{K_e=\left(1-\frac{A_1}{A_2}\right)^2
-=\left(1-\frac{d_1^2}{d_2^2}\right)^2,}
-$$
-
-based on upstream speed $V_1$. Equivalently, $h_e=(V_1-V_2)^2/(2g)$ under the standard uniform-section approximation.
-
-A commonly quoted empirical contraction expression has the form
-
-$$
-K_c\approx0.42\left(1-\frac{d_s^2}{d_l^2}\right),
-\qquad d_s<d_l.
-$$
-
-**Convention note.** The subscripts here mean *small* and *large*, not upstream and downstream. The compact expression sometimes written $0.42(1-d_1^2/d_2^2)$ requires $d_1=d_s$, $d_2=d_l$. The velocity reference is not determined by this algebraic expression alone; use a coefficient specification that states it before inserting the result into a numerical loss calculation. A negative contraction-loss coefficient from an inverted diameter ratio signals a convention error.
-
-Bend, branch, and valve coefficients depend strongly on geometry and opening and cannot be inferred from the generic formula alone.
+The coefficient and reference velocity form a pair. Values for entrances, exits, expansions, contractions, bends, branches, and valves depend on geometry and operating conditions. They must be taken from an appropriate empirical source that states the velocity reference and coefficient convention.
 
 ### 6.2 Piping systems
 
@@ -334,13 +252,13 @@ h_f=\lambda\frac l{d_h}\frac{V^2}{2g},
 \qquad \frac\varepsilon{d_h}.
 $$
 
-A nominal critical value $\mathrm{Re}_{d_h}\approx2300$ is sometimes used as a rough guide. Geometry matters, especially for very slender sections and laminar flow. The circular-pipe identity $\lambda=64/\mathrm{Re}$ does not become exact for an arbitrary duct merely by replacing $d$ with $d_h$.
+A Reynolds-number threshold borrowed from circular pipes is only a rough guide for non-circular ducts. Geometry matters, especially for very slender sections and laminar flow. Circular-pipe friction relations do not become exact for an arbitrary duct merely by replacing $d$ with $d_h$.
 
 ---
 
 ## 7. Uniform Open-Channel Flow
 
-### 7.1 Chezy and Manning relations
+### 7.1 Uniform-flow resistance
 
 An open channel has a free surface at atmospheric pressure. For a shallow-slope, gradually varied flow, pressure is approximately hydrostatic. Steady uniform flow has constant section geometry and mean speed, so
 
@@ -349,19 +267,7 @@ Q=VA=\mathrm{constant},
 \qquad z_1-z_2=h_f.
 $$
 
-Let $J=h_f/l$ be energy slope. The Chezy relation is
-
-$$
-\boxed{V=C\sqrt{r_hJ}.}
-$$
-
-With the SI Manning relation
-
-$$
-C=\frac1n r_h^{1/6},
-$$
-
-this becomes $V=n^{-1}r_h^{2/3}J^{1/2}$. The free surface is not part of the wetted perimeter. The empirical roughness parameter $n$ must be used with its associated unit convention.
+Mean speed is related to energy slope and hydraulic radius through empirical resistance laws such as the Chezy or Manning relation. Their coefficients encode roughness and must be selected for the channel and unit convention; they are not determined by the conservation laws alone. The free surface is not part of the wetted perimeter.
 
 ### 7.2 Specific energy and critical flow
 

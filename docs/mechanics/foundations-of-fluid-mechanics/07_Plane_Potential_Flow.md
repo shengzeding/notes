@@ -96,7 +96,7 @@ $$
 \frac{dW}{dz}=\frac{dW/d\zeta}{dz/d\zeta}.
 $$
 
-These observations explain the available methods; no specific airfoil mapping or residue-based force derivation is needed for the elementary solutions below.
+Section 5 applies the chain rule to the Joukowski map and uses the Kutta condition to select the circulation of a flat plate or airfoil.
 
 ---
 
@@ -319,20 +319,187 @@ $$
 With positive counterclockwise $\Gamma$ and $\boldsymbol\Gamma=\Gamma\mathbf k$, the force on the body is
 
 $$
-\mathbf F'=\rho\mathbf U\times\boldsymbol\Gamma.
+\boxed{\mathbf F'=\rho\mathbf U\times\boldsymbol\Gamma.}
 $$
 
-For $\mathbf U=U\mathbf i$, this gives $F_y'=-\rho U\Gamma$. Clockwise-positive circulation instead gives the scalar upward-lift formula $F_y'=\rho U\Gamma_{\mathrm{cw}}$.
+For $\mathbf U=U\mathbf i$, this gives
 
-### 5.2 The Kutta condition and starting vortex
+$$
+F_x'=0,\qquad F_y'=-\rho U\Gamma.
+$$
 
-An airfoil can support a family of ideal-flow solutions with different circulations. The **Kutta condition** selects the circulation for which flow leaves a sharp trailing edge smoothly with finite velocity.
+Thus counterclockwise circulation produces downward force in this convention, while clockwise circulation produces upward force. The theorem determines force once the circulation is known; the inviscid field equations alone still admit a family of circulation values around an airfoil.
 
-During startup, a starting vortex and bound circulation of opposite signs develop. This connects the circulation picture with Kelvin's theorem, while recognizing that viscous processes near the body participate in establishing the motion.
+### 5.2 The Joukowski map
 
-Airfoil shape changes the pressure distribution and lift coefficient. Finite-span wings involve additional three-dimensional effects, so a two-dimensional lift-per-span result is not a complete finite-wing model. These topics are qualitative here; no particular airfoil shape, finite-span correction, or numerical example is assumed.
+Let $\zeta$ denote the circle plane and $z$ the physical plane. The Joukowski map is
 
-### 5.3 Blade-cascade force components
+$$
+\boxed{z(\zeta)=\zeta+\frac{a^2}{\zeta}.}
+$$
+
+On the circle $|\zeta|=a$, write $\zeta=ae^{i\theta}$. Then
+
+$$
+z=ae^{i\theta}+ae^{-i\theta}
+=2a\cos\theta.
+$$
+
+The image is the real segment $-2a\le z\le2a$. The upper and lower semicircles map to the two faces of a flat plate with chord
+
+$$
+\boxed{c=4a.}
+$$
+
+The complex potential $W(\zeta)$ describes the flow, whereas $z(\zeta)$ changes the geometry. Their similar algebraic forms in the zero-incidence cylinder solution do not make them the same object.
+
+The mapped complex velocity follows from the chain rule:
+
+$$
+\boxed{\frac{dW}{dz}
+=\frac{dW/d\zeta}{dz/d\zeta}},
+\qquad
+\frac{dz}{d\zeta}=1-\frac{a^2}{\zeta^2}.
+$$
+
+The mapping derivative vanishes at $\zeta=\pm a$, which correspond to the two plate edges. A finite mapped velocity at either point requires the numerator to vanish to at least the same order. If both derivatives have simple zeros at $\zeta_t$,
+
+$$
+\lim_{\zeta\to\zeta_t}\frac{dW}{dz}
+=
+\frac{d^2W/d\zeta^2}{d^2z/d\zeta^2}\bigg|_{\zeta=\zeta_t}.
+$$
+
+This limit, rather than the denominator alone, decides whether the physical velocity is finite.
+
+### 5.3 Inclined flat plate and the Kutta condition
+
+Keep the plate on the real axis and let the far-field velocity make angle $-\alpha$ with it. The cylinder-plane potential with positive counterclockwise circulation is
+
+$$
+\boxed{
+W(\zeta)
+=
+U\left(
+e^{-i\alpha}\zeta
++e^{i\alpha}\frac{a^2}{\zeta}
+\right)
+-\frac{i\Gamma}{2\pi}\log\zeta.
+}
+$$
+
+The first two terms give uniform flow plus a doublet; the logarithmic term gives the point vortex. Differentiation yields
+
+$$
+\frac{dW}{d\zeta}
+=
+U\left(
+e^{-i\alpha}
+-e^{i\alpha}\frac{a^2}{\zeta^2}
+\right)
+-\frac{i\Gamma}{2\pi\zeta}.
+$$
+
+Take the right endpoint $\zeta=a$ to be the trailing edge. Since $dz/d\zeta=0$ there, finite trailing-edge velocity requires
+
+$$
+\boxed{\left.\frac{dW}{d\zeta}\right|_{\zeta=a}=0.}
+$$
+
+Substitution gives
+
+$$
+0
+=
+U\left(e^{-i\alpha}-e^{i\alpha}\right)
+-\frac{i\Gamma}{2\pi a}
+=
+-i\left(
+2U\sin\alpha+\frac{\Gamma}{2\pi a}
+\right).
+$$
+
+Therefore the Kutta condition selects
+
+$$
+\boxed{\Gamma=-4\pi aU\sin\alpha.}
+$$
+
+For positive $\alpha$, the selected circulation is clockwise, $\Gamma<0$, and the lift is upward. With a clockwise-positive circulation $\Gamma_{\mathrm{cw}}=-\Gamma$, the same result is $\Gamma_{\mathrm{cw}}=4\pi aU\sin\alpha$.
+
+The Kutta condition removes the trailing-edge singularity. The ideal zero-thickness plate still has a leading-edge velocity singularity at nonzero incidence. A rounded leading edge and viscous boundary layer regularize that region in a real flow.
+
+### 5.4 Lift coefficient of the flat plate
+
+Insert the Kutta circulation into the force theorem:
+
+$$
+F_y'
+=-\rho U\Gamma
+=4\pi\rho aU^2\sin\alpha.
+$$
+
+Since $c=4a$,
+
+$$
+\boxed{F_y'=\pi\rho U^2c\sin\alpha.}
+$$
+
+Define the two-dimensional lift coefficient using chord as reference length:
+
+$$
+C_L=\frac{F_y'}{\tfrac12\rho U^2c}.
+$$
+
+The Joukowski flat-plate model gives
+
+$$
+\boxed{C_L=2\pi\sin\alpha.}
+$$
+
+At small incidence, with $\alpha$ measured in radians,
+
+$$
+\boxed{C_L\approx2\pi\alpha,
+\qquad
+\frac{dC_L}{d\alpha}\approx2\pi\ \mathrm{rad}^{-1}.}
+$$
+
+This result assumes steady, incompressible, two-dimensional, attached ideal flow. It does not describe stall or finite-span induced effects.
+
+### 5.5 From a circle to an airfoil
+
+A centered circle passing through both critical points $\zeta=\pm a$ maps to the zero-thickness plate. More general Joukowski airfoils follow from
+
+$$
+z=\zeta+\frac{b^2}{\zeta},
+$$
+
+using an offset circle in the $\zeta$ plane. A sharp trailing edge is obtained by choosing the circle to pass through the critical point $\zeta=b$, where $dz/d\zeta=0$.
+
+A horizontal offset changes the thickness distribution. A vertical offset introduces camber. The circle need not pass through the other critical point, so the mapped leading edge can be rounded while the trailing edge remains sharp.
+
+The flow is constructed around the offset circle, augmented by a vortex, and mapped into the airfoil plane. The Kutta condition again requires
+
+$$
+\left.\frac{dW}{d\zeta}\right|_{\zeta=b}=0,
+$$
+
+which fixes the circulation. Camber changes the circulation selected at a given incidence and shifts the zero-lift angle. For a thin cambered airfoil at small incidence, the lift relation takes the form
+
+$$
+C_L\approx2\pi(\alpha-\alpha_{L=0}).
+$$
+
+### 5.6 Circulation selection and startup
+
+An inviscid airfoil admits many mathematical solutions distinguished by circulation. The Kutta condition selects the member whose velocity remains finite and whose flow leaves a sharp trailing edge smoothly.
+
+During startup, viscous effects near the body generate a starting vortex. The bound circulation around the airfoil has the opposite sign, consistent with Kelvin's theorem when the complete material loop and the vorticity shed into the wake are included. Once the starting process has passed, the outer flow can be modeled by the steady potential solution with the selected circulation.
+
+The construction determines the two-dimensional outer flow and its lift. Boundary-layer development, separation, stall, and finite-wing effects require additional models.
+
+### 5.7 Blade-cascade force components
 
 For an in-plane reference velocity $\mathbf V=(V_x,V_y)$ and positive counterclockwise circulation,
 

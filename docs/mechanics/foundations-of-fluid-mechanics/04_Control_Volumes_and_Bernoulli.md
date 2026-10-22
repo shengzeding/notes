@@ -173,14 +173,7 @@ $$
 p_0-p=(\rho_m-\rho)g\Delta h.
 $$
 
-With a calibration coefficient $k$,
-
-$$
-\boxed{q=k\sqrt{\frac{2(p_0-p)}\rho}
-=k\sqrt{2g\Delta h\left(\frac{\rho_m}{\rho}-1\right)}.}
-$$
-
-The ideal value is $k=1$. The stagnation and static readings must refer to compatible locations and elevations.
+Real probes require a calibration coefficient determined from experiment and installation details. The ideal Bernoulli relation gives the dependence on pressure difference; the calibrated coefficient supplies the device-specific correction. The stagnation and static readings must refer to compatible locations and elevations.
 
 ### 4.2 Torricelli outflow and a small orifice
 
@@ -190,19 +183,7 @@ $$
 \boxed{q=\sqrt{2gh}.}
 $$
 
-If the opening area is $A$ and the contracted jet area is $A_e$, define $\varepsilon=A_e/A$. Accounting only for contraction,
-
-$$
-Q=\varepsilon A\sqrt{2gh}.
-$$
-
-With an additional velocity coefficient $k$,
-
-$$
-\boxed{Q=\mu_dA\sqrt{2gh},\qquad \mu_d=k\varepsilon.}
-$$
-
-The discharge coefficient $\mu_d$ is dimensionless and is distinct from dynamic viscosity $\mu$. A useful small-orifice condition is $d\le0.1h$, so pressure variation over the opening is small.
+For a real orifice, contraction and viscous effects are represented by an empirical discharge coefficient. Its value depends on the opening geometry, Reynolds number, and installation, so it must come from an appropriate correlation or calibration rather than the ideal derivation alone.
 
 ### 4.3 Triangular weir
 
@@ -216,7 +197,7 @@ Q&=2\tan\left(\frac\alpha2\right)\sqrt{2g}
 \end{aligned}
 $$
 
-Viscous and contraction effects change the coefficient. An empirical expression is $Q=f(\alpha)h^{5/2}$ for fixed gravity, or, with dimensions explicit, $Q=\sqrt g\,h^{5/2}\mathcal F(\alpha)$.
+Viscous and contraction effects change the coefficient. Practical weir discharge therefore uses an empirical coefficient tied to the notch geometry and measurement convention; the ideal derivation mainly establishes the $h^{5/2}$ scaling.
 
 ### 4.4 Venturi meter
 
@@ -233,19 +214,7 @@ p_1-p_2+\rho g(z_1-z_2)
 =(\rho_m-\rho)g\Delta h.
 $$
 
-Combining it with Bernoulli yields
-
-$$
-V_1=k\sqrt{2g\Delta h},
-\qquad Q=kA_1\sqrt{2g\Delta h},
-$$
-
-$$
-k_{\mathrm{ideal}}=
-\sqrt{\frac{\rho_m/\rho-1}{(A_1/A_2)^2-1}}.
-$$
-
-Actual calibration incorporates losses. Elevation cancels through the manometer relation, explaining why this form is independent of pipe inclination under the stated assumptions.
+Combining continuity with Bernoulli determines the ideal dependence of flow rate on the measured pressure difference and area ratio. Actual Venturi meters use an empirical discharge coefficient to incorporate losses and installation effects. Elevation cancels through the manometer relation, explaining why the resulting relation is independent of pipe inclination under the stated assumptions.
 
 ---
 
