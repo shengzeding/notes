@@ -1,3 +1,9 @@
+---
+title: Elementary Linear Algebra
+order: 1
+---
+
+
 # Elementary Linear Algebra
 
 ## 1. Inner Products and the Geometry of Vectors
