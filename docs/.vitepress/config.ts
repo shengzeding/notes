@@ -28,6 +28,7 @@ export default defineConfig({
     siteTitle: 'SHENGZE DING',
     nav: [
       { text: 'NOTES', link: '/' },
+      { text: 'GRAPH', link: '/graph' },
       { text: 'GUIDE', link: '/guide/writing' },
       { text: 'HOME', link: 'https://shengzeding.github.io/', target: '_self' }
     ],
