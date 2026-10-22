@@ -139,15 +139,52 @@ The source passage must fall under the registered source concept: put its defini
 
 Currently accepted relationship types are `derivation-uses`, `instance-of`, `equivalent-to`, and `generalizes`. Choose the direction deliberately. A reverse navigation link does not make a mathematical relationship symmetric.
 
-## Future course and domain groups
+## Courses, domains, and the graph
 
-The current version exports concepts, mentions, and checked relationships. It does not yet render a graph or store an explicit course/domain hierarchy.
+The [knowledge graph](../graph.md) displays courses as large nodes and concepts as small nodes. Dashed lines connect a concept to its courses; solid arrows show checked mathematical relationships. Domain colors and a gentle grouping force keep related subjects near each other.
 
-A later graph can add domain and course groups independently of concept identity, for example:
+Drag nodes to arrange them, drag the background to pan, and use the zoom controls. Select a node to inspect its connections and open the notes. Keyboard users can Tab to a node and press Enter, or use **Browse all nodes**.
 
-- Mathematics → Complex Analysis → Residue theorem.
-- Mechanics → Fluid Mechanics → Kutta–Joukowski theorem.
+The graph currently includes only registered concepts. Mentioning a word in a note does not automatically create a node or a mathematical relationship.
 
-Keep membership separate from mathematical relationships. A residue theorem citation in fluid mechanics should not move the concept out of complex analysis or create a duplicate concept. A primary course can determine visual placement, while additional course memberships can support filtering.
+### Register a domain and a course
 
-This extension requires group metadata and a graph interface, not a rewrite of the notes or existing concept IDs.
+Domains and courses live in the same `knowledge.json` file. Add objects to their respective arrays; these examples already exist:
+
+```json
+{
+  "id": "mathematics",
+  "label": "Mathematics",
+  "color": "#527c73"
+}
+```
+
+A course has its own ID, a domain, and a note or index page:
+
+```json
+{
+  "id": "complex-analysis",
+  "label": "Complex Analysis",
+  "domain": "mathematics",
+  "path": "math/Foundations_of_Complex_Analysis.md"
+}
+```
+
+In a concept entry, add its main domain and one or more course IDs:
+
+```json
+{
+  "domain": "mathematics",
+  "courses": [
+    "complex-analysis"
+  ]
+}
+```
+
+These are additional fields in the existing concept object, alongside its ID, label, aliases, and location. They do not replace that object.
+
+A concept may connect to multiple registered courses while remaining one node. Its main domain determines its color and grouping tendency. Add another course only when it reflects the content you are organizing; citing the concept from a different course does not automatically change its membership.
+
+Course membership and mathematical relationships remain separate. For example, the residue theorem belongs to complex analysis, while the lift derivation uses it through a cross-domain relation.
+
+The build checks domain colors, unique course IDs, course pages, and concept memberships. Existing concepts without memberships remain visible as unassigned nodes. Every build includes the new metadata in the exported `knowledge-graph.json`.
