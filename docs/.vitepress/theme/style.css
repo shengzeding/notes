@@ -267,3 +267,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
 .concept-backlinks li { margin: 8px 0; }
 .concept-backlinks a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .concept-backlink-page { display: block; color: #888; font-size: 12px; }
+
+/* The graph has its own wide workspace; reading pages retain their width. */
+.knowledge-graph-page .VPDoc .content { max-width: 1240px !important; width: 100%; }
+.knowledge-graph-page .VPDoc .content-container { max-width: 1140px !important; }
+.knowledge-graph-page .VPDoc { padding-top: 48px; }
+.knowledge-graph-page .vp-doc h1 { font-size: 32px; margin-bottom: 14px; }
