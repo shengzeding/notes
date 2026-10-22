@@ -10,7 +10,11 @@
       "location": {
         "path": "math/Foundations_of_Complex_Analysis.md",
         "anchor": "residue-theorem"
-      }
+      },
+      "domain": "mathematics",
+      "courses": [
+        "complex-analysis"
+      ]
     },
     {
       "id": "conformal-mapping",
@@ -22,7 +26,11 @@
       "location": {
         "path": "math/Foundations_of_Complex_Analysis.md",
         "anchor": "conformal-mapping"
-      }
+      },
+      "domain": "mathematics",
+      "courses": [
+        "complex-analysis"
+      ]
     },
     {
       "id": "kutta-joukowski-theorem",
@@ -34,7 +42,11 @@
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
         "anchor": "kutta-joukowski-theorem"
-      }
+      },
+      "domain": "mechanics",
+      "courses": [
+        "fluid-mechanics"
+      ]
     },
     {
       "id": "joukowski-map",
@@ -46,7 +58,11 @@
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
         "anchor": "joukowski-map"
-      }
+      },
+      "domain": "mechanics",
+      "courses": [
+        "fluid-mechanics"
+      ]
     }
   ],
   "relations": [
@@ -75,6 +91,32 @@
         "anchor": "joukowski-map"
       },
       "note": "Conformal away from the pole and critical points; global use requires a suitable one-to-one domain."
+    }
+  ],
+  "domains": [
+    {
+      "id": "mathematics",
+      "label": "Mathematics",
+      "color": "#527c73"
+    },
+    {
+      "id": "mechanics",
+      "label": "Mechanics",
+      "color": "#a66d50"
+    }
+  ],
+  "courses": [
+    {
+      "id": "complex-analysis",
+      "label": "Complex Analysis",
+      "domain": "mathematics",
+      "path": "math/Foundations_of_Complex_Analysis.md"
+    },
+    {
+      "id": "fluid-mechanics",
+      "label": "Fluid Mechanics",
+      "domain": "mechanics",
+      "path": "mechanics/foundations-of-fluid-mechanics/index.md"
     }
   ]
 }
