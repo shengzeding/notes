@@ -1,3 +1,9 @@
+---
+title: Determinants
+order: 2
+---
+
+
 # Determinants
 
 ## 1. Determinants: Definitions and Basic Tools
