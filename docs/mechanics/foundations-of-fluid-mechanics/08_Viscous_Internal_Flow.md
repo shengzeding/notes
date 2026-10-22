@@ -262,10 +262,10 @@ A Reynolds-number threshold borrowed from circular pipes is only a rough guide f
 
 An open channel has a free surface at atmospheric pressure. For a shallow-slope, gradually varied flow, pressure is approximately hydrostatic. Steady uniform flow has constant section geometry and mean speed, so
 
-$
+$$
 Q=VA=\mathrm{constant},
 \qquad z_1-z_2=h_f.
-$
+$$
 
 Mean speed is related to energy slope and hydraulic radius through empirical resistance laws such as the Chezy or Manning relation. Their coefficients encode roughness and must be selected for the channel and unit convention; they are not determined by the conservation laws alone. The free surface is not part of the wetted perimeter.
 
