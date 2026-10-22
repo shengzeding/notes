@@ -247,3 +247,23 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
 }
 
 .notes-focus-switching .VPNav { transition: none; }
+
+/* Quiet inline citations, with backlinks kept out of the reading flow. */
+.vp-doc a.concept-link {
+  color: inherit;
+  text-decoration: underline dotted #aaa;
+  text-underline-offset: 4px;
+}
+.vp-doc a.concept-link:hover, .vp-doc a.concept-link:focus-visible {
+  text-decoration: underline solid #555;
+}
+.vp-doc span[id] { scroll-margin-top: 88px; }
+.concept-backlinks { margin-top: 40px; color: #666; font-size: 13px; }
+.concept-backlinks summary { cursor: pointer; padding: 8px 0; }
+.concept-backlinks summary span { margin-left: 8px; color: #888; }
+.concept-backlink-group { margin: 16px 0 20px; }
+.concept-backlink-name { color: #333; font-weight: 500; }
+.concept-backlinks ul { list-style: none; padding: 0; margin: 8px 0; }
+.concept-backlinks li { margin: 8px 0; }
+.concept-backlinks a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.concept-backlink-page { display: block; color: #888; font-size: 12px; }
