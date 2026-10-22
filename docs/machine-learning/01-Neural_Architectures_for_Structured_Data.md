@@ -1,3 +1,8 @@
+---
+title: Neural Architectures for Structured Data
+order: 1
+---
+
 # Neural Architectures for Structured Data
 
 A neural architecture specifies the form of a parameterized map $f_\theta$ and the pattern by which its components exchange information. These structures encode different **inductive biases**, even when trained with the same loss and optimizer.
