@@ -1,3 +1,8 @@
+---
+title: Attention and Transformer Architectures
+order: 3
+---
+
 # Attention and Transformer Architectures
 
 Attention computes interactions between positions using coefficients derived from the current input. Its defining operation is a weighted aggregation of value vectors, with weights obtained by comparing queries and keys. Multi-head attention, positional information, masking, and feed-forward layers turn this operation into Transformer architectures for sequences and spatial fields.
