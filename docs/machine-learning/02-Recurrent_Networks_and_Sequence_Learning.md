@@ -1,3 +1,8 @@
+---
+title: Recurrent Networks and Sequence Learning
+order: 2
+---
+
 # Recurrent Networks and Sequence Learning
 
 
