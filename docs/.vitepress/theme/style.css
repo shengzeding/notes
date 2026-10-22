@@ -208,7 +208,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
   opacity: .3;
 }
 .focus-exit:hover, .focus-exit:focus-visible { opacity: 1; }
+.VPNav {
+  transition: transform .2s ease, visibility 0s;
+}
 .notes-focus .VPNav {
+  transition: transform .2s ease, visibility 0s .2s;
   position: fixed;
   visibility: hidden;
   transform: translateY(-100%);
@@ -217,6 +221,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
 .notes-focus .VPNav:focus-within {
   visibility: visible;
   transform: translateY(0);
+  transition-delay: 0s;
 }
 .notes-focus .VPSidebar,
 .notes-focus .VPLocalNav,
@@ -231,3 +236,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid #111; outline-offset:
 @media (max-width: 767px) {
   .focus-toggle { margin-right: 4px; padding: 2px 6px; }
 }
+
+/* Snapshot crossfades avoid animating text reflow during focus layout changes. */
+::view-transition-old(root) { animation: notes-focus-out .18s ease-out both; }
+::view-transition-new(root) { animation: notes-focus-in .22s ease-out both; }
+@keyframes notes-focus-out { to { opacity: 0; } }
+@keyframes notes-focus-in { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
+.notes-focus-switching .VPNav { transition: none; }
