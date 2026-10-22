@@ -905,7 +905,7 @@ For a genuinely periodic data set, $y_0=y_n$ is part of the compatibility condit
 
 ### 8.3 The three-angle / first-derivative construction
 
-The **three-angle method** (*三转角法*) constructs the spline in terms of its first derivatives at the knots. Introduce the unknown knot slopes
+The **three-angle method**  constructs the spline in terms of its first derivatives at the knots. Introduce the unknown knot slopes
 
 $$
 m_i=S'(x_i),\qquad i=0,\ldots,n.
