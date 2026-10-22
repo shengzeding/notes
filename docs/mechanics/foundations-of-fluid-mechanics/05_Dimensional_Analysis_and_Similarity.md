@@ -121,7 +121,7 @@ consistent with direct Bernoulli integration. Dimensional analysis alone cannot 
 
 **Remark (Frequency convention).** Both $fl/V$ and $\omega l/V$ occur in fluid mechanics. They differ by $2\pi$ and must not be exchanged numerically. Vortex-shedding frequency is ordinarily reported using $\mathrm{St}=fD/U$.
 
-For circular pipes, a conventional critical value is $\mathrm{Re}\approx2300$. Flat-plate transition is commonly characterized by an order-of-magnitude scale around $5\times10^5$; the more specific value $3.2\times10^5$ is also used in the boundary-layer discussion. Neither value is a universal threshold.
+For pipe flow and boundary layers, transition occurs over ranges that depend on disturbances, roughness, geometry, and pressure gradient. Reynolds number organizes the regimes, but the threshold must be taken from experiment or an application-specific correlation rather than treated as universal.
 
 The elementary Mach classification is subsonic for $\mathrm{Ma}<1$, sonic at $\mathrm{Ma}=1$, and supersonic for $\mathrm{Ma}>1$. *Transonic* describes a regime near sonic conditions, often with both subsonic and supersonic regions, rather than just the single value $1$.
 
