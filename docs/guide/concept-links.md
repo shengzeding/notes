@@ -9,6 +9,12 @@ Write references as part of the explanation, at the step where a result is used.
 
 A concept has a stable ID independent of its display name, chapter title, or file. Its canonical explanation can remain inside a long note.
 
+## Choose the concept granularity
+
+Register a durable knowledge topic rather than a complete claim about that topic. Prefer names such as **Bernoulli equation**, **DeepONet**, and **mass conservation**; keep qualifications such as “field-wide,” “branch–trunk,” “local,” or “control-volume” in the note, aliases, and relationship evidence.
+
+Create a separate node only when the distinction is useful outside its current paragraph: the topic should be independently learnable, reusable in another course, or needed as one endpoint of a meaningful relationship. Variants, implementation details, and special-case conclusions normally remain linked mentions of the broader concept. This keeps the graph compact without discarding precise assumptions or source locations.
+
 ## Cite an existing concept
 
 Use an ordinary Markdown link with a concept ID in its optional title:

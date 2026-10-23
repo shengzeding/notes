@@ -46,7 +46,7 @@ The derivative now acts on an integral over a moving region. For momentum measur
 
 ## 2. Integral Mass Conservation
 
-Set $\eta=\rho$ and use conservation of system mass:
+Set $\eta=\rho$ and apply [mass conservation](03_Differential_Conservation_Laws.md#local-mass-conservation "concept:local-mass-conservation") to the system:
 
 $$
 \boxed{\frac{\partial}{\partial t}\int_{\mathrm{CV}}\rho\,d\mathcal V

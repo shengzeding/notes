@@ -84,7 +84,10 @@
       "label": "Discrete least squares",
       "aliases": [
         "Weighted discrete least squares",
-        "离散最小二乘"
+        "离散最小二乘",
+        "Polynomial least squares",
+        "Polynomial least-squares uniqueness",
+        "Haar uniqueness condition"
       ],
       "location": {
         "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
@@ -113,10 +116,11 @@
     },
     {
       "id": "orthogonal-polynomial-construction",
-      "label": "Orthogonal-polynomial construction",
+      "label": "Orthogonal polynomials",
       "aliases": [
         "Gram-Schmidt construction of orthogonal polynomials",
-        "正交多项式构造"
+        "正交多项式构造",
+        "Orthogonal-polynomial construction"
       ],
       "location": {
         "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
@@ -145,10 +149,11 @@
     },
     {
       "id": "polynomial-interpolation-uniqueness",
-      "label": "Polynomial interpolation uniqueness",
+      "label": "Polynomial interpolation",
       "aliases": [
         "Uniqueness of polynomial interpolation",
-        "多项式插值唯一性"
+        "多项式插值唯一性",
+        "Polynomial interpolation uniqueness"
       ],
       "location": {
         "path": "numerical-methods/Interpolation_Numerical_Analysis.md",
@@ -177,10 +182,11 @@
     },
     {
       "id": "hermite-interpolation-uniqueness",
-      "label": "Hermite interpolation uniqueness",
+      "label": "Hermite interpolation",
       "aliases": [
         "Uniqueness of Hermite interpolation",
-        "Hermite 插值唯一性"
+        "Hermite 插值唯一性",
+        "Hermite interpolation uniqueness"
       ],
       "location": {
         "path": "numerical-methods/Interpolation_Numerical_Analysis.md",
@@ -193,10 +199,11 @@
     },
     {
       "id": "finite-dimensional-function-approximation",
-      "label": "Finite-dimensional function approximation",
+      "label": "Finite-dimensional approximation",
       "aliases": [
         "Finite-dimensional approximation space",
-        "有限维函数逼近"
+        "有限维函数逼近",
+        "Finite-dimensional function approximation"
       ],
       "location": {
         "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
@@ -209,10 +216,10 @@
     },
     {
       "id": "deeponet-branch-trunk",
-      "label": "DeepONet branch–trunk representation",
+      "label": "DeepONet",
       "aliases": [
-        "DeepONet",
-        "Branch-trunk representation"
+        "Branch-trunk representation",
+        "DeepONet branch–trunk representation"
       ],
       "location": {
         "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
@@ -256,10 +263,12 @@
     },
     {
       "id": "potential-flow-model",
-      "label": "Potential-flow model",
+      "label": "Potential flow",
       "aliases": [
         "Inviscid potential flow",
-        "势流模型"
+        "势流模型",
+        "Potential-flow model",
+        "Conformally mapped potential flow"
       ],
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
@@ -272,10 +281,12 @@
     },
     {
       "id": "boundary-layer-model",
-      "label": "Boundary-layer model",
+      "label": "Boundary layers",
       "aliases": [
         "Boundary-layer approximation",
-        "边界层模型"
+        "边界层模型",
+        "Boundary-layer model",
+        "Boundary-layer regimes"
       ],
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/09_Boundary_Layers_and_External_Flow.md",
@@ -288,333 +299,366 @@
     },
     {
       "id": "best-square-approximation",
-      "label": "Best square approximation",
-      "aliases": ["Continuous least squares", "最佳平方逼近"],
+      "label": "Continuous least squares",
+      "aliases": [
+        "最佳平方逼近",
+        "Best square approximation"
+      ],
       "location": {
         "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
         "anchor": "best-square-approximation"
       },
       "domain": "mathematics",
-      "courses": ["numerical-methods"]
-    },
-    {
-      "id": "polynomial-least-squares-uniqueness",
-      "label": "Polynomial least-squares uniqueness",
-      "aliases": ["Haar uniqueness condition", "多项式最小二乘唯一性"],
-      "location": {
-        "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
-        "anchor": "polynomial-least-squares-uniqueness"
-      },
-      "domain": "mathematics",
-      "courses": ["numerical-methods"]
+      "courses": [
+        "numerical-methods"
+      ]
     },
     {
       "id": "determinant",
       "label": "Determinant",
-      "aliases": ["行列式"],
+      "aliases": [
+        "行列式"
+      ],
       "location": {
         "path": "math/linear-algebra/Determinants.md",
         "anchor": "determinant"
       },
       "domain": "mathematics",
-      "courses": ["linear-algebra"]
+      "courses": [
+        "linear-algebra"
+      ]
     },
     {
       "id": "resultant",
       "label": "Polynomial resultant",
-      "aliases": ["Sylvester resultant", "结式"],
+      "aliases": [
+        "Sylvester resultant",
+        "结式"
+      ],
       "location": {
         "path": "math/linear-algebra/polynomial-theory.md",
         "anchor": "resultant"
       },
       "domain": "mathematics",
-      "courses": ["linear-algebra"]
-    },
-    {
-      "id": "mapped-potential-flow",
-      "label": "Conformally mapped potential flow",
-      "aliases": ["Mapped potential flow", "保角映射势流"],
-      "location": {
-        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
-        "anchor": "mapped-potential-flow"
-      },
-      "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
+      "courses": [
+        "linear-algebra"
+      ]
     },
     {
       "id": "stokes-theorem",
       "label": "Stokes' theorem",
-      "aliases": ["Kelvin-Stokes theorem", "斯托克斯定理"],
+      "aliases": [
+        "Kelvin-Stokes theorem",
+        "斯托克斯定理"
+      ],
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/02_Flow_Kinematics.md",
         "anchor": "stokes-theorem"
       },
       "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
+      "courses": [
+        "fluid-mechanics"
+      ]
     },
     {
       "id": "point-vortex-circulation",
-      "label": "Point-vortex circulation",
-      "aliases": ["Circulation around an excluded vortex", "点涡环量"],
+      "label": "Point vortex",
+      "aliases": [
+        "Circulation around an excluded vortex",
+        "点涡环量",
+        "Point-vortex circulation"
+      ],
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
         "anchor": "point-vortex-circulation"
       },
       "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
+      "courses": [
+        "fluid-mechanics"
+      ]
     },
     {
       "id": "streamline-bernoulli",
-      "label": "Streamline Bernoulli equation",
-      "aliases": ["Bernoulli along a streamline", "沿流线伯努利方程"],
+      "label": "Bernoulli equation",
+      "aliases": [
+        "Bernoulli along a streamline",
+        "沿流线伯努利方程",
+        "Streamline Bernoulli equation",
+        "Field-wide Bernoulli constant"
+      ],
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/04_Control_Volumes_and_Bernoulli.md",
         "anchor": "streamline-bernoulli"
       },
       "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
-    },
-    {
-      "id": "field-wide-bernoulli",
-      "label": "Field-wide Bernoulli constant",
-      "aliases": ["Bernoulli constant across streamlines", "全流场伯努利常数"],
-      "location": {
-        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
-        "anchor": "field-wide-bernoulli"
-      },
-      "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
+      "courses": [
+        "fluid-mechanics"
+      ]
     },
     {
       "id": "material-derivative",
       "label": "Material derivative",
-      "aliases": ["Substantial derivative", "物质导数"],
+      "aliases": [
+        "Substantial derivative",
+        "物质导数"
+      ],
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/02_Flow_Kinematics.md",
         "anchor": "material-derivative"
       },
       "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
+      "courses": [
+        "fluid-mechanics"
+      ]
     },
     {
       "id": "local-mass-conservation",
-      "label": "Local mass conservation",
-      "aliases": ["Continuity equation", "局部质量守恒"],
+      "label": "Mass conservation",
+      "aliases": [
+        "Continuity equation",
+        "局部质量守恒",
+        "Local mass conservation",
+        "Control-volume mass conservation",
+        "Integral mass conservation"
+      ],
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/03_Differential_Conservation_Laws.md",
         "anchor": "local-mass-conservation"
       },
       "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
-    },
-    {
-      "id": "control-volume-mass-conservation",
-      "label": "Control-volume mass conservation",
-      "aliases": ["Integral mass conservation", "控制体质量守恒"],
-      "location": {
-        "path": "mechanics/foundations-of-fluid-mechanics/04_Control_Volumes_and_Bernoulli.md",
-        "anchor": "control-volume-mass-conservation"
-      },
-      "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
+      "courses": [
+        "fluid-mechanics"
+      ]
     },
     {
       "id": "reynolds-number",
       "label": "Reynolds number",
-      "aliases": ["Re", "雷诺数"],
+      "aliases": [
+        "Re",
+        "雷诺数"
+      ],
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/05_Dimensional_Analysis_and_Similarity.md",
         "anchor": "reynolds-number"
       },
       "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
+      "courses": [
+        "fluid-mechanics"
+      ]
     },
     {
       "id": "internal-flow-regimes",
       "label": "Internal-flow regimes",
-      "aliases": ["Pipe-flow regimes", "内流状态"],
+      "aliases": [
+        "Pipe-flow regimes",
+        "内流状态"
+      ],
       "location": {
         "path": "mechanics/foundations-of-fluid-mechanics/08_Viscous_Internal_Flow.md",
         "anchor": "internal-flow-regimes"
       },
       "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
-    },
-    {
-      "id": "boundary-layer-regimes",
-      "label": "Boundary-layer regimes",
-      "aliases": ["Boundary-layer transition regimes", "边界层状态"],
-      "location": {
-        "path": "mechanics/foundations-of-fluid-mechanics/09_Boundary_Layers_and_External_Flow.md",
-        "anchor": "boundary-layer-regimes"
-      },
-      "domain": "mechanics",
-      "courses": ["fluid-mechanics"]
+      "courses": [
+        "fluid-mechanics"
+      ]
     },
     {
       "id": "coordinate-based-mlp",
       "label": "Coordinate-based MLP",
-      "aliases": ["Coordinate network", "坐标网络"],
+      "aliases": [
+        "Coordinate network",
+        "坐标网络"
+      ],
       "location": {
         "path": "machine-learning/01-Neural_Architectures_for_Structured_Data.md",
         "anchor": "coordinate-based-mlp"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "neural-field",
       "label": "Neural field",
-      "aliases": ["Implicit neural representation", "神经场"],
+      "aliases": [
+        "Implicit neural representation",
+        "神经场"
+      ],
       "location": {
         "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
         "anchor": "neural-field"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "sinusoidal-positional-encoding",
       "label": "Sinusoidal positional encoding",
-      "aliases": ["Transformer sinusoidal encoding", "正弦位置编码"],
+      "aliases": [
+        "Transformer sinusoidal encoding",
+        "正弦位置编码"
+      ],
       "location": {
         "path": "machine-learning/03-Attention_and_Transformers.md",
         "anchor": "sinusoidal-positional-encoding"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "fourier-feature-encoding",
-      "label": "Fourier feature encoding",
-      "aliases": ["Fourier features", "傅里叶特征编码"],
+      "label": "Fourier features",
+      "aliases": [
+        "傅里叶特征编码",
+        "Fourier feature encoding"
+      ],
       "location": {
         "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
         "anchor": "fourier-feature-encoding"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "autoregressive-prediction",
       "label": "Autoregressive prediction",
-      "aliases": ["Autoregressive generation", "自回归预测"],
+      "aliases": [
+        "Autoregressive generation",
+        "自回归预测",
+        "Autoregressive rollout",
+        "RNN autoregressive rollout",
+        "Causal Transformer generation"
+      ],
       "location": {
         "path": "machine-learning/02-Recurrent_Networks_and_Sequence_Learning.md",
         "anchor": "autoregressive-prediction"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
-    },
-    {
-      "id": "rnn-autoregressive-rollout",
-      "label": "RNN autoregressive rollout",
-      "aliases": ["Recurrent rollout", "RNN 自回归展开"],
-      "location": {
-        "path": "machine-learning/02-Recurrent_Networks_and_Sequence_Learning.md",
-        "anchor": "rnn-autoregressive-rollout"
-      },
-      "domain": "machine-learning",
-      "courses": ["machine-learning"]
-    },
-    {
-      "id": "causal-transformer-generation",
-      "label": "Causal Transformer generation",
-      "aliases": ["Autoregressive Transformer inference", "因果 Transformer 生成"],
-      "location": {
-        "path": "machine-learning/03-Attention_and_Transformers.md",
-        "anchor": "causal-transformer-generation"
-      },
-      "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "graph-message-passing",
       "label": "Graph message passing",
-      "aliases": ["Message-passing GNN", "图消息传递"],
+      "aliases": [
+        "Message-passing GNN",
+        "图消息传递"
+      ],
       "location": {
         "path": "machine-learning/01-Neural_Architectures_for_Structured_Data.md",
         "anchor": "graph-message-passing"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "graph-attention",
       "label": "Graph attention",
-      "aliases": ["Graph attention network", "图注意力"],
+      "aliases": [
+        "Graph attention network",
+        "图注意力"
+      ],
       "location": {
         "path": "machine-learning/01-Neural_Architectures_for_Structured_Data.md",
         "anchor": "graph-attention"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "self-attention",
       "label": "Self-attention",
-      "aliases": ["Global self-attention", "自注意力"],
+      "aliases": [
+        "Global self-attention",
+        "自注意力"
+      ],
       "location": {
         "path": "machine-learning/03-Attention_and_Transformers.md",
         "anchor": "self-attention"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "cross-attention",
       "label": "Cross-attention",
-      "aliases": ["Encoder-decoder attention", "交叉注意力"],
+      "aliases": [
+        "Encoder-decoder attention",
+        "交叉注意力",
+        "Cross-attention conditioning"
+      ],
       "location": {
         "path": "machine-learning/03-Attention_and_Transformers.md",
         "anchor": "cross-attention"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
-    },
-    {
-      "id": "cross-attention-conditioning",
-      "label": "Cross-attention conditioning",
-      "aliases": ["Attention-conditioned neural field", "交叉注意力条件化"],
-      "location": {
-        "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
-        "anchor": "cross-attention-conditioning"
-      },
-      "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "gno-discretization",
-      "label": "GNO discretization",
-      "aliases": ["Graph neural operator message passing", "GNO 离散化"],
+      "label": "Graph Neural Operator",
+      "aliases": [
+        "Graph neural operator message passing",
+        "GNO 离散化",
+        "GNO discretization",
+        "GNO"
+      ],
       "location": {
         "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
         "anchor": "gno-discretization"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "cnn-field-model",
       "label": "CNN field model",
-      "aliases": ["Field-to-field CNN", "CNN 场模型"],
+      "aliases": [
+        "Field-to-field CNN",
+        "CNN 场模型"
+      ],
       "location": {
         "path": "machine-learning/01-Neural_Architectures_for_Structured_Data.md",
         "anchor": "cnn-field-model"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     },
     {
       "id": "fno",
       "label": "Fourier Neural Operator",
-      "aliases": ["FNO", "傅里叶神经算子"],
+      "aliases": [
+        "FNO",
+        "傅里叶神经算子"
+      ],
       "location": {
         "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
         "anchor": "fno"
       },
       "domain": "machine-learning",
-      "courses": ["machine-learning"]
+      "courses": [
+        "machine-learning"
+      ]
     }
   ],
   "relations": [
@@ -718,133 +762,140 @@
       "source": "best-square-approximation",
       "target": "discrete-least-squares",
       "type": "generalizes",
-      "evidence": {"path": "numerical-methods/Function_Approximation_Numerical_Analysis.md", "anchor": "best-square-approximation"},
+      "evidence": {
+        "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
+        "anchor": "best-square-approximation"
+      },
       "note": "The continuous and discrete problems share orthogonality and Gram normal equations; the discrete case replaces the integral inner product by a positively weighted finite sum."
     },
     {
-      "source": "polynomial-least-squares-uniqueness",
+      "source": "discrete-least-squares",
       "target": "polynomial-root-bound",
       "type": "derivation-uses",
-      "evidence": {"path": "numerical-methods/Function_Approximation_Numerical_Analysis.md", "anchor": "polynomial-least-squares-uniqueness"},
-      "note": "With at least n+1 distinct positively weighted nodes, the root bound makes the Haar condition automatic for degree-at-most-n polynomials."
+      "evidence": {
+        "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
+        "anchor": "polynomial-least-squares-uniqueness"
+      },
+      "note": "For a polynomial basis on at least n+1 distinct positively weighted nodes, the root bound supplies the Haar condition and makes the least-squares fit unique."
     },
     {
       "source": "resultant",
       "target": "determinant",
       "type": "defined-as",
-      "evidence": {"path": "math/linear-algebra/polynomial-theory.md", "anchor": "resultant"},
+      "evidence": {
+        "path": "math/linear-algebra/polynomial-theory.md",
+        "anchor": "resultant"
+      },
       "note": "The polynomial resultant is the determinant of the Sylvester matrix; its vanishing detects a nontrivial common factor and, under the stated field assumptions, a common root."
     },
     {
-      "source": "mapped-potential-flow",
+      "source": "complex-potential",
       "target": "conformal-mapping",
       "type": "derivation-uses",
-      "evidence": {"path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md", "anchor": "mapped-potential-flow"},
-      "note": "The map must be analytic with nonzero derivative in the working region; global use requires a suitable one-to-one domain away from poles and critical points."
+      "evidence": {
+        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
+        "anchor": "mapped-potential-flow"
+      },
+      "note": "In mapped-flow constructions, a conformal map transfers an analytic complex potential to another domain. The map must be analytic with nonzero derivative in the working region and one-to-one on the chosen domain."
     },
     {
       "source": "point-vortex-circulation",
       "target": "stokes-theorem",
       "type": "qualifies",
-      "evidence": {"path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md", "anchor": "point-vortex-circulation"},
+      "evidence": {
+        "path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md",
+        "anchor": "point-vortex-circulation"
+      },
       "note": "A loop enclosing the excluded vortex singularity has no smooth spanning surface contained in the fluid domain, so local irrotationality does not force zero circulation."
-    },
-    {
-      "source": "field-wide-bernoulli",
-      "target": "streamline-bernoulli",
-      "type": "strengthens",
-      "evidence": {"path": "mechanics/foundations-of-fluid-mechanics/07_Plane_Potential_Flow.md", "anchor": "field-wide-bernoulli"},
-      "note": "Under steady inviscid flow with conservative body forces, irrotationality makes the Bernoulli constant common across a connected regular region rather than only along each streamline."
     },
     {
       "source": "local-mass-conservation",
       "target": "material-derivative",
       "type": "derivation-uses",
-      "evidence": {"path": "mechanics/foundations-of-fluid-mechanics/03_Differential_Conservation_Laws.md", "anchor": "local-mass-conservation"},
+      "evidence": {
+        "path": "mechanics/foundations-of-fluid-mechanics/03_Differential_Conservation_Laws.md",
+        "anchor": "local-mass-conservation"
+      },
       "note": "Expanding the divergence in the Eulerian continuity equation groups the density terms into the material derivative."
-    },
-    {
-      "source": "local-mass-conservation",
-      "target": "control-volume-mass-conservation",
-      "type": "equivalent-form",
-      "evidence": {"path": "mechanics/foundations-of-fluid-mechanics/03_Differential_Conservation_Laws.md", "anchor": "local-mass-conservation"},
-      "note": "For sufficiently smooth fields the forms are related by integration and the divergence theorem; across discontinuities the integral or weak form is primary."
     },
     {
       "source": "reynolds-number",
       "target": "internal-flow-regimes",
       "type": "organizes",
-      "evidence": {"path": "mechanics/foundations-of-fluid-mechanics/05_Dimensional_Analysis_and_Similarity.md", "anchor": "reynolds-number"},
+      "evidence": {
+        "path": "mechanics/foundations-of-fluid-mechanics/05_Dimensional_Analysis_and_Similarity.md",
+        "anchor": "reynolds-number"
+      },
       "note": "Reynolds number organizes pipe-flow regime and friction behavior, but transition thresholds depend on disturbances, roughness, and geometry."
     },
     {
       "source": "reynolds-number",
-      "target": "boundary-layer-regimes",
+      "target": "boundary-layer-model",
       "type": "organizes",
-      "evidence": {"path": "mechanics/foundations-of-fluid-mechanics/05_Dimensional_Analysis_and_Similarity.md", "anchor": "reynolds-number"},
+      "evidence": {
+        "path": "mechanics/foundations-of-fluid-mechanics/05_Dimensional_Analysis_and_Similarity.md",
+        "anchor": "reynolds-number"
+      },
       "note": "Reynolds number controls boundary-layer scaling and organizes transition behavior, without supplying a universal transition threshold."
     },
     {
       "source": "neural-field",
       "target": "coordinate-based-mlp",
       "type": "instance-of",
-      "evidence": {"path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md", "anchor": "neural-field"},
+      "evidence": {
+        "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
+        "anchor": "neural-field"
+      },
       "note": "A standard neural field implements a continuous coordinate-to-value function with an MLP; the representation does not itself guarantee arbitrary-resolution accuracy."
     },
     {
       "source": "fourier-feature-encoding",
       "target": "sinusoidal-positional-encoding",
       "type": "shares-encoding-form-with",
-      "evidence": {"path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md", "anchor": "fourier-feature-encoding"},
+      "evidence": {
+        "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
+        "anchor": "fourier-feature-encoding"
+      },
       "note": "Both expand coordinates with sinusoidal features. Fourier features target function representation and spectral bias, while Transformer positional encodings identify token order or spatial position."
-    },
-    {
-      "source": "rnn-autoregressive-rollout",
-      "target": "autoregressive-prediction",
-      "type": "instance-of",
-      "evidence": {"path": "machine-learning/02-Recurrent_Networks_and_Sequence_Learning.md", "anchor": "rnn-autoregressive-rollout"},
-      "note": "The recurrent rollout feeds each predicted state into the next step while maintaining a hidden state."
-    },
-    {
-      "source": "causal-transformer-generation",
-      "target": "autoregressive-prediction",
-      "type": "instance-of",
-      "evidence": {"path": "machine-learning/03-Attention_and_Transformers.md", "anchor": "causal-transformer-generation"},
-      "note": "Causal attention permits parallel computation over observed training positions, but generation remains sequential in newly generated states."
     },
     {
       "source": "graph-attention",
       "target": "graph-message-passing",
       "type": "instance-of",
-      "evidence": {"path": "machine-learning/01-Neural_Architectures_for_Structured_Data.md", "anchor": "graph-attention"},
+      "evidence": {
+        "path": "machine-learning/01-Neural_Architectures_for_Structured_Data.md",
+        "anchor": "graph-attention"
+      },
       "note": "Graph attention recomputes input-dependent aggregation weights over the prescribed graph neighborhood."
     },
     {
       "source": "self-attention",
       "target": "graph-message-passing",
       "type": "instance-of",
-      "evidence": {"path": "machine-learning/03-Attention_and_Transformers.md", "anchor": "self-attention"},
+      "evidence": {
+        "path": "machine-learning/03-Attention_and_Transformers.md",
+        "anchor": "self-attention"
+      },
       "note": "Unrestricted self-attention is learned message passing on a complete token graph; masks or sparse attention restrict its connectivity."
-    },
-    {
-      "source": "cross-attention-conditioning",
-      "target": "cross-attention",
-      "type": "instance-of",
-      "evidence": {"path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md", "anchor": "cross-attention-conditioning"},
-      "note": "The output coordinate supplies the query, while conditioning tokens supply keys and values."
     },
     {
       "source": "gno-discretization",
       "target": "graph-message-passing",
       "type": "instance-of",
-      "evidence": {"path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md", "anchor": "gno-discretization"},
+      "evidence": {
+        "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
+        "anchor": "gno-discretization"
+      },
       "note": "The quadrature sum has graph-message form, but convergence to the intended kernel integral additionally requires measure-consistent weights, sampling, and neighborhoods."
     },
     {
       "source": "fno",
       "target": "cnn-field-model",
       "type": "differs-in-connectivity",
-      "evidence": {"path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md", "anchor": "fno"},
+      "evidence": {
+        "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
+        "anchor": "fno"
+      },
       "note": "Both map sampled fields to sampled fields. A local CNN expands its receptive field through depth, whereas a Fourier layer has global spatial reach through spectral mixing."
     }
   ],

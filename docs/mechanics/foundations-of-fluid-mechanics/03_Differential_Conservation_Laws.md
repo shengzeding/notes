@@ -29,7 +29,7 @@ $$
 
 Thus a material element expands when its density decreases. This agrees with differentiating its constant mass $\rho\mathcal V$.
 
-For sufficiently smooth fields, integrating this local equation over a fixed region and applying the divergence theorem gives the equivalent [control-volume mass conservation](04_Control_Volumes_and_Bernoulli.md#control-volume-mass-conservation "concept:control-volume-mass-conservation") statement. Across discontinuities, the integral or weak form is primary.
+For sufficiently smooth fields, integrating this local equation over a fixed region and applying the divergence theorem gives the equivalent [control-volume form](04_Control_Volumes_and_Bernoulli.md#control-volume-mass-conservation). Across discontinuities, the integral or weak form is primary.
 
 ### 1.2 Incompressibility
 
