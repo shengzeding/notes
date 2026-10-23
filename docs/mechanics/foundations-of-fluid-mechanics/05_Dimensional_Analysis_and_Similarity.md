@@ -105,6 +105,8 @@ consistent with direct Bernoulli integration. Dimensional analysis alone cannot 
 
 ## 3. Important Dimensionless Numbers
 
+<span id="reynolds-number"></span>
+
 ### 3.1 Similarity criteria
 
 | Number | Definition | Physical role |
@@ -121,7 +123,7 @@ consistent with direct Bernoulli integration. Dimensional analysis alone cannot 
 
 **Remark (Frequency convention).** Both $fl/V$ and $\omega l/V$ occur in fluid mechanics. They differ by $2\pi$ and must not be exchanged numerically. Vortex-shedding frequency is ordinarily reported using $\mathrm{St}=fD/U$.
 
-For pipe flow and boundary layers, transition occurs over ranges that depend on disturbances, roughness, geometry, and pressure gradient. Reynolds number organizes the regimes, but the threshold must be taken from experiment or an application-specific correlation rather than treated as universal.
+For pipe flow and boundary layers, transition occurs over ranges that depend on disturbances, roughness, geometry, and pressure gradient. Reynolds number organizes both [internal-flow regimes](08_Viscous_Internal_Flow.md#internal-flow-regimes "concept:internal-flow-regimes") and [boundary-layer regimes](09_Boundary_Layers_and_External_Flow.md#boundary-layer-regimes "concept:boundary-layer-regimes"), but the threshold must be taken from experiment or an application-specific correlation rather than treated as universal.
 
 The elementary Mach classification is subsonic for $\mathrm{Ma}<1$, sonic at $\mathrm{Ma}=1$, and supersonic for $\mathrm{Ma}>1$. *Transonic* describes a regime near sonic conditions, often with both subsonic and supersonic regions, rather than just the single value $1$.
 

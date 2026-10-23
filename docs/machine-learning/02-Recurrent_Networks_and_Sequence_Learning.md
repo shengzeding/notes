@@ -85,11 +85,15 @@ rather than $\hat s_{t+1}=f_\theta(s_t)$ with the hidden memory omitted. In gene
 For a complete autonomous Markov state, a direct learned flow map $s_{t+1}\approx\Phi_{\Delta t}(s_t)$ may suffice. Recurrence is particularly relevant for partial observations or history-dependent targets.
 
 
+<span id="autoregressive-prediction"></span>
+
 ## 2. Autoregressive Prediction and Training
+
+<span id="rnn-autoregressive-rollout"></span>
 
 ### 2.1 Rollout as a feedback computation
 
-An **autoregressive rollout** feeds a model's prediction into its next input. For an initial observed state $s_0$,
+An **autoregressive rollout** is an instance of [autoregressive prediction](#autoregressive-prediction "concept:autoregressive-prediction"): it feeds a model's prediction into its next input. For an initial observed state $s_0$,
 
 $$
 \begin{aligned}

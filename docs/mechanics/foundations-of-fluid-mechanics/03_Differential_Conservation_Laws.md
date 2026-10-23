@@ -9,6 +9,8 @@ order: 3
 
 ## 1. Conservation of Mass
 
+<span id="local-mass-conservation"></span>
+
 ### 1.1 Eulerian and material forms
 
 **Proposition (Continuity equation).** Local mass conservation is
@@ -17,7 +19,7 @@ $$
 \boxed{\frac{\partial\rho}{\partial t}+\nabla\cdot(\rho\mathbf v)=0.}
 $$
 
-Expanding the divergence gives the equivalent material form,
+Expanding the divergence and using the [material derivative](02_Flow_Kinematics.md#material-derivative "concept:material-derivative") gives the equivalent material form,
 
 $$
 \boxed{\frac{D\rho}{Dt}+\rho\nabla\cdot\mathbf v=0,}
@@ -26,6 +28,8 @@ $$
 $$
 
 Thus a material element expands when its density decreases. This agrees with differentiating its constant mass $\rho\mathcal V$.
+
+For sufficiently smooth fields, integrating this local equation over a fixed region and applying the divergence theorem gives the equivalent [control-volume mass conservation](04_Control_Volumes_and_Bernoulli.md#control-volume-mass-conservation "concept:control-volume-mass-conservation") statement. Across discontinuities, the integral or weak form is primary.
 
 ### 1.2 Incompressibility
 

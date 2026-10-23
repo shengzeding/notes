@@ -274,6 +274,8 @@ $$
 S(x)=\sum_{j=0}^na_j\varphi_j(x).
 $$
 
+<span id="best-square-approximation"></span>
+
 **Definition (Best square approximation).** A function $S^*\in\Phi_n$ is the best square approximation of $f$ if
 
 $$
@@ -311,6 +313,8 @@ G_{kj}=(\varphi_k,\varphi_j)_\rho,\qquad
 $$
 
 The matrix $G$ is the **Gram matrix**, whose determinant is also called the Gram determinant.
+
+Replacing the integral inner product by a positively weighted finite-sample inner product gives [discrete least squares](#discrete-least-squares "concept:discrete-least-squares") with the same orthogonality and normal-equation structure.
 
 **Theorem 3.2 (Existence and uniqueness).** If $\varphi_0,\ldots,\varphi_n$ are linearly independent, $G$ is positive definite and the normal equations have a unique solution.
 
@@ -1188,6 +1192,8 @@ $$
 
 The discrete least-squares solution is therefore an [orthogonal projection](../math/linear-algebra/Elementary_Linear_Algebra.md#orthogonal-projection "concept:orthogonal-projection") under the discrete weighted inner product, just as in continuous best square approximation.
 
+<span id="polynomial-least-squares-uniqueness"></span>
+
 ### 7.4 Uniqueness and the Haar condition
 
 The normal equations have a unique solution if their Gram matrix is nonsingular, equivalently if the design-matrix columns are linearly independent on the data nodes with positive weights.
@@ -1208,7 +1214,7 @@ $$
 c^TGc=\sum_{i=0}^m\omega_i q(x_i)^2>0.
 $$
 
-For the polynomial basis $1,x,\ldots,x^n$, the Haar condition is automatic on distinct nodes, since a nonzero polynomial of degree at most $n$ cannot have more than $n$ distinct zeros.
+For the polynomial basis $1,x,\ldots,x^n$, the Haar condition is automatic on distinct nodes by the [polynomial root bound](../math/linear-algebra/polynomial-theory.md#polynomial-root-bound "concept:polynomial-root-bound"): a nonzero polynomial of degree at most $n$ cannot have more than $n$ distinct zeros.
 
 ### 7.5 Linear least-squares fitting
 

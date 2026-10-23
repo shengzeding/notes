@@ -8,6 +8,8 @@ order: 2
 
 ## 1. Determinants: Definitions and Basic Tools
 
+<span id="determinant"></span>
+
 ### 1.1 The permutation formula
 
 Let $A=(a_{ij})\in F^{n\times n}$, where $F$ is a field such as $\mathbb R$ or $\mathbb C$.

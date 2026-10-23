@@ -24,7 +24,11 @@ const domainName = (domain?: string) => data.domains.find(d => d.id === domain)?
 const relationName = (type: string) => ({
   'derivation-uses':'This derivation uses','instance-of':'Is an instance of',
   'equivalent-to':'Is equivalent to','generalizes':'Generalizes',
-  'model-complements':'Complements'
+  'model-complements':'Complements','defined-as':'Is defined as',
+  'qualifies':'Qualifies','strengthens':'Strengthens',
+  'equivalent-form':'Is an equivalent form of','organizes':'Organizes',
+  'shares-encoding-form-with':'Shares an encoding form with',
+  'differs-in-connectivity':'Differs in connectivity from'
 }[type] || type)
 const url = (path: string, anchor?: string) => withBase('/' + path.replace(/\/index\.md$/, '/').replace(/\.md$/, '.html') + (anchor ? '#' + anchor : ''))
 const nodeUrl = computed(() => selected.value?.location

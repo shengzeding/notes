@@ -144,6 +144,8 @@ $$
 
 The subsequent Q/K/V projections operate on $e_t$, or its position-augmented version. Thus the attention module's $d_{\mathrm{in}}$ often equals $d_{\mathrm{model}}$, even when the original observations have a different dimension. **Input embedding and Q/K/V projections are distinct transformations**; generic attention does not require a separate embedding layer.
 
+<span id="sinusoidal-positional-encoding"></span>
+
 ### 3.2 Positional encoding
 
 Without position-dependent information or a structural mask, self-attention is permutation equivariant:
@@ -173,6 +175,8 @@ Learned positional embeddings and relative-position methods are alternatives. Fo
 
 ### 4.1 Full self-attention and causal masking
 
+<span id="cross-attention"></span>
+
 In **self-attention**, Q, K, and V are derived from the same token collection. Without a mask, each position may attend to every other position, including itself. In **cross-attention**, queries come from a receiving sequence and keys/values from a source sequence; the score matrix may be rectangular.
 
 Autoregressive prediction requires position $i$ to exclude future positions $j>i$. A **causal mask** sets these scores to $-\infty$ before softmax:
@@ -186,11 +190,13 @@ $$
 
 Thus $\alpha_{ij}=0$ for $j>i$. Inputs and targets must also be shifted consistently: when position $t$ receives the observed state $s_t$, its readout may predict $s_{t+1}$ without accessing future targets.
 
+<span id="causal-transformer-generation"></span>
+
 ### 4.2 Parallel training and autoregressive inference
 
 For a fully observed training sequence, all positions of a causal-attention layer can be computed simultaneously using the triangular mask. This differs from recurrent computation, where $h_t$ depends explicitly on the previously computed $h_{t-1}$.
 
-At inference, autoregressive generation remains sequential in *generated states*:
+At inference, [autoregressive prediction](02-Recurrent_Networks_and_Sequence_Learning.md#autoregressive-prediction "concept:autoregressive-prediction") remains sequential in *generated states* even though the causal-attention architecture differs from recurrent computation:
 
 $$
 (s_0,\ldots,s_t)\mapsto\hat s_{t+1},\qquad
@@ -255,9 +261,11 @@ After adding 2D position information, the resulting $N$ tokens are processed by 
 With global attention, every patch has access to all other unmasked patches in one layer. Unlike convolution, this does not impose a fixed local spatial kernel or translation equivariance. Patchification reduces token count but may discard fine-scale information; boundaries and resolution transfer require explicit design choices.
 
 
+<span id="self-attention"></span>
+
 ## 7. Connectivity and Computational Cost
 
-Global attention can be interpreted as learned message passing on a complete graph:
+Global self-attention can be interpreted as learned [graph message passing](01-Neural_Architectures_for_Structured_Data.md#graph-message-passing "concept:graph-message-passing") on a complete graph:
 
 $$
 y_i=\sum_{j=1}^N\alpha_{ij}(X)v_j.
