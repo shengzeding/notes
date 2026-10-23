@@ -141,17 +141,17 @@ Currently accepted relationship types are `derivation-uses`, `instance-of`, `equ
 
 ## Courses, domains, and the graph
 
-The [knowledge graph](../graph.md) displays courses as large nodes and concepts as small nodes. Dashed lines connect a concept to its courses; solid arrows show checked mathematical relationships. Domain colors and a compact course-based layout keep related subjects near each other. The layout grows with the data and adapts to the available screen shape.
+The [knowledge graph](../graph.md) displays courses as large nodes and concepts as small nodes. Lighter lines connect a concept to its courses; darker lines show checked mathematical relationships. The force-directed layout balances repulsion and link attraction, with a gentle tendency for subjects in the same domain to gather together. Courses remain larger than concepts, without placing them in rows or columns.
 
 Concept size grows slowly with the number of distinct registered concepts citing it, capped at 70% of the course-node radius. Repeated citations from one concept count once; course connections, self-citations, and passages without a registered source concept do not count. The count appears on hover and in the selected concept's details. Size reflects coverage in these notes, not mathematical importance.
 
-Course connections remain straight and dashed. Concept relationships use gentle curves; multiple or reverse relationships between a pair use separate curves. Connections stay faint until a node is selected. Every visible node keeps its complete name, wrapped over multiple lines where needed; names are never hidden to resolve crowding. Labels are included in the layout spacing.
+Course connections remain straight. Concept relationships use gentle curves; multiple or reverse relationships between a pair use separate curves. Hover, keyboard focus, or selection highlights a node and its direct connections; relationship arrows appear in that highlighted view. Text is placed separately from the network, preserving its natural shape. Long names wrap rather than truncate. The overview suppresses colliding or low-priority labels at distant zoom levels; hover or selection reveals the names of the node and its neighbors. **Display → Show all labels** overrides this, and **Text size** adjusts readability independently of zoom. **Repel strength** and **Link distance** adjust the layout.
 
 **Find a concept or course** searches names and aliases and takes you to the matching node. Domain and course filters show a smaller, rearranged graph; **Show all** or **Reset** restores the full graph. Cross-scope connections are visible again in the full graph. A concept with several course memberships remains a single node.
 
-Drag nodes to arrange them, drag the background to pan, and scroll, pinch, or use the zoom buttons. **Fit** brings the current scope into view without undoing node positions; **Reset** restores the initial layout and clears filters. **Full window** gives the graph the whole window; Escape exits it.
+Drag a node to move it and let nearby nodes relax around it; the network settles when released. Drag the background to pan, and scroll, pinch, or use the zoom buttons. **Fit** brings the current scope into view without undoing node positions; **Reset** restores the initial layout and clears filters. **Full window** gives the graph the whole window; Escape exits it.
 
-Select a node to open the closable details panel. **Focus connections** shows the selected node and its immediate neighbors, including connections outside the current course or domain. Keyboard users can Tab to a node and press Enter, search and press Enter, or Tab through search results. The focused graph also accepts + / − to zoom and Home to fit.
+Select a node to open the closable details panel. **Focus connections** shows the selected node and its immediate neighbors, including connections outside the current course or domain. Keyboard users can Tab to a node and press Enter, search and press Enter, or Tab through search results. The focused graph also accepts + / − to zoom, arrow keys to pan, and Home to fit.
 
 The graph currently includes only registered concepts. Mentioning a word in a note does not automatically create a node or a mathematical relationship.
 
