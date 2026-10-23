@@ -65,6 +65,23 @@
       ]
     },
     {
+      "id": "projection-operator",
+      "label": "Projection operator",
+      "aliases": [
+        "Idempotent linear transformation",
+        "Linear projection",
+        "投影算子"
+      ],
+      "location": {
+        "path": "math/linear-algebra/Linear_Maps.md",
+        "anchor": "projection-operator"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "linear-algebra"
+      ]
+    },
+    {
       "id": "orthogonal-projection",
       "label": "Orthogonal projection",
       "aliases": [
@@ -96,6 +113,23 @@
       "domain": "numerical-methods",
       "courses": [
         "numerical-methods"
+      ]
+    },
+    {
+      "id": "rank-nullity",
+      "label": "Rank–nullity theorem",
+      "aliases": [
+        "Rank-nullity theorem",
+        "Dimension theorem for linear maps",
+        "秩–零度定理"
+      ],
+      "location": {
+        "path": "math/linear-algebra/Linear_Maps.md",
+        "anchor": "rank-nullity"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "linear-algebra"
       ]
     },
     {
@@ -162,6 +196,23 @@
       "domain": "numerical-methods",
       "courses": [
         "numerical-methods"
+      ]
+    },
+    {
+      "id": "polynomial-differentiation",
+      "label": "Polynomial differentiation",
+      "aliases": [
+        "Formal derivative",
+        "Polynomial derivative",
+        "多项式形式导数"
+      ],
+      "location": {
+        "path": "math/linear-algebra/polynomial-theory.md",
+        "anchor": "polynomial-differentiation"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "linear-algebra"
       ]
     },
     {
@@ -322,6 +373,39 @@
       "location": {
         "path": "math/linear-algebra/Determinants.md",
         "anchor": "determinant"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "linear-algebra"
+      ]
+    },
+    {
+      "id": "kronecker-product",
+      "label": "Kronecker product",
+      "aliases": [
+        "Kronecker matrix product",
+        "Kronecker product of matrices",
+        "矩阵 Kronecker 积"
+      ],
+      "location": {
+        "path": "math/linear-algebra/Linear_Maps.md",
+        "anchor": "kronecker-product"
+      },
+      "domain": "mathematics",
+      "courses": [
+        "linear-algebra"
+      ]
+    },
+    {
+      "id": "invariant-subspace",
+      "label": "Invariant subspace",
+      "aliases": [
+        "Invariant linear subspace",
+        "不变子空间"
+      ],
+      "location": {
+        "path": "math/linear-algebra/Linear_Maps.md",
+        "anchor": "invariant-subspace"
       },
       "domain": "mathematics",
       "courses": [
@@ -689,6 +773,16 @@
       "note": "Conformal away from the pole and critical points; global use requires a suitable one-to-one domain."
     },
     {
+      "source": "projection-operator",
+      "target": "orthogonal-projection",
+      "type": "generalizes",
+      "evidence": {
+        "path": "math/linear-algebra/Linear_Maps.md",
+        "anchor": "projection-operator"
+      },
+      "note": "Every orthogonal projection is idempotent, but a general projection needs no inner product and may be oblique. In an orthonormal basis, orthogonal projection additionally requires a self-adjoint matrix."
+    },
+    {
       "source": "discrete-least-squares",
       "target": "orthogonal-projection",
       "type": "instance-of",
@@ -697,6 +791,16 @@
         "anchor": "discrete-least-squares"
       },
       "note": "The residual is orthogonal to the sampled approximation space under the discrete weighted inner product. Coefficient uniqueness additionally requires independent design-matrix columns on the positively weighted nodes."
+    },
+    {
+      "source": "discrete-least-squares",
+      "target": "rank-nullity",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
+        "anchor": "polynomial-least-squares-uniqueness"
+      },
+      "note": "Coefficient uniqueness is injectivity of the sampling map. With a finite-dimensional coefficient space and positive weights on the retained nodes, rank–nullity turns the zero-kernel condition into full column rank; the fitted vector can remain unique even when coefficients are not."
     },
     {
       "source": "orthogonal-polynomial-construction",
@@ -727,6 +831,16 @@
         "anchor": "hermite-interpolation-uniqueness"
       },
       "note": "Matching both values and first derivatives makes every interpolation node a root of multiplicity at least two in the difference polynomial."
+    },
+    {
+      "source": "root-multiplicity",
+      "target": "polynomial-differentiation",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "math/linear-algebra/polynomial-theory.md",
+        "anchor": "root-multiplicity"
+      },
+      "note": "The multiplicity test detects a root of exact multiplicity k through the first nonzero iterated formal derivative. The stated result uses the number-field assumption so that the relevant factorial is nonzero."
     },
     {
       "source": "deeponet-branch-trunk",
@@ -787,6 +901,16 @@
         "anchor": "resultant"
       },
       "note": "The polynomial resultant is the determinant of the Sylvester matrix; its vanishing detects a nontrivial common factor and, under the stated field assumptions, a common root."
+    },
+    {
+      "source": "kronecker-product",
+      "target": "determinant",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "math/linear-algebra/Linear_Maps.md",
+        "anchor": "kronecker-product"
+      },
+      "note": "For square A and B, triangularization and the paired diagonal structure give det(A⊗B)=(det A)^n(det B)^m. Passing to a splitting field is a proof device and does not change the determinants."
     },
     {
       "source": "complex-potential",

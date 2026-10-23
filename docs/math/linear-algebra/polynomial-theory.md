@@ -417,6 +417,8 @@ where $a_n$ is the leading coefficient, the $p_i$ are distinct monic irreducible
 
 Different $p_i$ are coprime. The exponent $\alpha_i$ is the multiplicity of the factor $p_i$; when $\alpha_i>1$, it is a **repeated factor**. A nonzero polynomial with no repeated irreducible factor is **square-free**.
 
+<span id="polynomial-differentiation"></span>
+
 ### 4.4 Formal derivatives
 
 **Definition.** The formal derivative of $f=\sum_{j=0}^n a_jx^j$ is
@@ -556,7 +558,7 @@ $$
 
 Equivalently, $f=(x-c)^kg$ with $g(c)\ne0$. A nonzero degree-$n$ polynomial has at most $n$ roots when a root of multiplicity $k$ is counted $k$ times. This follows by combining the corresponding powers of distinct linear factors and comparing degrees.
 
-**Theorem 5.3 (Multiplicity test).** Over a number field, $c$ has multiplicity exactly $k$ if and only if
+**Theorem 5.3 (Multiplicity test).** Using the iterates of the [polynomial differentiation operator](#polynomial-differentiation "concept:polynomial-differentiation"), over a number field $c$ has multiplicity exactly $k$ if and only if
 
 $$
 f(c)=f'(c)=\cdots=f^{(k-1)}(c)=0,
