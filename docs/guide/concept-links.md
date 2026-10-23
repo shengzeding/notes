@@ -47,7 +47,7 @@ Register new concepts in `docs/.vitepress/knowledge.json` with an ID, label, opt
 
 A linked mention is generated automatically from a citation. A mathematical relationship is recorded separately after checking its meaning.
 
-The pilot records:
+Examples already recorded in this notebook include:
 
 - Kutta–Joukowski theorem → residue theorem: **this derivation uses**.
 - Joukowski map → conformal mapping: **instance of**, away from its singular and critical points and on a suitable domain.
@@ -90,6 +90,8 @@ Choose a source anchor unique within your file. A new section needs its own sour
 
 ### B. Register a new concept
 
+**Orthogonal projection is already registered.** The following illustrates the structure; for a genuinely new concept, choose a new ID and label rather than duplicating this entry. If you are citing an existing concept, use template A instead.
+
 For example, suppose your explanation lives in `docs/math/linear-algebra/inner-products.md`.
 Add an anchor immediately before the definition:
 
@@ -111,6 +113,8 @@ Append an object to the existing `concepts` array in `docs/.vitepress/knowledge.
   "aliases": [
     "正交投影"
   ],
+  "domain": "mathematics",
+  "courses": ["linear-algebra"],
   "location": {
     "path": "math/linear-algebra/inner-products.md",
     "anchor": "orthogonal-projection"
@@ -128,7 +132,7 @@ You can now reference this concept using template A. One concept can have many m
 
 Backlinks require no relationship entry. Add a relationship only when you have checked what it means.
 
-For the existing pilot, the relationship object is:
+One existing relationship object is:
 
 ```json
 {
@@ -173,7 +177,7 @@ Domains and courses live in the same `knowledge.json` file. Add objects to their
 {
   "id": "mathematics",
   "label": "Mathematics",
-  "color": "#527c73"
+  "color": "#657f9a"
 }
 ```
 
@@ -189,6 +193,17 @@ A course has its own ID, a domain, and a note or index page:
 ```
 
 A course normally corresponds to a collection or an actual course-level note, not to every Markdown document. Documents inside `math/linear-algebra/`, for example, belong to the `linear-algebra` course even when a document has a narrower title such as *Polynomial Theory*. The concept's `location.path` records that exact source document, so a separate course node is unnecessary. Add a new course only when it should appear as a peer of the existing course nodes.
+
+The current domain IDs and colors are:
+
+| Domain ID | Label | Color |
+| --- | --- | --- |
+| `mathematics` | Mathematics | Gray-blue (`#657f9a`) |
+| `numerical-methods` | Numerical Methods | Teal-green (`#527f73`) |
+| `mechanics` | Mechanics | Brown (`#a66d50`) |
+| `machine-learning` | Machine Learning | Purple (`#756b9b`) |
+
+Numerical Methods is a separate domain. Its course uses `"id": "numerical-methods"`, `"domain": "numerical-methods"`, and `"path": "numerical-methods/index.md"`. Concepts whose primary explanations belong to that course normally use `"domain": "numerical-methods"` and `"courses": ["numerical-methods"]`. Folder names do not assign these fields automatically; set them in the registry.
 
 In a concept entry, add its main domain and one or more course IDs:
 

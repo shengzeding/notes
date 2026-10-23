@@ -5,6 +5,8 @@ order: 40
 
 # Reading tools
 
+For the complete site guide, see [Guide to Use](./writing.md).
+
 Select a word or passage in a note to see **Pin**, **Copy for discussion**, and **Find in notes**. Existing Markdown files work without additional markup.
 
 ## Return to reading
@@ -15,13 +17,13 @@ Opening **Find in notes** also keeps your place. Returning to the graph preserve
 
 ## Pin a reference
 
-Select a passage and choose **Pin**. For a displayed equation, hover or tap it and choose **Pin formula**. Keyboard users can focus an equation and press **Alt+P**.
+Select a passage and choose **Pin**. For a displayed equation, hover or tap it and choose the pushpin icon (**Pin formula**). Keyboard users can focus an equation and press **Alt+P**.
 
 The reference stays visible while the main text scrolls and while you follow links. Up to three references can be pinned; adding another replaces the oldest. Drag the panel by its heading to move it (or focus the heading and use the arrow keys). Collapse the panel using its chevron, or remove individual references with ×. Pins are temporary and clear on a page reload.
 
 ## Copy a formula
 
-Hover or tap an inline or displayed formula and choose **Copy LaTeX**. This copies the formula source without dollar-sign delimiters, ready to paste into a math editor. The same action is available inside pinned references.
+Hover or tap an inline or displayed formula and choose the overlapping-squares icon (**Copy LaTeX**). Hover over an icon to see its name; a check mark confirms a successful copy. This copies the formula source without dollar-sign delimiters, ready to paste into a math editor. The same action is available inside pinned references.
 
 ## Copy for discussion
 

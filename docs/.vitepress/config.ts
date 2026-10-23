@@ -42,7 +42,7 @@ export default defineConfig({
         { text: 'Overview', link: `/${c.id}/` },
         ...sidebarItems(notes.find(n => n.path === c.id)?.children ?? [])
       ] })),
-      { text: 'Writing', items: sidebarItems(notes.find(n => n.path === 'guide')?.children ?? []) }
+      { text: 'Guide', items: sidebarItems(notes.find(n => n.path === 'guide')?.children ?? []) }
     ],
     outline: { label: 'On this page', level: [2, 3] },
     search: { provider: 'local', options: {
