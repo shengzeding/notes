@@ -139,8 +139,9 @@ function hoverEquation(event: Event) {
   if(equation.value!==el)latexFeedback.value=''
   equation.value=el
   const rect=el.getBoundingClientRect()
-  equationX.value=Math.max(12,Math.min(document.documentElement.clientWidth-210,rect.right-198))
-  equationY.value=Math.max(64,Math.min(innerHeight-44,rect.top-32))
+  const toolbarWidth=el.closest('.VPDoc')?74:40
+  equationX.value=Math.max(12,Math.min(document.documentElement.clientWidth-toolbarWidth-12,rect.right-toolbarWidth))
+  equationY.value=Math.max(64,Math.min(innerHeight-50,rect.top-40))
 }
 async function copyEquation() {
   const el=equation.value,tex=el?.getAttribute('data-tex')
@@ -233,8 +234,14 @@ onBeforeUnmount(()=>{
       <button @click="openPanel('search')">Find in notes</button>
     </div>
     <div v-if="equation" class="equation-pin" role="toolbar" aria-label="Formula actions" :style="{left:equationX+'px',top:equationY+'px'}" @pointerenter="holdEquation">
-      <button v-if="equation.closest('.VPDoc')" @click="pinEquation">Pin formula</button>
-      <button @click="copyEquation">{{ latexFeedback || 'Copy LaTeX' }}</button>
+      <button v-if="equation.closest('.VPDoc')" aria-label="Pin formula" title="Pin formula" @click="pinEquation">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 3 5 5-4 1-4 4-1 5-6-6 5-1 4-4 1-4Z"/><path d="m8 16-5 5"/></svg>
+      </button>
+      <button aria-label="Copy LaTeX" :title="latexFeedback || 'Copy LaTeX'" @click="copyEquation">
+        <svg v-if="latexFeedback === 'Copied!'" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+        <svg v-else-if="latexFeedback === 'Copy failed'" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        <svg v-else viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+      </button>
     </div>
     <div v-if="place" class="reading-return">
       <button :title="'Return to '+place.title" @click="returnToReading">↩ Return to reading</button>
@@ -288,7 +295,7 @@ onBeforeUnmount(()=>{
 .reading-selection,.equation-pin,.reading-return,.reading-pins{position:fixed;background:#fff;border:1px solid #ddd;border-radius:5px;box-shadow:0 3px 15px #0000000c;z-index:90}
 .reading-selection{display:flex;padding:4px;max-width:calc(100vw - 24px)}
 .reading-selection button{padding:7px 9px;font-size:12px;white-space:nowrap;border-radius:3px}.reading-selection button:hover{background:#f3f3f1}
-.equation-pin{display:flex;padding:3px;font-size:11px;color:#555;z-index:95;gap:2px}.equation-pin button{padding:4px 7px;white-space:nowrap;border-radius:3px}.equation-pin button:hover{background:#f3f3f1}
+.equation-pin{display:flex;padding:3px;color:#777;z-index:95;gap:2px}.equation-pin button{display:grid;place-items:center;width:32px;height:30px;border-radius:3px}.equation-pin button:hover{background:#f3f3f1;color:#222}.equation-pin button:focus-visible{outline:2px solid #777;outline-offset:1px}.equation-pin svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .reading-return{left:20px;bottom:20px;display:flex;align-items:center}.reading-return button{padding:9px 12px}.reading-return button+button{padding-left:0;color:#888}
 .reading-pins{right:18px;top:100px;width:340px;max-width:calc(100vw - 36px);z-index:85}
 .reading-pins header{display:flex;align-items:center;padding:5px 8px;gap:6px}.reading-pins header button{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#666;padding:5px 4px}.reading-pins header .pin-drag-handle{flex:1;cursor:grab;touch-action:none;user-select:none;gap:12px}.reading-pins.is-dragging .pin-drag-handle{cursor:grabbing}.reading-pins header .pin-collapse{padding:5px 8px}.reading-pins header span{color:#999}
