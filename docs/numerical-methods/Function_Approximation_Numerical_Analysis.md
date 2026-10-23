@@ -318,7 +318,7 @@ Replacing the integral inner product by a positively weighted finite-sample inne
 
 **Theorem 3.2 (Existence and uniqueness).** If $\varphi_0,\ldots,\varphi_n$ are linearly independent, $G$ is positive definite and the normal equations have a unique solution.
 
-Proof. For a nonzero coefficient vector $c$,
+**Proof.** For a nonzero coefficient vector $c$,
 
 $$
 c^TGc=\left\|\sum_{j=0}^nc_j\varphi_j\right\|_{2,\rho}^{2}>0.
