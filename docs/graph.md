@@ -14,6 +14,4 @@ pageClass: knowledge-graph-page
 import KnowledgeGraph from './.vitepress/theme/KnowledgeGraph.vue'
 </script>
 
-# Knowledge graph
-
 <KnowledgeGraph />
