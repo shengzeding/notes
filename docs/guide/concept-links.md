@@ -141,13 +141,17 @@ Currently accepted relationship types are `derivation-uses`, `instance-of`, `equ
 
 ## Courses, domains, and the graph
 
-The [knowledge graph](../graph.md) displays courses as large nodes and concepts as small nodes. Dashed lines connect a concept to its courses; solid arrows show checked mathematical relationships. Domain colors and a gentle grouping force keep related subjects near each other.
+The [knowledge graph](../graph.md) displays courses as large nodes and concepts as small nodes. Dashed lines connect a concept to its courses; solid arrows show checked mathematical relationships. Domain colors and a compact course-based layout keep related subjects near each other. The layout grows with the data and adapts to the available screen shape.
 
 Concept size grows slowly with the number of distinct registered concepts citing it, capped at 70% of the course-node radius. Repeated citations from one concept count once; course connections, self-citations, and passages without a registered source concept do not count. The count appears on hover and in the selected concept's details. Size reflects coverage in these notes, not mathematical importance.
 
-Course connections remain straight and dashed. Concept relationships use gentle curves; multiple or reverse relationships between a pair use separate curves. Connections stay faint until a node or domain is selected. Course names remain visible; dense views prioritize cited concepts and reveal more labels when zoomed in. Selecting a node reveals its neighbors' names, and hovering or focusing any node reveals its label.
+Course connections remain straight and dashed. Concept relationships use gentle curves; multiple or reverse relationships between a pair use separate curves. Connections stay faint until a node is selected. Every visible node keeps its complete name, wrapped over multiple lines where needed; names are never hidden to resolve crowding. Labels are included in the layout spacing.
 
-Drag nodes to arrange them, drag the background to pan, and use the zoom controls. Select a node to inspect its connections and open the notes. Keyboard users can Tab to a node and press Enter, or use **Browse all nodes**.
+**Find a concept or course** searches names and aliases and takes you to the matching node. Domain and course filters show a smaller, rearranged graph; **Show all** or **Reset** restores the full graph. Cross-scope connections are visible again in the full graph. A concept with several course memberships remains a single node.
+
+Drag nodes to arrange them, drag the background to pan, and scroll, pinch, or use the zoom buttons. **Fit** brings the current scope into view without undoing node positions; **Reset** restores the initial layout and clears filters. **Full window** gives the graph the whole window; Escape exits it.
+
+Select a node to open the closable details panel. **Focus connections** shows the selected node and its immediate neighbors, including connections outside the current course or domain. Keyboard users can Tab to a node and press Enter, search and press Enter, or Tab through search results. The focused graph also accepts + / − to zoom and Home to fit.
 
 The graph currently includes only registered concepts. Mentioning a word in a note does not automatically create a node or a mathematical relationship.
 
