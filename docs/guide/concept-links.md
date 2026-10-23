@@ -137,7 +137,7 @@ This example is already registered; do not add it a second time. For a new relat
 
 The source passage must fall under the registered source concept: put its definition anchor before the heading, then an optional evidence anchor inside that section. A later heading starts a new section scope. The build checks this correspondence.
 
-Currently accepted relationship types are `derivation-uses`, `instance-of`, `equivalent-to`, `generalizes`, and `model-complements`. Use `model-complements` when two models cover different parts of the same physical problem and neither is a generalization of the other. Choose the direction deliberately. A reverse navigation link does not make a mathematical relationship symmetric.
+Currently accepted relationship types are `derivation-uses`, `instance-of`, `equivalent-to`, `generalizes`, `model-complements`, `defined-as`, `qualifies`, `strengthens`, `equivalent-form`, `organizes`, `shares-encoding-form-with`, and `differs-in-connectivity`. Use the most specific relation supported by the evidence: for example, `defined-as` for an exact definition, `qualifies` for a condition that limits a theorem's direct use, and `model-complements` when two models cover different parts of the same physical problem. Choose the direction deliberately. A reverse navigation link does not make a mathematical relationship symmetric.
 
 ## Courses, domains, and the graph
 
@@ -173,6 +173,8 @@ A course has its own ID, a domain, and a note or index page:
   "path": "math/Foundations_of_Complex_Analysis.md"
 }
 ```
+
+A course normally corresponds to a collection or an actual course-level note, not to every Markdown document. Documents inside `math/linear-algebra/`, for example, belong to the `linear-algebra` course even when a document has a narrower title such as *Polynomial Theory*. The concept's `location.path` records that exact source document, so a separate course node is unnecessary. Add a new course only when it should appear as a peer of the existing course nodes.
 
 In a concept entry, add its main domain and one or more course IDs:
 

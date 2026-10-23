@@ -50,13 +50,15 @@ It can still be trained by backpropagation, but stacking layers cannot create no
 
 ### 1.2 Input and output representations
 
-A standard MLP layer operates on vectors,
+A standard MLP layer operates on vectors:
 
 $$
 f_\theta:\mathbb R^{d_{\mathrm{in}}}\rightarrow\mathbb R^{d_{\mathrm{out}}},
 $$
 
-but the underlying data need not be intrinsically one-dimensional. A gridded field may be flattened before an MLP and reshaped after its output. A coordinate-based MLP instead maps location and time directly to a field value:
+<span id="coordinate-based-mlp"></span>
+
+The underlying data need not be intrinsically one-dimensional. A gridded field may be flattened before an MLP and reshaped after its output. A coordinate-based MLP instead maps location and time directly to a field value:
 
 $$
 (x,y,t)\mapsto f_\theta(x,y,t)\approx u(x,y,t).
@@ -143,6 +145,8 @@ Pooling or strided convolution reduces spatial resolution and increases the orig
 
 Channel counts, kernel shapes, and connectivity are specified before training; **the meaning of an individual feature channel is not**. A trained channel may respond to a local pattern or a smoother aggregate, but no particular response is guaranteed. Consistently permuting one layer's output channels and the next layer's corresponding input-channel weights leaves the network function unchanged.
 
+<span id="cnn-field-model"></span>
+
 ### 2.5 Local stencils and global field maps
 
 For equal grid spacing $h$, the stencil
@@ -167,6 +171,8 @@ $$
 $$
 
 Edges may reflect mesh connectivity or another chosen adjacency rule. Unlike a regular grid, an unstructured graph allows varying node degrees and geometric offsets. A graph network replaces the CNN's fixed spatial offsets by the actual set $\mathcal N(i)$.
+
+<span id="graph-message-passing"></span>
 
 ### 3.2 Message-passing layer
 
@@ -219,7 +225,9 @@ $$
 
 This allows different contributions from geometrically different neighbors. Including coordinates alone does not enforce rotation equivariance or conservation.
 
-**Graph attention networks (GATs).** A learned score assigns different weights to connected neighbors:
+<span id="graph-attention"></span>
+
+**Graph attention networks (GATs).** This input-dependent form of [graph message passing](#graph-message-passing "concept:graph-message-passing") uses a learned score to assign different weights to connected neighbors:
 
 $$
 \alpha_{ij}=\frac{\exp(\operatorname{score}(h_i,h_j))}

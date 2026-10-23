@@ -16,6 +16,8 @@ order: 9
 
 At large Reynolds number, an attached external flow can have a thin region near the wall in which viscosity remains important. The outer region is often approximated by the [potential-flow model](07_Plane_Potential_Flow.md#potential-flow-model "concept:potential-flow-model"), while the boundary-layer approximation retains the near-wall viscous effects that model omits. In separated flows and wakes, important viscous and turbulent effects are not confined to a thin attached wall layer.
 
+<span id="boundary-layer-regimes"></span>
+
 Balancing streamwise inertia with transverse viscous diffusion gives
 
 $$

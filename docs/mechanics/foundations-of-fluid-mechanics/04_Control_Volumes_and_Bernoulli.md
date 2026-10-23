@@ -42,6 +42,8 @@ The derivative now acts on an integral over a moving region. For momentum measur
 
 ---
 
+<span id="control-volume-mass-conservation"></span>
+
 ## 2. Integral Mass Conservation
 
 Set $\eta=\rho$ and use conservation of system mass:
@@ -71,6 +73,8 @@ For a moving control volume, use the moving-volume derivative and relative cross
 ---
 
 ## 3. Bernoulli's Equation and Hydraulic Head
+
+<span id="streamline-bernoulli"></span>
 
 ### 3.1 Along a streamline
 

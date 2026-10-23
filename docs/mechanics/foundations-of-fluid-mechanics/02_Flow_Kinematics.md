@@ -134,6 +134,8 @@ A **streamtube** is bounded by streamlines, so instantaneous velocity has no com
 
 ## 4. Material Derivative and Acceleration
 
+<span id="material-derivative"></span>
+
 ### 4.1 Following a field along a particle
 
 **Proposition (Material derivative).** For a differentiable scalar field $B$,
@@ -227,6 +229,8 @@ A flow is **irrotational** when $\boldsymbol\Omega=\mathbf0$. Circulation around
 $$
 \Gamma=\oint_C\mathbf v\cdot d\mathbf r.
 $$
+
+<span id="stokes-theorem"></span>
 
 For a smooth field on a spanning surface $S$, Stokes' theorem gives
 

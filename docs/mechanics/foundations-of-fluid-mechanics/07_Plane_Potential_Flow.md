@@ -20,7 +20,9 @@ $$
 \qquad \nabla\times\mathbf v=\mathbf0.
 $$
 
-For steady flow under gravity, irrotationality makes the Bernoulli constant common throughout a connected regular flow region:
+<span id="field-wide-bernoulli"></span>
+
+For steady flow under gravity, irrotationality strengthens the [streamline Bernoulli equation](04_Control_Volumes_and_Bernoulli.md#streamline-bernoulli "concept:streamline-bernoulli") by making its constant common throughout a connected regular flow region:
 
 $$
 \frac{|\mathbf v|^2}{2}+gz+\int\frac{dp}{\rho}=C.
@@ -94,7 +96,9 @@ $$
 
 The potential and stream function are [harmonic conjugates](../../math/Foundations_of_Complex_Analysis.md#harmonic-conjugate "concept:harmonic-conjugate") and satisfy the Cauchy-Riemann equations. Harmonic-function methods, images, conformal mappings, and residue calculus are therefore useful tools.
 
-**Method note.** Images enforce selected boundaries through symmetry. Conformal mapping transfers an analytic potential to another domain; the chain rule transforms velocity. For a map $z=z(\zeta)$,
+<span id="mapped-potential-flow"></span>
+
+**Method note.** Images enforce selected boundaries through symmetry. A [conformal mapping](../../math/Foundations_of_Complex_Analysis.md#conformal-mapping "concept:conformal-mapping") transfers an analytic potential to another domain; the chain rule transforms velocity. For a map $z=z(\zeta)$,
 
 $$
 \frac{dW}{dz}=\frac{dW/d\zeta}{dz/d\zeta}.
@@ -144,6 +148,8 @@ $$
 
 Positive $Q$ is a source and negative $Q$ a sink. The flux around a circle is $2\pi r u_r=Q$.
 
+<span id="point-vortex-circulation"></span>
+
 ### 2.3 Point vortex
 
 For positive counterclockwise circulation $\Gamma$,
@@ -158,7 +164,7 @@ $$
 \qquad W=-\frac{i\Gamma}{2\pi}\log z.
 $$
 
-The origin is singular. Circulation is $\Gamma$ around a counterclockwise loop enclosing it, even though local vorticity vanishes away from it.
+The origin is singular. Circulation is $\Gamma$ around a counterclockwise loop enclosing it, even though local vorticity vanishes away from it. This qualifies the usual [Stokes-theorem](02_Flow_Kinematics.md#stokes-theorem "concept:stokes-theorem") argument because a spanning surface crossing the excluded origin is not contained in the fluid domain.
 
 ### 2.4 Doublet
 

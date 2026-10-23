@@ -1517,6 +1517,8 @@ where $u_r=t_r$ for $0\le r<m$, $v_r=t_{m+r}$ for $0\le r<n$, and coefficients o
 
 A nonzero solution vector gives nonzero $u,v$: if one were zero, $fu=gv$ and cancellation would force the other to be zero. Thus Lemma 11.1 applies exactly when this square system is singular.
 
+<span id="resultant"></span>
+
 ### 11.3 The Sylvester matrix and the resultant
 
 **Definition.** Use columns corresponding to $x^{n+m-1},x^{n+m-2},\ldots,1$. The **Sylvester matrix** $S(f,g)$ has, in order, the coefficient rows of
@@ -1544,7 +1546,7 @@ $$
 
 The displayed array indicates the shifting pattern; the coefficient-row definition specifies its dimensions exactly for every $m,n$.
 
-The **resultant** is
+The **resultant** is defined as the [determinant](Determinants.md#determinant "concept:determinant") of the Sylvester matrix:
 
 $$
 R(f,g)=\det S(f,g).
