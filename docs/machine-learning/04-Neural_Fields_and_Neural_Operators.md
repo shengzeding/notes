@@ -392,6 +392,10 @@ $$
 
 The multiplication mixes **channels at the same frequency**; it is not a dense learned interaction between all pairs of Fourier modes. Actual real-valued FFT implementations also account for negative-frequency indexing and conjugate symmetry, so stored parameter-array shapes can differ from the schematic $12\times12$ example.
 
+<span id="fno-invariant-frequency-blocks"></span>
+
+For the linear spectral multiplication alone, each retained frequency's channel space is an [invariant subspace](../math/linear-algebra/Linear_Maps.md#invariant-subspace "concept:invariant-subspace"). In Fourier coordinates, the multiplier is therefore block diagonal across frequencies, with block $R_\theta(k)$ at mode $k$. This statement does not extend unchanged to the complete Fourier layer: the pointwise nonlinearity can mix frequencies.
+
 After restoring the full spectral array, the inverse FFT returns a real field of shape $64\times64\times16$. The pointwise branch has that same shape, permitting elementwise addition.
 
 ### 5.4 Resolution changes and spectral truncation

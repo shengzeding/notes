@@ -1198,6 +1198,8 @@ The discrete least-squares solution is therefore an [orthogonal projection](../m
 
 The normal equations have a unique solution if their Gram matrix is nonsingular, equivalently if the design-matrix columns are linearly independent on the data nodes with positive weights.
 
+Equivalently, the sampling map from coefficient vectors to values on the positive-weight nodes has trivial kernel. In finite dimensions, the [rank–nullity theorem](../math/linear-algebra/Linear_Maps.md#rank-nullity "concept:rank-nullity") turns this injectivity condition into the full-column-rank criterion.
+
 **Definition (Haar condition).** A family $\varphi_0,\ldots,\varphi_n$ satisfies the Haar condition on the observation nodes if every nonzero linear combination
 
 $$

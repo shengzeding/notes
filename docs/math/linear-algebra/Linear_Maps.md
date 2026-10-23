@@ -318,7 +318,9 @@ $$
 
 Later, choosing bases will show that every linear map between finite-dimensional vector spaces has this form in coordinates.
 
-**Example 2 (Differentiation).** Differentiation is linear because
+<span id="differentiation-linear-map"></span>
+
+**Example 2 (Differentiation).** [Polynomial differentiation](polynomial-theory.md#polynomial-differentiation "concept:polynomial-differentiation") is linear because
 
 $$
 (cf+g)'=cf'+g'.
@@ -544,6 +546,8 @@ The operations above make $\operatorname{End}(V)$ a unital $F$-algebra, called t
 
 Other examples are the polynomial algebra $F[x]$ and the matrix algebra $F^{n\times n}$. Choosing a basis identifies $\operatorname{End}(V)$ with the matrix algebra, preserving both vector-space operations and multiplication.
 
+<span id="projection-operator"></span>
+
 ### 4.4 Projections and idempotent transformations
 
 Suppose
@@ -583,7 +587,7 @@ $$
 U=\ker(P_U-I),\qquad W=\ker P_U.
 $$
 
-These are the eigenspaces for $1$ and $0$ when nonzero. No inner product is required: the projection may be oblique rather than perpendicular.
+These are the eigenspaces for $1$ and $0$ when nonzero. No inner product is required: the projection may be oblique rather than perpendicular. An [orthogonal projection](Elementary_Linear_Algebra.md#orthogonal-projection "concept:orthogonal-projection") is the special case in an inner product space where the image and kernel are orthogonal; in an orthonormal basis its matrix is also self-adjoint.
 
 Two transformations $S,T$ are sometimes called **mutually orthogonal** when $ST=TS=0$.
 
@@ -687,6 +691,8 @@ $$
 so its kernel is zero and it is injective.
 
 The quotient identifies exactly the inputs having the same output. After those identifications, the induced map to the image is an isomorphism.
+
+<span id="rank-nullity"></span>
 
 ### 5.3 Rank–nullity and an adapted basis
 
@@ -1219,6 +1225,8 @@ Notice how the entries are restored to the matrix: consecutive pairs in $\operat
 
 ## 8. Kronecker Products and Tensor Product Spaces
 
+<span id="kronecker-product"></span>
+
 ### 8.1 Order matters
 
 The Kronecker product is generally not commutative. Let
@@ -1266,6 +1274,12 @@ I_m\otimes I_n=I_{mn}.
 $$
 
 The Kronecker product of two upper triangular matrices is upper triangular, with the same paired ordering of diagonal entries. The analogous statement holds for lower triangular matrices.
+
+For square $A\in F^{m\times m}$ and $B\in F^{n\times n}$, this triangular structure leads in Section 8.5 to the [determinant](Determinants.md#determinant "concept:determinant") identity
+
+$$
+\det(A\otimes B)=(\det A)^n(\det B)^m.
+$$
 
 ### 8.2 Block structure and associativity
 
@@ -1604,6 +1618,8 @@ For an endomorphism represented in one common basis, the domain and codomain cha
 ---
 
 ## 10. Invariant Subspaces and Commuting Transformations
+
+<span id="invariant-subspace"></span>
 
 ### 10.1 Definition and basic examples
 

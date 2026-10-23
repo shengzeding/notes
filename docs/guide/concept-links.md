@@ -15,6 +15,10 @@ Register a durable knowledge topic rather than a complete claim about that topic
 
 Create a separate node only when the distinction is useful outside its current paragraph: the topic should be independently learnable, reusable in another course, or needed as one endpoint of a meaningful relationship. Variants, implementation details, and special-case conclusions normally remain linked mentions of the broader concept. This keeps the graph compact without discarding precise assumptions or source locations.
 
+When two notes introduce the same mathematical content, reuse one concept even when the notes belong to different courses. Record each explanation as a linked mention, and add both course memberships only when the concept is genuinely part of both courses. Put genuinely different names for that same content in `aliases`; repeated uses of the same name need no new alias. Aliases support search and identification, but they do not create nodes, relationships, citations, or extra node size.
+
+Do not merge concepts merely because their wording overlaps. A general construction and its special case, two equivalent formulations that remain useful independently, or a theorem and a method that uses it should keep separate nodes with a checked relationship. For example, an orthogonal projection is a special kind of projection operator, while forward, backward, and central differences are variants of the broader finite-difference idea rather than aliases of one another.
+
 ## Cite an existing concept
 
 Use an ordinary Markdown link with a concept ID in its optional title:
