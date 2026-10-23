@@ -5,6 +5,9 @@ import { join } from 'node:path'
 import { conceptLinks, buildKnowledge } from './knowledge'
 import { collections, scan, sidebarItems } from './catalog'
 
+// Set to true to show the personal homepage link in the navigation.
+const showHomeLink = false
+
 const notes = scan()
 export default defineConfig({
   title: 'Shengze Ding — Notes',
@@ -31,7 +34,7 @@ export default defineConfig({
       { text: 'NOTES', link: '/' },
       { text: 'GRAPH', link: '/graph' },
       { text: 'GUIDE', link: '/guide/writing' },
-      { text: 'HOME', link: 'https://shengzeding.github.io/', target: '_self' }
+      ...(showHomeLink ? [{ text: 'HOME', link: 'https://shengzeding.github.io/', target: '_self' }] : [])
     ],
     sidebar: [
       { text: 'Notes', items: [{ text: 'All notes', link: '/' }] },
