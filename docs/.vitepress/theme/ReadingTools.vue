@@ -10,8 +10,45 @@ const menu = ref(false), menuX = ref(0), menuY = ref(0)
 const draft = shallowRef<{html:string;markdown:string;context:string;title:string;url:string} | null>(null)
 const pins = ref<{id:number;html:string;title:string;url:string}[]>([])
 const folded = ref(false), status = ref('')
+const pinPanel = ref<HTMLElement | null>(null)
+const pinPosition = ref<{x:number;y:number} | null>(null)
+const dragging = ref(false)
+let pinDrag: {id:number;x:number;y:number;left:number;top:number} | null = null
+const pinStyle = computed(()=>pinPosition.value ? {left:pinPosition.value.x+'px',top:pinPosition.value.y+'px',right:'auto',bottom:'auto'} : {})
+function movePin(x:number,y:number) {
+  const rect=pinPanel.value?.getBoundingClientRect()
+  if (!rect) return
+  pinPosition.value={x:Math.max(8,Math.min(document.documentElement.clientWidth-rect.width-8,x)),y:Math.max(8,Math.min(innerHeight-rect.height-8,y))}
+}
+function clampPin() { if(pinPosition.value)movePin(pinPosition.value.x,pinPosition.value.y) }
+function startPinDrag(event:PointerEvent) {
+  if(event.button!==0||!pinPanel.value)return
+  const rect=pinPanel.value.getBoundingClientRect()
+  pinDrag={id:event.pointerId,x:event.clientX,y:event.clientY,left:rect.left,top:rect.top}
+  dragging.value=true;menu.value=false;equation.value=null
+  ;(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId)
+  event.preventDefault()
+}
+function dragPin(event:PointerEvent) {
+  if(!pinDrag||event.pointerId!==pinDrag.id)return
+  movePin(pinDrag.left+event.clientX-pinDrag.x,pinDrag.top+event.clientY-pinDrag.y)
+}
+function endPinDrag(event:PointerEvent) {
+  if(pinDrag?.id!==event.pointerId)return
+  pinDrag=null;dragging.value=false
+  const handle=event.currentTarget as HTMLElement
+  if(handle.hasPointerCapture(event.pointerId))handle.releasePointerCapture(event.pointerId)
+}
+function nudgePin(event:KeyboardEvent) {
+  const directions:Record<string,[number,number]>={ArrowLeft:[-20,0],ArrowRight:[20,0],ArrowUp:[0,-20],ArrowDown:[0,20]}
+  const delta=directions[event.key],rect=pinPanel.value?.getBoundingClientRect()
+  if(delta&&rect){event.preventDefault();movePin(rect.left+delta[0],rect.top+delta[1])}
+}
+watch([()=>pins.value.length,folded],()=>nextTick(clampPin))
 const equation = shallowRef<HTMLElement | null>(null)
 const equationX = ref(0), equationY = ref(0)
+const latexFeedback = ref('')
+let equationTimer:ReturnType<typeof setTimeout> | undefined
 const panel = ref<HTMLDialogElement | null>(null), searchInput = ref<HTMLInputElement | null>(null)
 const mode = ref<'copy'|'search'>('copy'), includeSection = ref(false), query = ref('')
 const loading = ref(false), error = ref('')
@@ -91,15 +128,25 @@ function pinDraft() {
   else status.value = 'Pinned for reference.'
   folded.value=false; menu.value=false; window.getSelection()?.removeAllRanges()
 }
+function holdEquation() { clearTimeout(equationTimer) }
 function hoverEquation(event: Event) {
   const target = event.target as Element
+  clearTimeout(equationTimer)
+  if(dragging.value)return
   if (target.closest('.equation-pin')) return
-  const el = target.closest<HTMLElement>('.VPDoc .reading-math[data-display="true"]')
-  if (!el || menu.value || panel.value?.open) { equation.value=null; return }
+  const el = target.closest<HTMLElement>('.VPDoc .reading-math,.reading-pin-content .reading-math')
+  if (!el || menu.value || panel.value?.open) { equationTimer=setTimeout(()=>{equation.value=null},200); return }
+  if(equation.value!==el)latexFeedback.value=''
   equation.value=el
   const rect=el.getBoundingClientRect()
-  equationX.value=Math.max(12,Math.min(innerWidth-100,rect.right-86))
-  equationY.value=Math.max(76,rect.top+2)
+  equationX.value=Math.max(12,Math.min(document.documentElement.clientWidth-210,rect.right-198))
+  equationY.value=Math.max(64,Math.min(innerHeight-44,rect.top-32))
+}
+async function copyEquation() {
+  const el=equation.value,tex=el?.getAttribute('data-tex')
+  if(tex==null)return
+  try {await navigator.clipboard.writeText(tex.trim());if(equation.value===el)latexFeedback.value='Copied!';status.value='LaTeX copied.'}
+  catch {latexFeedback.value='Copy failed';status.value='Could not access the clipboard.'}
 }
 function pinEquation() {
   if (!equation.value) return
@@ -161,6 +208,7 @@ onMounted(()=>{
   document.addEventListener('keydown',keydown,true)
   window.addEventListener('scroll',onScroll,{passive:true})
   window.addEventListener('resize',onScroll)
+  window.addEventListener('resize',clampPin)
 })
 onBeforeUnmount(()=>{
   document.removeEventListener('selectionchange',selectionChanged)
@@ -172,6 +220,8 @@ onBeforeUnmount(()=>{
   document.removeEventListener('keydown',keydown,true)
   window.removeEventListener('scroll',onScroll)
   window.removeEventListener('resize',onScroll)
+  window.removeEventListener('resize',clampPin)
+  clearTimeout(equationTimer)
 })
 </script>
 
@@ -182,13 +232,19 @@ onBeforeUnmount(()=>{
       <button @click="openPanel('copy')">Copy for discussion</button>
       <button @click="openPanel('search')">Find in notes</button>
     </div>
-    <button v-if="equation" class="equation-pin" :style="{left:equationX+'px',top:equationY+'px'}" @click="pinEquation">Pin formula</button>
+    <div v-if="equation" class="equation-pin" role="toolbar" aria-label="Formula actions" :style="{left:equationX+'px',top:equationY+'px'}" @pointerenter="holdEquation">
+      <button v-if="equation.closest('.VPDoc')" @click="pinEquation">Pin formula</button>
+      <button @click="copyEquation">{{ latexFeedback || 'Copy LaTeX' }}</button>
+    </div>
     <div v-if="place" class="reading-return">
       <button :title="'Return to '+place.title" @click="returnToReading">↩ Return to reading</button>
       <button aria-label="Dismiss reading position" @click="dismissPlace">×</button>
     </div>
-    <aside v-if="pins.length" class="reading-pins" aria-label="Pinned reference">
-      <header><button :aria-expanded="!folded" @click="folded=!folded">Pinned reference <span>{{ pins.length }} {{ folded?'⌄':'⌃' }}</span></button></header>
+    <aside v-if="pins.length" ref="pinPanel" class="reading-pins" :class="{'is-dragging':dragging}" :style="pinStyle" aria-label="Pinned reference">
+      <header>
+        <button class="pin-drag-handle" aria-label="Move pinned reference" title="Drag to move · Arrow keys to adjust" @pointerdown="startPinDrag" @pointermove="dragPin" @pointerup="endPinDrag" @pointercancel="endPinDrag" @lostpointercapture="pinDrag=null;dragging=false" @keydown="nudgePin">⠿ Pinned reference <span>{{ pins.length }}</span></button>
+        <button class="pin-collapse" :aria-label="folded?'Expand pinned references':'Collapse pinned references'" :aria-expanded="!folded" @click="folded=!folded">{{ folded?'⌄':'⌃' }}</button>
+      </header>
       <div v-show="!folded" class="reading-pin-list">
         <section v-for="pin in pins" :key="pin.id" class="reading-pin">
           <div class="reading-pin-heading"><a :href="pin.url">{{ pin.title }}</a><button aria-label="Unpin reference" @click="pins=pins.filter(p=>p.id!==pin.id)">×</button></div>
@@ -232,10 +288,10 @@ onBeforeUnmount(()=>{
 .reading-selection,.equation-pin,.reading-return,.reading-pins{position:fixed;background:#fff;border:1px solid #ddd;border-radius:5px;box-shadow:0 3px 15px #0000000c;z-index:90}
 .reading-selection{display:flex;padding:4px;max-width:calc(100vw - 24px)}
 .reading-selection button{padding:7px 9px;font-size:12px;white-space:nowrap;border-radius:3px}.reading-selection button:hover{background:#f3f3f1}
-.equation-pin{padding:4px 8px;font-size:11px;color:#666}
+.equation-pin{display:flex;padding:3px;font-size:11px;color:#555;z-index:95;gap:2px}.equation-pin button{padding:4px 7px;white-space:nowrap;border-radius:3px}.equation-pin button:hover{background:#f3f3f1}
 .reading-return{left:20px;bottom:20px;display:flex;align-items:center}.reading-return button{padding:9px 12px}.reading-return button+button{padding-left:0;color:#888}
 .reading-pins{right:18px;top:100px;width:340px;max-width:calc(100vw - 36px);z-index:85}
-.reading-pins header{padding:9px 12px}.reading-pins header button{display:flex;justify-content:space-between;align-items:center;width:100%;font-size:12px;color:#666}.reading-pins header span{color:#999}
+.reading-pins header{display:flex;align-items:center;padding:5px 8px;gap:6px}.reading-pins header button{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#666;padding:5px 4px}.reading-pins header .pin-drag-handle{flex:1;cursor:grab;touch-action:none;user-select:none;gap:12px}.reading-pins.is-dragging .pin-drag-handle{cursor:grabbing}.reading-pins header .pin-collapse{padding:5px 8px}.reading-pins header span{color:#999}
 .reading-pin-list{max-height:65dvh;overflow:auto;overscroll-behavior:contain}
 .reading-pin{padding:12px 14px 16px;border-top:1px solid #eee}.reading-pin-heading{display:flex;gap:12px;align-items:start;justify-content:space-between;font-size:11px;color:#777;margin-bottom:10px}.reading-pin-heading a{overflow-wrap:anywhere}.reading-pin-heading button{font-size:18px;line-height:1}
 .reading-pin-content{font-size:14px!important;line-height:1.7;overflow:auto;max-height:45dvh}.reading-pin-content p{font-size:14px!important;margin:8px 0!important}.reading-pin-content mjx-container{font-size:100%!important}.reading-pin-content mjx-container[display="true"]>svg{max-width:100%;height:auto}.reading-pin-content h1,.reading-pin-content h2,.reading-pin-content h3{font-size:16px!important;margin:8px 0!important;padding:0!important}
