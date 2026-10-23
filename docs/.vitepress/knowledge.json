@@ -93,7 +93,7 @@
         "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
         "anchor": "discrete-least-squares"
       },
-      "domain": "mathematics",
+      "domain": "numerical-methods",
       "courses": [
         "numerical-methods"
       ]
@@ -126,7 +126,7 @@
         "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
         "anchor": "orthogonal-polynomial-construction"
       },
-      "domain": "mathematics",
+      "domain": "numerical-methods",
       "courses": [
         "numerical-methods"
       ]
@@ -159,7 +159,7 @@
         "path": "numerical-methods/Interpolation_Numerical_Analysis.md",
         "anchor": "polynomial-interpolation-uniqueness"
       },
-      "domain": "mathematics",
+      "domain": "numerical-methods",
       "courses": [
         "numerical-methods"
       ]
@@ -192,7 +192,7 @@
         "path": "numerical-methods/Interpolation_Numerical_Analysis.md",
         "anchor": "hermite-interpolation-uniqueness"
       },
-      "domain": "mathematics",
+      "domain": "numerical-methods",
       "courses": [
         "numerical-methods"
       ]
@@ -209,7 +209,7 @@
         "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
         "anchor": "finite-dimensional-function-approximation"
       },
-      "domain": "mathematics",
+      "domain": "numerical-methods",
       "courses": [
         "numerical-methods"
       ]
@@ -308,7 +308,7 @@
         "path": "numerical-methods/Function_Approximation_Numerical_Analysis.md",
         "anchor": "best-square-approximation"
       },
-      "domain": "mathematics",
+      "domain": "numerical-methods",
       "courses": [
         "numerical-methods"
       ]
@@ -903,7 +903,12 @@
     {
       "id": "mathematics",
       "label": "Mathematics",
-      "color": "#527c73"
+      "color": "#657f9a"
+    },
+    {
+      "id": "numerical-methods",
+      "label": "Numerical Methods",
+      "color": "#527f73"
     },
     {
       "id": "mechanics",
@@ -938,7 +943,7 @@
     {
       "id": "numerical-methods",
       "label": "Numerical Methods",
-      "domain": "mathematics",
+      "domain": "numerical-methods",
       "path": "numerical-methods/index.md"
     },
     {
