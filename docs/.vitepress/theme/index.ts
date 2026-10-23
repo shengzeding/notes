@@ -3,6 +3,7 @@ import { useData, useRoute } from 'vitepress'
 import { defineComponent, h, onMounted, onBeforeUnmount, ref, watch, nextTick } from 'vue'
 import CollectionNotes from './CollectionNotes.vue'
 import ConceptReferences from './ConceptReferences.vue'
+import ReadingTools from './ReadingTools.vue'
 import './style.css'
 
 const ReadingLayout = defineComponent({
@@ -106,14 +107,14 @@ const ReadingLayout = defineComponent({
           onClick: () => setFocus(!focused.value)
         }, focused.value ? 'Exit focus' : 'Focus')
       ],
-      'layout-bottom': () => focused.value ? h('button', {
+      'layout-bottom': () => [h(ReadingTools), focused.value ? h('button', {
         ref: exitButton,
         class: 'focus-exit',
         type: 'button',
         title: 'Exit focus mode (Esc)',
         'aria-label': 'Exit focus mode (Esc)',
         onClick: () => setFocus(false)
-      }, '↗ Exit focus') : null
+      }, '↗ Exit focus') : null]
     })
   }
 })

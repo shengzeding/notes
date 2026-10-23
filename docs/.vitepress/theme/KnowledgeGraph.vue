@@ -136,14 +136,48 @@ function animate(){
 }
 function warm(){heat=.5;if(!animation)animation=requestAnimationFrame(animate)}
 let observer:ResizeObserver|undefined
+const graphSignature = nodes.map(n=>n.id).sort().join('|')
+let savedGraph:any=null
+function rememberGraph(){
+  try { sessionStorage.setItem('notes-graph-view',JSON.stringify({signature:graphSignature,
+    domain:domainFilter.value,courses:courseFilters.value,selected:selectedId.value,focused:focusedId.value,
+    labels:showLabels.value,textSize:textSize.value,spacing:spacing.value,distance:linkDistance.value,
+    view:{...view},width:size.w,positions:nodes.map(n=>({id:n.id,x:n.x,y:n.y}))})) } catch {}
+}
+function recallGraph(){
+  try {
+    const saved=JSON.parse(sessionStorage.getItem('notes-graph-view')||'null')
+    if(!saved||saved.signature!==graphSignature||!saved.view||
+      ![saved.view.x,saved.view.y,saved.view.w,saved.view.h,saved.width].every(Number.isFinite)||saved.view.w<=0||saved.view.h<=0||saved.width<=0)return
+    domainFilter.value=data.domains.some(d=>d.id===saved.domain)?saved.domain:''
+    courseFilters.value=Array.isArray(saved.courses)?saved.courses.filter((id:string)=>data.courses.some(c=>c.id===id)):[]
+    selectedId.value=byId.has(saved.selected)?saved.selected:null
+    focusedId.value=byId.has(saved.focused)?saved.focused:''
+    showLabels.value=saved.labels===true
+    if(saved.textSize>=10&&saved.textSize<=16)textSize.value=saved.textSize
+    if(saved.spacing>=.7&&saved.spacing<=1.6)spacing.value=saved.spacing
+    if(saved.distance>=.7&&saved.distance<=1.6)linkDistance.value=saved.distance
+    savedGraph=saved
+  } catch {}
+}
 onMounted(()=>{
+  recallGraph()
   document.addEventListener('pointerdown',outsideCoursePicker)
   observer=new ResizeObserver(entries=>{
     const rect=entries[0].contentRect
     if(rect.width<1||rect.height<1)return
     const scale=view.w/size.w,cx=view.x+view.w/2,cy=view.y+view.h/2
     size.w=rect.width;size.h=rect.height
-    if(!ready){layoutVisible();ready=true}
+    if(!ready){
+      layoutVisible();ready=true
+      if(savedGraph){
+        for(const p of savedGraph.positions||[]){const n=byId.get(p.id);if(n&&Number.isFinite(p.x)&&Number.isFinite(p.y)){n.x=p.x;n.y=p.y}}
+        const saved=savedGraph,scale=saved.view.w/saved.width
+        view.w=scale*size.w;view.h=scale*size.h
+        view.x=saved.view.x+saved.view.w/2-view.w/2;view.y=saved.view.y+saved.view.h/2-view.h/2
+        savedGraph=null
+      }
+    }
     else {view.w=scale*size.w;view.h=scale*size.h;view.x=cx-view.w/2;view.y=cy-view.h/2
       const n=selected.value,margin=70*scale
       if(n){view.x=Math.min(n.x-margin,Math.max(n.x+margin-view.w,view.x));view.y=Math.min(n.y-margin,Math.max(n.y+margin-view.h,view.y))}
@@ -151,7 +185,7 @@ onMounted(()=>{
   })
   observer.observe(frame.value!)
 })
-onBeforeUnmount(()=>{observer?.disconnect();stopSimulation();document.removeEventListener('pointerdown',outsideCoursePicker)})
+onBeforeUnmount(()=>{rememberGraph();observer?.disconnect();stopSimulation();document.removeEventListener('pointerdown',outsideCoursePicker)})
 let ready=false
 const pointers=new Map<number,{x:number;y:number}>()
 let pinch:{distance:number;x:number;y:number}|null=null

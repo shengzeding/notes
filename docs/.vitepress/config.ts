@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { readingMath } from './reading'
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { conceptLinks, buildKnowledge } from './knowledge'
@@ -20,7 +21,7 @@ export default defineConfig({
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap' }]
   ],
   sitemap: { hostname: 'https://shengzeding.github.io/notes/' },
-  markdown: { math: true, lineNumbers: true, config: conceptLinks },
+  markdown: { math: true, lineNumbers: true, config(md) { conceptLinks(md); readingMath(md) } },
   async buildEnd(site) {
     writeFileSync(join(site.outDir, 'knowledge-graph.json'), JSON.stringify(await buildKnowledge(), null, 2))
   },
