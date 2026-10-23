@@ -18,7 +18,15 @@ const spacing = ref(1)
 const linkDistance = ref(1)
 const selected = computed(() => byId.get(selectedId.value || ''))
 const domainFilter = ref('')
-const courseFilter = ref('')
+const courseFilters = ref<string[]>([])
+const coursePickerOpen = ref(false)
+const coursePicker = ref<HTMLElement | null>(null)
+const coursePickerButton = ref<HTMLButtonElement | null>(null)
+const availableCourses = computed(()=>data.courses.filter(c=>!domainFilter.value||c.domain===domainFilter.value))
+const courseFilterLabel = computed(()=>!courseFilters.value.length ? 'All courses' : courseFilters.value.length===1 ? data.courses.find(c=>c.id===courseFilters.value[0])?.label : `${courseFilters.value.length} courses`)
+function closeCoursePicker(){coursePickerOpen.value=false;coursePickerButton.value?.focus()}
+function outsideCoursePicker(event:PointerEvent){if(!coursePicker.value?.contains(event.target as Node))coursePickerOpen.value=false}
+function leaveCoursePicker(event:FocusEvent){if(!coursePicker.value?.contains(event.relatedTarget as Node|null))coursePickerOpen.value=false}
 const focusedId = ref('')
 const query = ref('')
 const searchTarget = ref('')
@@ -48,7 +56,7 @@ function connected(id: string) { return new Set([id,...edges.filter(e => e.sourc
 const neighbors = computed(() => connected(activeId.value))
 const visibleNodes = computed(() => {
   let result=nodes.filter(n => (!domainFilter.value||n.domain===domainFilter.value) &&
-    (!courseFilter.value||n.id===courseFilter.value||n.courses?.includes(courseFilter.value)))
+    (!courseFilters.value.length||courseFilters.value.includes(n.id)||n.courses?.some(id=>courseFilters.value.includes(id))))
   if(focusedId.value){const ids=connected(focusedId.value);result=result.filter(n=>ids.has(n.id))}
   return result
 })
@@ -80,17 +88,17 @@ function layoutVisible() {
   simulation=createGraphSimulation(visibleNodes.value,visibleEdges.value,{spacing:spacing.value,distance:linkDistance.value,aspect:size.w/size.h})
   fit()
 }
-function filterDomain(id:string){searchTarget.value='';domainFilter.value=id;courseFilter.value='';focusedId.value='';selectedId.value=null;nextTick(layoutVisible)}
-function filterCourse(){searchTarget.value='';focusedId.value='';selectedId.value=null;nextTick(layoutVisible)}
-function reset(){searchTarget.value='';domainFilter.value='';courseFilter.value='';focusedId.value='';query.value='';selectedId.value=null;nextTick(layoutVisible)}
+function filterDomain(id:string){searchTarget.value='';domainFilter.value=id;courseFilters.value=[];focusedId.value='';selectedId.value=null;nextTick(layoutVisible)}
+function filterCourses(){searchTarget.value='';focusedId.value='';selectedId.value=null;nextTick(layoutVisible)}
+function reset(){coursePickerOpen.value=false;searchTarget.value='';domainFilter.value='';courseFilters.value=[];focusedId.value='';query.value='';selectedId.value=null;nextTick(layoutVisible)}
 function choose(id:string){
   searchTarget.value=''
-  if(!visibleIds.value.has(id)){domainFilter.value='';courseFilter.value='';focusedId.value='';layoutVisible()}
+  if(!visibleIds.value.has(id)){domainFilter.value='';courseFilters.value=[];focusedId.value='';layoutVisible()}
   selectedId.value=id
 }
 function reveal(id:string){
   query.value=''
-  if(!visibleIds.value.has(id)){domainFilter.value='';courseFilter.value='';focusedId.value='';layoutVisible()}
+  if(!visibleIds.value.has(id)){domainFilter.value='';courseFilters.value=[];focusedId.value='';layoutVisible()}
   choose(id);searchTarget.value=id
   nextTick(()=>fitNeighborhood(id))
 }
@@ -104,7 +112,7 @@ watch(()=>size.w,()=>{if(searchTarget.value)nextTick(()=>fitNeighborhood(searchT
 function focusConnections(){
   searchTarget.value=''
   if(!selectedId.value)return
-  domainFilter.value='';courseFilter.value='';focusedId.value=selectedId.value
+  domainFilter.value='';courseFilters.value=[];focusedId.value=selectedId.value
   nextTick(layoutVisible)
 }
 function zoom(factor:number, px=size.w/2, py=size.h/2){
@@ -129,6 +137,7 @@ function animate(){
 function warm(){heat=.5;if(!animation)animation=requestAnimationFrame(animate)}
 let observer:ResizeObserver|undefined
 onMounted(()=>{
+  document.addEventListener('pointerdown',outsideCoursePicker)
   observer=new ResizeObserver(entries=>{
     const rect=entries[0].contentRect
     if(rect.width<1||rect.height<1)return
@@ -142,7 +151,7 @@ onMounted(()=>{
   })
   observer.observe(frame.value!)
 })
-onBeforeUnmount(()=>{observer?.disconnect();stopSimulation()})
+onBeforeUnmount(()=>{observer?.disconnect();stopSimulation();document.removeEventListener('pointerdown',outsideCoursePicker)})
 let ready=false
 const pointers=new Map<number,{x:number;y:number}>()
 let pinch:{distance:number;x:number;y:number}|null=null
@@ -196,10 +205,17 @@ function cancel(e:PointerEvent){fixed=undefined;pointers.delete(e.pointerId);dra
       <button :aria-pressed="!domainFilter" @click="filterDomain('')">All</button>
       <button v-for="d in data.domains" :key="d.id" :aria-pressed="domainFilter===d.id" @click="filterDomain(d.id)"><i :style="{background:d.color}"></i>{{ d.label }}</button>
     </div>
-    <select v-model="courseFilter" aria-label="Filter by course" @change="filterCourse">
-      <option value="">All courses</option>
-      <option v-for="c in data.courses.filter(c=>!domainFilter||c.domain===domainFilter)" :key="c.id" :value="c.id">{{ c.label }}</option>
-    </select>
+    <div ref="coursePicker" class="course-picker" @focusout="leaveCoursePicker" @keydown.esc.stop.prevent="closeCoursePicker">
+      <button ref="coursePickerButton" class="course-picker-toggle" aria-label="Filter by courses" :aria-expanded="coursePickerOpen" aria-controls="course-options" @click="coursePickerOpen=!coursePickerOpen">
+        <span>{{ courseFilterLabel }}</span><span aria-hidden="true">⌄</span>
+      </button>
+      <div v-if="coursePickerOpen" id="course-options" class="course-options" role="group" aria-label="Choose courses">
+        <div class="course-options-heading"><span>Choose courses</span><button @click="courseFilters=[];filterCourses()">Show all</button></div>
+        <div class="course-options-list">
+          <label v-for="c in availableCourses" :key="c.id"><input v-model="courseFilters" type="checkbox" :value="c.id" @change="filterCourses" /><span>{{ c.label }}</span></label>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="graph-workspace" :class="{'has-detail':!!selected}">
     <div ref="frame" class="graph-canvas">
@@ -210,7 +226,7 @@ function cancel(e:PointerEvent){fixed=undefined;pointers.delete(e.pointerId);dra
         <label><span>Repel strength</span><input v-model.number="spacing" aria-label="Repel strength" type="range" min="0.7" max="1.6" step="0.1" @change="layoutVisible" /></label>
         <label><span>Link distance</span><input v-model.number="linkDistance" aria-label="Link distance" type="range" min="0.7" max="1.6" step="0.1" @change="layoutVisible" /></label>
       </div>
-      <div v-if="domainFilter||courseFilter||focusedId" class="scope-label">{{ visibleNodes.filter(n=>n.kind==='concept').length }} concepts <button @click="reset">Show all ↗</button></div>
+      <div v-if="domainFilter||courseFilters.length||focusedId" class="scope-label">{{ visibleNodes.filter(n=>n.kind==='concept').length }} concepts <button @click="reset">Show all ↗</button></div>
       <svg ref="svg" :viewBox="viewBox" tabindex="0" aria-label="Knowledge graph: courses and concepts" @wheel.prevent="wheel"
         @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="cancel"
         @keydown.+.prevent="zoom(1/1.2)" @keydown.-.prevent="zoom(1.2)" @keydown.home.prevent="fit()" @keydown.left.prevent="view.x-=40*unit" @keydown.right.prevent="view.x+=40*unit" @keydown.up.prevent="view.y-=40*unit" @keydown.down.prevent="view.y+=40*unit">
@@ -276,7 +292,17 @@ button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visi
 .graph-domains button{padding:6px 9px;color:#777;border-bottom:1px solid transparent;white-space:nowrap}
 .graph-domains button[aria-pressed=true]{color:#111;border-color:#777}
 .graph-domains i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px}
-.graph-toolbar select{margin-left:auto;max-width:200px;border:1px solid #ddd;background:white;padding:8px 10px;border-radius:3px}
+.course-picker{position:relative;margin-left:auto;max-width:220px;min-width:145px}
+.course-picker-toggle{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;border:1px solid #ddd;background:#fff;padding:8px 10px;border-radius:3px;text-align:left;line-height:22px}
+.course-picker-toggle>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.course-picker-toggle>span:last-child{color:#888}
+.course-options{position:absolute;top:calc(100% + 6px);right:0;width:260px;max-width:calc(100vw - 24px);border:1px solid #ddd;border-radius:3px;background:#fff;z-index:20;box-shadow:0 4px 14px #0000000a}
+.course-options-heading{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid #eee;font-size:11px;color:#888}
+.course-options-heading button{color:#555;font-size:11px;text-decoration:underline;text-underline-offset:3px}
+.course-options-list{max-height:min(300px,50dvh);overflow:auto;padding:4px 0}
+.course-options-list label{display:flex;align-items:center;gap:10px;padding:9px 12px;font-size:12px;line-height:1.5;cursor:pointer}
+.course-options-list label:hover{background:#f6f6f4}.course-options-list input{accent-color:#555;width:14px;height:14px;flex-shrink:0;margin:0}
+
 .graph-workspace{display:flex;height:calc(100dvh - 190px);min-height:440px;border:1px solid #e5e5e2;border-radius:3px;overflow:hidden}
 .graph-canvas{position:relative;background:var(--graph-bg);flex:1;min-width:0;min-height:0}
 svg{display:block;width:100%;height:100%;touch-action:none;user-select:none;cursor:grab}svg:active{cursor:grabbing}
@@ -305,7 +331,7 @@ svg{display:block;width:100%;height:100%;touch-action:none;user-select:none;curs
 .expanded{position:fixed;inset:0;z-index:200;background:#fff;padding:18px 24px;display:flex;flex-direction:column}.expanded .graph-workspace{height:auto;flex:1;min-height:0}.expanded .graph-key{padding-bottom:0}
 @media(max-width:760px){
 .graph-heading h1{font-size:20px!important}.graph-heading>div{gap:3px;display:flex;flex-direction:column}.graph-heading span{font-size:10px}
-.graph-toolbar{gap:8px}.graph-search{max-width:none;flex:1}.graph-toolbar select{max-width:155px;margin-left:0}.graph-domains{order:3;width:100%}.graph-domains button{font-size:11px;padding:4px 7px}
+.graph-toolbar{gap:8px}.graph-search{max-width:none;flex:1}.course-picker{max-width:155px;min-width:120px;margin-left:0}.graph-domains{order:3;width:100%}.graph-domains button{font-size:11px;padding:4px 7px}
 .graph-workspace{height:calc(100dvh - 240px);min-height:400px;position:relative}.graph-detail{position:absolute;bottom:0;left:0;right:0;width:100%;max-height:48%;border-left:0;border-top:1px solid #ddd;z-index:5;padding:12px 18px}.detail-controls{margin-bottom:8px}
 .graph-key{flex-wrap:wrap;font-size:10px}.graph-key>span:nth-child(2){display:none}.expanded{padding:12px}.expanded .graph-workspace{min-height:0}
 }
