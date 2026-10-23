@@ -5,8 +5,8 @@ export interface GraphNode {
   lines: string[]; labelWidth: number; aliases?: string[]
 }
 export interface GraphEdge { source: string; target: string; kind: 'membership' | 'relation'; relation?: any; bend?: number }
-export const courseRadius = 18
-export const conceptRadius = (count: number) => Math.min(courseRadius * .7, 7 + 1.8 * Math.log2(1 + Math.max(0, count)))
+export const courseRadius = 11.5
+export const conceptRadius = (count: number) => Math.min(courseRadius * .7, 4.8 + 1.4 * Math.log2(1 + Math.max(0, count)))
 
 // Count distinct registered citing concepts, never passages or course memberships.
 export function citationCounts(data: any): Map<string, number> {
@@ -28,7 +28,7 @@ export function curveEdges(edges: GraphEdge[]) {
     pairs.get(key)!.push(edge)
   }
   for (const group of pairs.values()) group.forEach((e, i) => {
-    const offset = group.length === 1 ? 20 : (i - (group.length - 1) / 2) * 64
+    const offset = group.length === 1 ? 8 : (i - (group.length - 1) / 2) * 64
     e.bend = offset * (e.source < e.target ? 1 : -1)
   })
 }
@@ -47,7 +47,6 @@ export function edgePath(e: GraphEdge, a: GraphNode, b: GraphNode, stretch = 1):
   return `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`
 }
 
-// Complete labels take part in layout. They are never discarded to hide collisions.
 export function wrapLabel(label: string, limit = 23): string[] {
   const lines: string[] = []
   for (const word of label.split(/\s+/)) {
@@ -58,94 +57,112 @@ export function wrapLabel(label: string, limit = 23): string[] {
   return lines.length ? lines : ['']
 }
 export function graphBounds(nodes: GraphNode[]) {
-  if (!nodes.length) return {x:0,y:0,w:400,h:300}
-  const left = Math.min(...nodes.map(n => n.x - n.radius - 16))
-  const top = Math.min(...nodes.map(n => n.y - Math.max(n.radius, n.lines.length * 7.5) - 18))
-  const right = Math.max(...nodes.map(n => n.x + n.radius + 12 + n.labelWidth + 16))
-  const bottom = Math.max(...nodes.map(n => n.y + Math.max(n.radius, n.lines.length * 7.5) + 18))
+  if (!nodes.length) return {x:-200,y:-150,w:400,h:300}
+  const left=Math.min(...nodes.map(n=>n.x-Math.max(80,n.labelWidth*.6)))
+  const right=Math.max(...nodes.map(n=>n.x+Math.max(80,n.labelWidth*.6)))
+  const top=Math.min(...nodes.map(n=>n.y-55)),bottom=Math.max(...nodes.map(n=>n.y+55))
   return {x:left,y:top,w:right-left,h:bottom-top}
 }
+export type ForceOptions = {spacing?:number;distance?:number;aspect?:number}
+function hash(id:string) { let h=2166136261;for(const c of id)h=Math.imul(h^c.charCodeAt(0),16777619);return (h>>>0)/4294967296 }
 
-export function graphLayout(data: any, aspect = 2): {nodes: GraphNode[]; edges: GraphEdge[]} {
-  const counts = citationCounts(data)
-  const nodes: GraphNode[] = [...(data.courses || []).map((c: any) => ({...c,kind:'course'})),
-    ...data.concepts.map((c: any) => ({...c,kind:'concept'}))].map(n => {
-      const lines = wrapLabel(n.label)
-      return {...n,x:0,y:0,citationCount:counts.get(n.id)||0,
-        radius:n.kind==='course'?courseRadius:conceptRadius(counts.get(n.id)||0),lines,
-        labelWidth:Math.max(...lines.map(s => s.length)) * (n.kind==='course'?8:7)}
-    })
-  const edges: GraphEdge[] = [
-    ...data.concepts.flatMap((c: any) => [...new Set<string>(c.courses || [])].map(target => ({source:c.id,target,kind:'membership' as const}))),
-    ...(data.relations || []).map((r: any) => ({source:r.source,target:r.target,kind:'relation' as const,relation:r}))
-  ]
-  curveEdges(edges)
-  const courses = nodes.filter(n => n.kind === 'course')
-  const courseById = new Map(courses.map(c => [c.id,c]))
-  const home = (n: GraphNode) => n.courses?.find(id => courseById.get(id)?.domain === n.domain) || n.courses?.find(id => courseById.has(id)) || ''
-  const domainIds = [...new Set(nodes.map(n => n.domain || 'unassigned'))]
-  const adjacent = new Map(nodes.map(n => [n.id, new Set<string>()]))
-  for (const e of edges.filter(e => e.kind === 'relation')) {adjacent.get(e.source)?.add(e.target);adjacent.get(e.target)?.add(e.source)}
-  // Place related concepts next to each other within their course, retaining one
-  // node even when it belongs to several courses. Every membership edge remains.
-  function order(group: GraphNode[]) {
-    const pending = new Map(group.map(n => [n.id,n])), result: GraphNode[] = []
-    function visit(n: GraphNode) {
-      if (!pending.delete(n.id)) return
-      result.push(n)
-      for (const id of adjacent.get(n.id) || []) {const next=pending.get(id);if(next)visit(next)}
-    }
-    for (const n of [...group].sort((a,b) => b.citationCount-a.citationCount || a.label.localeCompare(b.label))) visit(n)
-    return result
-  }
-  const domains = domainIds.map(domain => {
-    const groups: {course?:GraphNode;concepts:GraphNode[]}[] = courses.filter(c => (c.domain||'unassigned')===domain).map(course => ({course,concepts:order(nodes.filter(n => n.kind==='concept' && home(n)===course.id))}))
-    const loose = nodes.filter(n => n.kind==='concept' && !home(n) && (n.domain||'unassigned')===domain)
-    if(loose.length) groups.push({course:undefined,concepts:order(loose)})
-    return {domain,groups}
-  }).filter(d => d.groups.length)
-  if (!domains.length) return {nodes,edges}
-  const pitch = Math.max(185,...nodes.map(n => n.labelWidth+n.radius+28))
-  const rowHeight = 48
-  const gap = 32, header = 48
-  function measure(columns: number[], perRow: number, place=false) {
-    let x=0,y=0,rowH=0,width=0
-    domains.forEach((domain,i) => {
-      if(i && i%perRow===0){y+=rowH+gap;x=0;rowH=0}
-      const cols=columns[i]
-      const actualCols=Math.max(1,...domain.groups.map(g=>Math.min(cols,Math.max(1,g.concepts.length))))
-      const w=actualCols*pitch
-      let offsetY=0
-      for(const group of domain.groups){
-        if(place && group.course){group.course.x=x+18;group.course.y=y+offsetY+20}
-        const startY=offsetY+(group.course?header:0)
-        let rowY=startY
-        for(let first=0;first<group.concepts.length;first+=cols){
-          const row=group.concepts.slice(first,first+cols)
-          const height=Math.max(rowHeight,...row.map(n=>n.lines.length*16+16))
-          if(place)row.forEach((n,j)=>{n.x=x+18+j*pitch;n.y=y+rowY+height/2})
-          rowY+=height
-        }
-        offsetY=rowY+16
+// Only circles and connections participate in the physics. Text is positioned
+// separately, so long titles cannot turn the network into rows or columns.
+export function createGraphSimulation(nodes:GraphNode[], edges:GraphEdge[], options:ForceOptions={}) {
+  const spacing=options.spacing||1,distance=options.distance||1,aspect=Math.max(.7,Math.min(2.3,options.aspect||1.8))
+  const byId=new Map(nodes.map(n=>[n.id,n])),velocity=new Map(nodes.map(n=>[n.id,{x:0,y:0}]))
+  const domains=[...new Set(nodes.map(n=>n.domain))]
+  const anchors=new Map(domains.map((id,i)=>{const a=-Math.PI+i*2*Math.PI/domains.length;return[id,{x:Math.cos(a)*190*aspect*spacing,y:Math.sin(a)*(aspect<1?250/aspect:125/Math.sqrt(aspect))*spacing}]}))
+  const links=edges.map(e=>({e,a:byId.get(e.source),b:byId.get(e.target)})).filter(l=>l.a&&l.b)
+  return {
+    tick(alpha=1,fixed?:{id:string;x:number;y:number}){
+      const force=new Map(nodes.map(n=>{
+        const a=anchors.get(n.domain)!
+        return[n.id,{x:-n.x*(.003/aspect)+(a.x-n.x)*.006,y:-n.y*(.005*aspect)+(a.y-n.y)*.007}]
+      }))
+      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i],b=nodes[j]
+        let dx=a.x-b.x,dy=a.y-b.y
+        if(Math.abs(dx)+Math.abs(dy)<.001){dx=(hash(a.id)-.5)*.1||.01;dy=.1}
+        const d=Math.max(.1,Math.hypot(dx,dy))
+        const clearance=(a.radius+b.radius+48)*spacing
+        const push=2200*spacing*spacing/(d*d+200)+Math.max(0,clearance-d)*.22
+        const fx=dx/d*push,fy=dy/d*push
+        force.get(a.id)!.x+=fx;force.get(a.id)!.y+=fy;force.get(b.id)!.x-=fx;force.get(b.id)!.y-=fy
       }
-      width=Math.max(width,x+w);rowH=Math.max(rowH,offsetY);x+=w+gap
-    })
-    const height=y+rowH
-    return {width,height,score:Math.max(width/Math.max(.35,aspect),height)}
-  }
-  // Choose a compact 2-D arrangement for this viewport, rather than squeezing
-  // every new node into the original fixed strip. No maximum graph extent.
-  let best: {columns:number[];perRow:number;score:number}|undefined
-  for(let perRow=1;perRow<=domains.length;perRow++){
-    const columns=domains.map(()=>2)
-    for(let pass=0;pass<3;pass++)for(let i=0;i<domains.length;i++){
-      let choice=columns[i],score=measure(columns,perRow).score
-      for(let col=1;col<=5;col++){const trial=[...columns];trial[i]=col;const value=measure(trial,perRow).score;if(value<score){score=value;choice=col}}
-      columns[i]=choice
+      for(const {e,a,b} of links){
+        const dx=b!.x-a!.x,dy=b!.y-a!.y,d=Math.max(1,Math.hypot(dx,dy))
+        const target=(e.kind==='membership'?155:115)*distance
+        const strength=e.kind==='membership'?.012:(a!.domain===b!.domain?.022:.012)
+        const pull=(d-target)*strength
+        force.get(a!.id)!.x+=dx/d*pull;force.get(a!.id)!.y+=dy/d*pull
+        force.get(b!.id)!.x-=dx/d*pull;force.get(b!.id)!.y-=dy/d*pull
+      }
+      for(const n of nodes.filter(n=>n.kind==='course')){
+        const members=links.filter(l=>l.e.kind==='membership'&&l.b!.id===n.id).map(l=>l.a!)
+        if(members.length<3)continue
+        force.get(n.id)!.x+=(members.reduce((s,m)=>s+m.x,0)/members.length-n.x)*.06
+        force.get(n.id)!.y+=(members.reduce((s,m)=>s+m.y,0)/members.length-n.y)*.06
+      }
+      let energy=0
+      for(const n of nodes){
+        const v=velocity.get(n.id)!,f=force.get(n.id)!
+        if(fixed?.id===n.id){n.x=fixed.x;n.y=fixed.y;v.x=0;v.y=0;continue}
+        v.x=(v.x+f.x*alpha)*.72;v.y=(v.y+f.y*alpha)*.72
+        const speed=Math.hypot(v.x,v.y),limit=speed>10?10/speed:1
+        n.x+=v.x*limit;n.y+=v.y*limit;energy+=speed
+      }
+      return energy
     }
-    const score=measure(columns,perRow).score
-    if(!best||score<best.score)best={columns,perRow,score}
   }
-  measure(best!.columns,best!.perRow,true)
-  return {nodes,edges}
+}
+
+export function graphLayout(data:any,aspect=1.8,options:ForceOptions={}):{nodes:GraphNode[];edges:GraphEdge[]} {
+  const counts=citationCounts(data)
+  const nodes:GraphNode[]=[...(data.courses||[]).map((c:any)=>({...c,kind:'course'})),...data.concepts.map((c:any)=>({...c,kind:'concept'}))].map(n=>{
+    const lines=wrapLabel(n.label)
+    return {...n,x:0,y:0,citationCount:counts.get(n.id)||0,radius:n.kind==='course'?courseRadius:conceptRadius(counts.get(n.id)||0),lines,labelWidth:Math.max(...lines.map(s=>s.length))*6.4}
+  })
+  const edges:GraphEdge[]=[...data.concepts.flatMap((c:any)=>[...new Set<string>(c.courses||[])].map(target=>({source:c.id,target,kind:'membership' as const}))),
+    ...(data.relations||[]).map((r:any)=>({source:r.source,target:r.target,kind:'relation' as const,relation:r}))]
+  curveEdges(edges)
+  const domains=[...new Set(nodes.map(n=>n.domain))]
+  for(const n of nodes){
+    const angle=-Math.PI+domains.indexOf(n.domain)*Math.PI*2/Math.max(1,domains.length)
+    const phase=hash(n.id)*Math.PI*2,radius=50+Math.sqrt(hash(n.id+'radius'))*150
+    n.x=Math.cos(angle)*210*Math.sqrt(aspect)+Math.cos(phase)*radius
+    n.y=Math.sin(angle)*210/Math.sqrt(aspect)+Math.sin(phase)*radius
+  }
+  const simulation=createGraphSimulation(nodes,edges,{...options,aspect})
+  for(let i=0;i<420;i++)simulation.tick(Math.max(.15,1-i/470))
+  return{nodes,edges}
+}
+
+export interface LabelPlacement {x:number;y:number;lines:string[];width:number;height:number;hidden:boolean}
+// Resolve text in screen space around each dot, without moving the graph itself.
+export function placeGraphLabels(nodes:GraphNode[],view:{x:number;y:number;w:number;h:number},width:number,font=12):Map<string,LabelPlacement>{
+  const unit=view.w/Math.max(1,width),height=view.h/unit
+  const screen=nodes.map(n=>({n,x:(n.x-view.x)/unit,y:(n.y-view.y)/unit,r:n.radius/unit}))
+  const occupied:{x:number;y:number;w:number;h:number}[]=[]
+  const result=new Map<string,LabelPlacement>()
+  const overlap=(a:any,b:any)=>Math.max(0,Math.min(a.x+a.w,b.x+b.w)-Math.max(a.x,b.x))*Math.max(0,Math.min(a.y+a.h,b.y+b.h)-Math.max(a.y,b.y))
+  for(const {n,x,y,r} of [...screen].sort((a,b)=>Number(b.n.kind==='course')-Number(a.n.kind==='course')||b.n.citationCount-a.n.citationCount||a.n.id.localeCompare(b.n.id))){
+    const w=n.labelWidth*font/12+8,h=n.lines.length*(font+3)+4,gap=r+6
+    const positions=[0,14,28].flatMap(extra=>{const gap=r+6+extra;return[{x:x+gap,y:y-h/2},{x:x-w-gap,y:y-h/2},{x:x-w/2,y:y+gap},{x:x-w/2,y:y-gap-h},
+      {x:x+gap,y:y+gap},{x:x-w-gap,y:y+gap},{x:x+gap,y:y-h-gap},{x:x-w-gap,y:y-h-gap}]})
+    let best=positions[0],score=Infinity
+    positions.forEach((candidate,i)=>{
+      const p={...candidate}
+      if(x>=0&&x<=width&&y>=0&&y<=height){p.x=Math.max(8,Math.min(width-w-8,p.x));p.y=Math.max(8,Math.min(height-h-8,p.y))}
+      const box={...p,w,h}
+      const clip=Math.max(0,-p.x)+Math.max(0,p.x+w-width)+Math.max(0,-p.y)+Math.max(0,p.y+h-height)
+      const collisions=occupied.reduce((s,b)=>s+overlap(box,b),0)+screen.reduce((s,d)=>s+overlap(box,{x:d.x-d.r-3,y:d.y-d.r-3,w:2*d.r+6,h:2*d.r+6}),0)
+      const value=collisions*10+clip*20+i*1.5
+      if(value<score){score=value;best=p}
+    })
+    const hidden=n.kind!=='course'&&(score>200||unit>2&&n.citationCount<2)
+    if(!hidden)occupied.push({...best,w,h})
+    result.set(n.id,{x:best.x*unit+view.x-n.x,y:(best.y+font+1)*unit+view.y-n.y,lines:n.lines,width:w*unit,height:h*unit,hidden})
+  }
+  return result
 }
