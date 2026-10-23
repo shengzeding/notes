@@ -1,3 +1,8 @@
+---
+title: Linear Maps
+order: 4
+---
+
 # Linear Maps, Matrix Representations, and Invariant Subspaces
 
 ## 1. Maps, Composition, and Inverses
