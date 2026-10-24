@@ -113,8 +113,6 @@ $$
 
 Consequently its algebraic precision is **three**, one degree higher than the number of interpolation conditions alone would guarantee.
 
----
-
 ## 2. Interpolatory Quadrature
 
 ### 2.1 Integrating the Lagrange interpolant
@@ -217,7 +215,6 @@ $$
 
 A sharper formula may be available when the relevant remainder kernel does not change sign.
 
----
 
 ## 3. Newton--Cotes Quadrature
 
@@ -442,8 +439,6 @@ Proof. The equality $\sum A_k=b-a$ follows by applying the quadrature rule to th
 
 For high-degree Newton--Cotes rules, some coefficients become negative and their absolute values may become large. Cancellation can magnify errors in the function values. Consequently, simply increasing the degree of an equally spaced global interpolation rule is not a reliable route to greater accuracy. A better approach is often to apply low-degree quadrature on many short subintervals.
 
----
-
 ## 4. Composite Quadrature Rules
 
 ### 4.1 Composite trapezoidal rule
@@ -624,7 +619,6 @@ The guaranteed choice is **$n=4$ Simpson panels**, using nine function values in
 
 These counts come from upper error bounds; fewer panels may already satisfy the desired tolerance for this particular integrand.
 
----
 
 ## 5. Romberg Integration and Richardson Extrapolation
 
@@ -726,7 +720,6 @@ The first few rows have the triangular structure
 
 Here each entry combines two entries from the previous column. The diagonal $R_{j,j}$ gives increasingly high-order approximations when $f$ is sufficiently smooth. Since the first column uses nested trapezoidal grids, Romberg integration gains accuracy while reusing previously calculated function values.
 
----
 
 ## 6. Gaussian Quadrature
 
@@ -916,8 +909,6 @@ $$
 
 By construction, it is exact for every polynomial $f$ of degree at most three.
 
----
-
 ## 7. Classical Gaussian Quadrature Formulas
 
 ### 7.1 Gauss--Legendre quadrature
@@ -1085,7 +1076,6 @@ $$
 
 **Remark (Polynomial normalization).** The explicit Laguerre and Hermite weight formulas depend on how the corresponding orthogonal polynomials are normalized. A polynomial that vanishes at a quadrature node cannot itself appear unmodified in the denominator of its weight formula; the derivative or an adjacent-degree polynomial must be used.
 
----
 
 ## 8. Numerical Multiple Integration
 
@@ -1142,26 +1132,3 @@ $$
 
 The same computation can be written directly as a tensor-product sum with the corresponding Simpson weights in each variable.
 
----
-
-## 9. Comparison of the Quadrature Methods
-
-| Method | Nodes or construction | Algebraic precision | Typical error for smooth $f$ |
-| --- | --- | --- | --- |
-| Left/right rectangle | One endpoint | $0$ | $O(h)$ in composite form |
-| Midpoint | Midpoint | $1$ | $O(h^2)$ in composite form |
-| Trapezoidal | Two endpoints | $1$ | $O(h^2)$ in composite form |
-| Simpson | Endpoints and midpoint | $3$ | $O(h^4)$ in composite form |
-| Five-point Cotes | Five equally spaced nodes | $5$ | Higher single-panel order |
-| Romberg | Nested trapezoidal grids and extrapolation | Increasing at each extrapolation level | $O(h^{2k+2})$ after $k$ extrapolations |
-| $(n+1)$-point Gaussian | Zeros of a degree-$(n+1)$ orthogonal polynomial | $2n+1$ | Governed by $f^{(2n+2)}$ |
-
-The main constructions fit together naturally:
-
-1. **Interpolation** produces quadrature weights by integrating Lagrange basis polynomials.
-2. **Newton--Cotes quadrature** fixes equally spaced nodes; its low-order formulas are simple, but high-degree global formulas can lose stability.
-3. **Composite quadrature** improves accuracy by applying stable low-degree rules on smaller panels.
-4. **Richardson extrapolation** cancels leading error terms and leads to Romberg integration.
-5. **Gaussian quadrature** improves algebraic precision by choosing nodes through orthogonal polynomials rather than prescribing their positions.
-
-The most important distinction is between improving a rule by **reducing the step size**, by **canceling known error terms**, or by **optimizing the locations of the evaluation nodes**.
