@@ -1,3 +1,8 @@
+---
+title: Numerical Integration
+order: 3
+---
+
 # Numerical Integration
 
 ## 1. The Numerical Integration Problem
