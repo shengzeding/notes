@@ -61,6 +61,8 @@ $$
 
 The rectangle rules replace the area by a rectangle. The trapezoidal rule replaces the graph between $a$ and $b$ by the straight line through $(a,f(a))$ and $(b,f(b))$.
 
+<span id="quadrature-formula"></span>
+
 ### 1.3 Mechanical quadrature formulas
 
 **Definition (Quadrature formula).** A numerical integration rule of the form
@@ -115,6 +117,8 @@ Consequently its algebraic precision is **three**, one degree higher than the nu
 
 ## 2. Interpolatory Quadrature
 
+<span id="interpolatory-quadrature"></span>
+
 ### 2.1 Integrating the Lagrange interpolant
 
 Choose distinct nodes
@@ -123,7 +127,7 @@ $$
 a\le x_0<x_1<\cdots<x_n\le b.
 $$
 
-Let $L_n$ be the Lagrange interpolating polynomial of $f$ at these nodes:
+Let $L_n$ be the [Lagrange interpolating polynomial](Interpolation_Numerical_Analysis.md#polynomial-interpolation-uniqueness "concept:polynomial-interpolation-uniqueness") of $f$ at these nodes:
 
 $$
 L_n(x)=\sum_{k=0}^{n}f(x_k)\ell_k(x),\qquad
@@ -374,9 +378,11 @@ $$
 
 For a convex function ($f''\ge0$), the trapezoidal rule overestimates the integral.
 
+<span id="simpson-rule"></span>
+
 ### 3.7 Error of Simpson's rule
 
-The ordinary quadratic interpolation remainder is not sufficiently structured to reveal the fourth-derivative error. Instead, introduce the cubic Hermite interpolant $H_3$ satisfying
+The ordinary quadratic interpolation remainder is not sufficiently structured to reveal the fourth-derivative error. Instead, introduce the [cubic Hermite interpolant](Interpolation_Numerical_Analysis.md#hermite-interpolation-uniqueness "concept:hermite-interpolation-uniqueness") $H_3$ satisfying
 
 $$
 H_3(a)=f(a),\quad H_3(m)=f(m),\quad H_3(b)=f(b),
@@ -760,6 +766,8 @@ $$
 
 Consequently no quadrature rule with these $n+1$ distinct nodes can have precision $2n+2$.
 
+<span id="gaussian-quadrature"></span>
+
 ### 6.2 Orthogonal polynomials characterize Gaussian nodes
 
 Use the weighted inner product
@@ -775,7 +783,7 @@ $$
 \quad\text{for every }p\in\mathcal P_n.}
 $$
 
-Thus $\omega_{n+1}$ must be the monic orthogonal polynomial of degree $n+1$ with respect to $\rho$.
+Thus $\omega_{n+1}$ must be the [monic orthogonal polynomial](Function_Approximation_Numerical_Analysis.md#orthogonal-polynomial-construction "concept:orthogonal-polynomial-construction") of degree $n+1$ with respect to $\rho$.
 
 Proof (necessity). Suppose the formula is exact through degree $2n+1$. Since $p\omega_{n+1}\in\mathcal P_{2n+1}$ for $p\in\mathcal P_n$,
 
@@ -1079,6 +1087,8 @@ $$
 
 ## 8. Numerical Multiple Integration
 
+<span id="tensor-product-quadrature"></span>
+
 ### 8.1 Iterated quadrature
 
 For a rectangular integration region, a double integral can be evaluated as successive one-dimensional integrals:
@@ -1094,6 +1104,8 @@ If the one-dimensional rules have nodes $x_i,y_j$ and weights $A_i,B_j$, respect
 $$
 \boxed{\displaystyle I\approx\sum_i\sum_j A_iB_j f(x_i,y_j).}
 $$
+
+After the grid values are flattened with a fixed paired-index ordering, the combined weight vector is the [Kronecker product](../math/linear-algebra/Linear_Maps.md#kronecker-product "concept:kronecker-product") of the two one-dimensional weight vectors. This product structure applies to a product region and product measure with a tensor-product rule; it does not describe a general nonrectangular-domain quadrature formula.
 
 ### 8.2 Example: Simpson quadrature for a double integral
 

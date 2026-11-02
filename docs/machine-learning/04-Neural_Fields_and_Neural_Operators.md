@@ -279,7 +279,7 @@ so $\kappa_\theta(x,y)v(y)\in\mathbb R^{d_{\mathrm{out}}}$. The kernel may itsel
 
 ### 4.2 Discrete quadrature and message passing
 
-At sampling sites $y_j$, a quadrature approximation is
+At sampling sites $y_j$, a [quadrature approximation](../numerical-methods/Numerical_Integration_Numerical_Analysis.md#quadrature-formula "concept:quadrature-formula") is
 
 $$
 \boxed{(\mathcal K_Nv)(x_i)=
