@@ -743,6 +743,90 @@
       "courses": [
         "machine-learning"
       ]
+    },
+    {
+      "id": "quadrature-formula",
+      "label": "Quadrature formula",
+      "aliases": [
+        "Mechanical quadrature",
+        "Numerical quadrature",
+        "求积公式"
+      ],
+      "location": {
+        "path": "numerical-methods/Numerical_Integration_Numerical_Analysis.md",
+        "anchor": "quadrature-formula"
+      },
+      "domain": "numerical-methods",
+      "courses": [
+        "numerical-methods"
+      ]
+    },
+    {
+      "id": "interpolatory-quadrature",
+      "label": "Interpolatory quadrature",
+      "aliases": [
+        "Interpolatory quadrature formula",
+        "插值型求积"
+      ],
+      "location": {
+        "path": "numerical-methods/Numerical_Integration_Numerical_Analysis.md",
+        "anchor": "interpolatory-quadrature"
+      },
+      "domain": "numerical-methods",
+      "courses": [
+        "numerical-methods"
+      ]
+    },
+    {
+      "id": "simpson-rule",
+      "label": "Simpson's rule",
+      "aliases": [
+        "Simpson quadrature",
+        "Composite Simpson's rule",
+        "辛普森公式"
+      ],
+      "location": {
+        "path": "numerical-methods/Numerical_Integration_Numerical_Analysis.md",
+        "anchor": "simpson-rule"
+      },
+      "domain": "numerical-methods",
+      "courses": [
+        "numerical-methods"
+      ]
+    },
+    {
+      "id": "gaussian-quadrature",
+      "label": "Gaussian quadrature",
+      "aliases": [
+        "Gaussian quadrature formula",
+        "Gauss quadrature",
+        "高斯求积"
+      ],
+      "location": {
+        "path": "numerical-methods/Numerical_Integration_Numerical_Analysis.md",
+        "anchor": "gaussian-quadrature"
+      },
+      "domain": "numerical-methods",
+      "courses": [
+        "numerical-methods"
+      ]
+    },
+    {
+      "id": "tensor-product-quadrature",
+      "label": "Tensor-product quadrature",
+      "aliases": [
+        "Iterated quadrature",
+        "Product quadrature",
+        "张量积求积"
+      ],
+      "location": {
+        "path": "numerical-methods/Numerical_Integration_Numerical_Analysis.md",
+        "anchor": "tensor-product-quadrature"
+      },
+      "domain": "numerical-methods",
+      "courses": [
+        "numerical-methods"
+      ]
     }
   ],
   "relations": [
@@ -1021,6 +1105,56 @@
         "anchor": "fno"
       },
       "note": "Both map sampled fields to sampled fields. A local CNN expands its receptive field through depth, whereas a Fourier layer has global spatial reach through spectral mixing."
+    },
+    {
+      "source": "interpolatory-quadrature",
+      "target": "polynomial-interpolation-uniqueness",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "numerical-methods/Numerical_Integration_Numerical_Analysis.md",
+        "anchor": "interpolatory-quadrature"
+      },
+      "note": "Interpolatory quadrature integrates the Lagrange interpolant. The construction assumes distinct fixed nodes; it does not claim that every numerical integration method is interpolation-based."
+    },
+    {
+      "source": "simpson-rule",
+      "target": "hermite-interpolation-uniqueness",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "numerical-methods/Numerical_Integration_Numerical_Analysis.md",
+        "anchor": "simpson-rule"
+      },
+      "note": "The fourth-derivative remainder is derived with a cubic Hermite interpolant. Simpson's weights themselves use only function values and do not require derivative data."
+    },
+    {
+      "source": "gaussian-quadrature",
+      "target": "orthogonal-polynomial-construction",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "numerical-methods/Numerical_Integration_Numerical_Analysis.md",
+        "anchor": "gaussian-quadrature"
+      },
+      "note": "For a positive weight with the required moments, the Gaussian nodes are the distinct interior zeros of the corresponding orthogonal polynomial; explicit weight formulas depend on normalization."
+    },
+    {
+      "source": "gno-discretization",
+      "target": "quadrature-formula",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "machine-learning/04-Neural_Fields_and_Neural_Operators.md",
+        "anchor": "gno-discretization"
+      },
+      "note": "The GNO kernel integral is discretized by a quadrature sum. The weights must match the sampling density, target measure, and integration neighborhood; a bare 1/N factor is only a special case."
+    },
+    {
+      "source": "tensor-product-quadrature",
+      "target": "kronecker-product",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "numerical-methods/Numerical_Integration_Numerical_Analysis.md",
+        "anchor": "tensor-product-quadrature"
+      },
+      "note": "On a product region with a product measure and consistent paired-index ordering, the flattened tensor-product quadrature weights form the Kronecker product of the one-dimensional weight vectors."
     }
   ],
   "domains": [
