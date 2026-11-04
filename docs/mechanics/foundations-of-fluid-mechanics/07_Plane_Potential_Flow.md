@@ -106,6 +106,8 @@ $$
 
 Section 5 applies the chain rule to the Joukowski map and uses the Kutta condition to select the circulation of a flat plate or airfoil.
 
+The construction separates four operations that are easy to confuse. The complex potential $W(\zeta)$ builds the flow in a circle plane, the map $z(\zeta)$ changes the geometry, the Kutta condition selects a circulation $\Gamma$, and the Kutta-Joukowski theorem converts that circulation into lift.
+
 ---
 
 ## 2. Elementary Solutions
@@ -254,7 +256,9 @@ Integrating pressure gives zero drag and zero lift. The zero-drag prediction for
 
 ### 4.3 Adding counterclockwise circulation
 
-Using the circulation convention stated at the start,
+A point vortex may be superposed on the cylinder solution without changing the no-penetration condition: its stream function is constant on $r=a$, so it adds tangential velocity but no radial velocity there. The ideal cylinder problem therefore admits a one-parameter family of solutions indexed by circulation. Section 5 shows how a sharp trailing edge, after mapping, selects one member of this family.
+
+Using the counterclockwise-positive circulation convention,
 
 $$
 \Phi=U\left(r+\frac{a^2}{r}\right)\cos\theta
@@ -316,61 +320,13 @@ $$
 
 ---
 
-## 5. Lift, Airfoils, and Cascades
+## 5. From Cylinder Flow to Airfoil Lift
 
-<span id="kutta-joukowski-theorem"></span>
-
-### 5.1 Kutta-Joukowski lift theorem
-
-**Theorem (Kutta-Joukowski).** For the steady two-dimensional ideal-flow model with a uniform far field, lift per unit span has magnitude
-
-$$
-\boxed{|F_L'|=\rho U|\Gamma|.}
-$$
-
-With positive counterclockwise $\Gamma$ and $\boldsymbol\Gamma=\Gamma\mathbf k$, the force on the body is
-
-$$
-\boxed{\mathbf F'=\rho\mathbf U\times\boldsymbol\Gamma.}
-$$
-
-For $\mathbf U=U\mathbf i$, this gives
-
-$$
-F_x'=0,\qquad F_y'=-\rho U\Gamma.
-$$
-
-Thus counterclockwise circulation produces downward force in this convention, while clockwise circulation produces upward force. The theorem determines force once the circulation is known; the inviscid field equations alone still admit a family of circulation values around an airfoil.
-
-
-<span id="lift-residue-proof"></span>
-
-For a smooth impermeable body with no net source flux and uniform flow $U$ along $+x$, write $q(z)=dW/dz$. Bernoulli's equation and the tangency of velocity to the body give Blasius' force formula,
-
-$$
-F_x'-iF_y'=\frac{i\rho}{2}\oint_C q(z)^2\,dz,
-$$
-
-where $C$ encircles the body counterclockwise. In the regular exterior flow, the contour may be deformed to a sufficiently large circle. There,
-
-$$
-q(z)=U-\frac{i\Gamma}{2\pi z}+O(z^{-2}),
-\qquad
-q(z)^2=U^2-\frac{iU\Gamma}{\pi z}+O(z^{-2}).
-$$
-
-Applying the [residue theorem](../../math/Foundations_of_Complex_Analysis.md#residue-theorem "concept:residue-theorem") at infinity, or integrating the Laurent series term by term, only the $z^{-1}$ coefficient contributes:
-
-$$
-\oint_C q(z)^2\,dz
-=2\pi i\left(-\frac{iU\Gamma}{\pi}\right)=2U\Gamma.
-$$
-
-Thus $F_x'-iF_y'=i\rho U\Gamma$, recovering $F_x'=0$ and $F_y'=-\rho U\Gamma$ with the stated circulation convention.
+The elementary solutions now form a single construction. First map the known cylinder geometry to a plate or airfoil. Next inspect the transformed velocity at the map's critical points. The Kutta condition then fixes the otherwise free circulation, and the resulting circulation determines the lift.
 
 <span id="joukowski-map"></span>
 
-### 5.2 The Joukowski map
+### 5.1 The Joukowski map
 
 Let $\zeta$ denote the circle plane and $z$ the physical plane. The Joukowski map is
 
@@ -412,9 +368,11 @@ $$
 
 This limit, rather than the denominator alone, decides whether the physical velocity is finite.
 
-### 5.3 Inclined flat plate and the Kutta condition
+The geometry has therefore introduced two possible edge singularities. Whether either singularity is present depends on the circle-plane flow placed in the numerator.
 
-Keep the plate on the real axis and let the far-field velocity make angle $-\alpha$ with it. The cylinder-plane potential with positive counterclockwise circulation is
+### 5.2 Inclined flat plate and the Kutta condition
+
+Keep the plate on the real axis and let the far-field velocity make angle $-\alpha$ with it. At zero incidence and zero circulation, the numerator and denominator vanish together at both endpoints and the mapped velocity remains finite. At nonzero incidence, the numerator does not generally vanish at the chosen trailing edge. Because adding a centered vortex preserves the circle boundary, introduce an unknown circulation and write the cylinder-plane potential as
 
 $$
 \boxed{
@@ -467,7 +425,61 @@ $$
 
 For positive $\alpha$, the selected circulation is clockwise, $\Gamma<0$, and the lift is upward. With a clockwise-positive circulation $\Gamma_{\mathrm{cw}}=-\Gamma$, the same result is $\Gamma_{\mathrm{cw}}=4\pi aU\sin\alpha$.
 
-The Kutta condition removes the trailing-edge singularity. The ideal zero-thickness plate still has a leading-edge velocity singularity at nonzero incidence. A rounded leading edge and viscous boundary layer regularize that region in a real flow.
+The Kutta condition has selected one circulation from the family allowed by the ideal cylinder boundary condition. It removes the trailing-edge singularity, but the ideal zero-thickness plate still has a leading-edge velocity singularity at nonzero incidence. A rounded leading edge and viscous boundary layer regularize that region in a real flow.
+
+<span id="kutta-joukowski-theorem"></span>
+
+### 5.3 From circulation to lift
+
+**Theorem (Kutta-Joukowski).** For the steady two-dimensional ideal-flow model with a uniform far field, lift per unit span has magnitude
+
+$$
+\boxed{|F_L'|=\rho U|\Gamma|.}
+$$
+
+With positive counterclockwise $\Gamma$ and $\boldsymbol\Gamma=\Gamma\mathbf k$, the force on the body is
+
+$$
+\boxed{\mathbf F'=\rho\mathbf U\times\boldsymbol\Gamma.}
+$$
+
+For $\mathbf U=U\mathbf i$,
+
+$$
+F_x'=0,\qquad F_y'=-\rho U\Gamma.
+$$
+
+Thus counterclockwise circulation produces downward force in this convention, while the clockwise circulation selected above produces upward lift. The Kutta condition determines the circulation; the Kutta-Joukowski theorem then determines the force.
+
+<details>
+<summary>Optional derivation using Blasius' formula</summary>
+
+<span id="lift-residue-proof"></span>
+
+For a smooth impermeable body with no net source flux and uniform flow $U$ along $+x$, write $q(z)=dW/dz$. Bernoulli's equation and the tangency of velocity to the body give Blasius' force formula,
+
+$$
+F_x'-iF_y'=\frac{i\rho}{2}\oint_C q(z)^2\,dz,
+$$
+
+where $C$ encircles the body counterclockwise. In the regular exterior flow, the contour may be deformed to a sufficiently large circle. There,
+
+$$
+q(z)=U-\frac{i\Gamma}{2\pi z}+O(z^{-2}),
+\qquad
+q(z)^2=U^2-\frac{iU\Gamma}{\pi z}+O(z^{-2}).
+$$
+
+Applying the [residue theorem](../../math/Foundations_of_Complex_Analysis.md#residue-theorem "concept:residue-theorem") at infinity, or integrating the Laurent series term by term, only the $z^{-1}$ coefficient contributes:
+
+$$
+\oint_C q(z)^2\,dz
+=2\pi i\left(-\frac{iU\Gamma}{\pi}\right)=2U\Gamma.
+$$
+
+Thus $F_x'-iF_y'=i\rho U\Gamma$, recovering $F_x'=0$ and $F_y'=-\rho U\Gamma$ with the stated circulation convention.
+
+</details>
 
 ### 5.4 Lift coefficient of the flat plate
 
