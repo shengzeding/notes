@@ -9,7 +9,7 @@ Physics-based PDE models and data-driven models have complementary strengths. A 
 
 **Physics-integrated modeling** does not replace the entire solver by default. It keeps the components that are sufficiently understood and assigns learning to the unresolved, uncertain, unavailable, or computationally expensive part. The resulting model is a coupled computational system: its reliability depends not only on the neural component in isolation, but also on how that component interacts with the numerical solver during repeated use.
 
-This chapter develops that coupling, the distinction between offline and solver-in-the-loop training, and the differentiation machinery needed to optimize through explicit and implicit PDE solvers. The structural correspondences between numerical and learned operators developed in [Numerical Operators and Neural Architectures](05-Numerical_Operators_and_Neural_Architectures.md) become operational here: numerical steps are used inside a trainable computation rather than merely compared with neural layers.
+The structural correspondences between numerical and learned operators developed in [Numerical Operators and Neural Architectures](05-Numerical_Operators_and_Neural_Architectures.md) become operational here: numerical steps are used inside a trainable computation rather than merely compared with neural layers.
 
 
 <span id="physics-integrated-modeling"></span>
