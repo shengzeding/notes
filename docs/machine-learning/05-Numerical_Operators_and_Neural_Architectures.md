@@ -395,11 +395,3 @@ Not every message-passing network is a heat equation. Directed edges, feature-de
 
 The PDE viewpoint is therefore diagnostic rather than universal. If repeated averaging is the cause, a model can alter the dynamics through initial-feature injection, residual or antisymmetric pathways, directional transport, reaction terms, adaptive connectivity, or controlled depth. Adding a term labeled “convection” is not by itself a guarantee: the resulting update still needs stability, expressivity, and task-appropriate information preservation.
 
-
-## 8. Design Lessons
-
-The strongest correspondences preserve more than array shape. A fixed stencil is exactly a convolution because both the coefficients and the neighborhood action agree. A conservative finite-volume scheme is message passing with shared face fluxes, geometric normalization, and pairwise cancellation. Neural ODEs and equilibrium models become meaningful when their limiting differential equation or fixed-point problem is part of the construction.
-
-Other comparisons are best used as architectural guidance. Fourier layers inherit the efficiency of frequency-space multipliers without inheriting the identity of a particular PDE operator. U-Nets borrow the economy of multiscale communication without automatically becoming multigrid solvers. Attention resembles an adaptive kernel sum without automatically defining a consistent quadrature rule.
-
-When physics or numerical analysis supplies a required property, it is usually safer to encode that property in the architecture than to expect training to discover it from finite data. Conservation suggests antisymmetric edge fluxes; known symmetries suggest equivariant parameter sharing; nonuniform sampling requires measure-aware weights; global solution maps require global or multiscale communication. The numerical analogy is most useful when it identifies which constraints matter and where the analogy stops.
