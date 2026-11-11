@@ -159,6 +159,8 @@ produces $h^2$ times the usual five-point discrete Laplacian. Its presence illus
 
 A differential operator such as $\nabla^2u$ is local, whereas solving a boundary-value problem can define a **global solution map**. A small-kernel CNN has a limited receptive field, so global dependencies may require depth, multiscale processing, suitable boundary features, or other long-range mechanisms. A model also does not automatically generalize across resolutions merely because convolutional weights are resolution-independent.
 
+The distinction between an exact stencil representation and a learned local kernel is developed in [Numerical Operators and Neural Architectures](05-Numerical_Operators_and_Neural_Architectures.md#local-operators-and-convolution).
+
 
 ## 3. Graph Neural Networks (GNNs)
 
@@ -240,3 +242,5 @@ h_i^{\mathrm{new}}=\sigma\left(
 $$
 
 The score determines neighbor importance, while $Wh_j$ supplies message content. The attention weights are recomputed from current node features rather than treated as fixed edge parameters.
+
+Finite-volume fluxes provide a physically constrained instance of message passing, while repeated Laplacian-type aggregation provides a PDE interpretation of one oversmoothing mechanism. Both connections are developed in [Numerical Operators and Neural Architectures](05-Numerical_Operators_and_Neural_Architectures.md#finite-volume-message-passing), with the diffusion interpretation stated separately under [graph oversmoothing](05-Numerical_Operators_and_Neural_Architectures.md#graph-diffusion-oversmoothing).

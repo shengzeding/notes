@@ -275,4 +275,6 @@ A graph-attention layer restricts $j$ to prescribed graph neighbors; unrestricte
 
 The score matrix $QK^T$ has $N^2$ entries. For one head, score computation costs $O(N^2d_k)$, and an explicitly materialized attention matrix requires $O(N^2)$ storage. Sparse/local attention, reduced token counts, and approximate attention methods alter this cost-connectivity trade-off. Efficient implementations may avoid materializing the full weight matrix, but dense pairwise computation remains a scaling concern.
 
+Attention can also be compared with a discretized integral kernel, provided that its input-dependent normalization is not mistaken for a general quadrature rule. This qualified connection is developed in [Numerical Operators and Neural Architectures](05-Numerical_Operators_and_Neural_Architectures.md#learned-integral-operators).
+
 
