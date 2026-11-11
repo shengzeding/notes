@@ -3,7 +3,6 @@
 A Markdown notebook built with VitePress and published through GitHub Pages.
 
 - Site: https://shengzeding.github.io/notes/
-- Personal homepage: https://shengzeding.github.io/
 - Content: `docs/`
 - Site configuration: `docs/.vitepress/config.ts`
 - Styling: `docs/.vitepress/theme/style.css`
