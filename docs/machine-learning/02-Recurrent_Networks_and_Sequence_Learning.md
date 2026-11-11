@@ -199,6 +199,8 @@ $$
 
 Products of Jacobians may strongly contract or amplify gradients. In the scalar case $h_t=ah_{t-1}$, the sensitivity is $a^T$, which vanishes for $|a|<1$ and grows for $|a|>1$. Matrix behavior also depends on directions and activation derivatives; it is not completely characterized by a single eigenvalue. Gradient clipping can limit explosion but does not create a missing long-range learning signal.
 
+The same repeated-map viewpoint connects residual networks to explicit time stepping and recurrent fixed points to implicit layers. These correspondences and their stability qualifications are developed in [Numerical Operators and Neural Architectures](05-Numerical_Operators_and_Neural_Architectures.md#depth-as-time-integration).
+
 
 ## 4. Long Short-Term Memory (LSTM)
 

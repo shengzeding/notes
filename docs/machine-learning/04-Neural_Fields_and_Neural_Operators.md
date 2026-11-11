@@ -412,4 +412,6 @@ Low-mode truncation reduces spectral parameter cost and is effective for relativ
 
 The regular-grid FFT also builds in a periodic-extension structure. Standard FNO is consequently most natural on regular, approximately periodic domains; irregular geometries and nonperiodic boundaries typically require additional handling such as padding, mappings, or modified architectures. For $N$ total grid points, FFT computation scales approximately as $O(N\log N)$, in addition to channel operations and retained-mode multiplications.
 
+The GNO quadrature and FNO spectral paths are compared with their numerical counterparts in [Numerical Operators and Neural Architectures](05-Numerical_Operators_and_Neural_Architectures.md#learned-integral-operators).
+
 
