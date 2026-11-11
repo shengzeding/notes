@@ -827,6 +827,75 @@
       "courses": [
         "numerical-methods"
       ]
+    },
+    {
+      "id": "physics-integrated-modeling",
+      "label": "Physics-integrated modeling",
+      "aliases": [
+        "Hybrid physics-ML modeling",
+        "Hybrid neural-PDE modeling",
+        "物理融合建模"
+      ],
+      "location": {
+        "path": "machine-learning/06-Physics_Integrated_Neural_PDE_Modeling.md",
+        "anchor": "physics-integrated-modeling"
+      },
+      "domain": "machine-learning",
+      "courses": [
+        "machine-learning"
+      ]
+    },
+    {
+      "id": "solver-in-loop-training",
+      "label": "Solver-in-the-loop training",
+      "aliases": [
+        "In-the-loop training",
+        "End-to-end solver training",
+        "求解器闭环训练"
+      ],
+      "location": {
+        "path": "machine-learning/06-Physics_Integrated_Neural_PDE_Modeling.md",
+        "anchor": "solver-in-loop-training"
+      },
+      "domain": "machine-learning",
+      "courses": [
+        "machine-learning"
+      ]
+    },
+    {
+      "id": "automatic-differentiation",
+      "label": "Automatic differentiation",
+      "aliases": [
+        "AD",
+        "Forward-mode AD",
+        "Reverse-mode AD",
+        "自动微分"
+      ],
+      "location": {
+        "path": "machine-learning/06-Physics_Integrated_Neural_PDE_Modeling.md",
+        "anchor": "automatic-differentiation"
+      },
+      "domain": "machine-learning",
+      "courses": [
+        "machine-learning"
+      ]
+    },
+    {
+      "id": "implicit-differentiation",
+      "label": "Implicit differentiation",
+      "aliases": [
+        "Implicit function differentiation",
+        "Implicit-layer differentiation",
+        "隐式微分"
+      ],
+      "location": {
+        "path": "machine-learning/06-Physics_Integrated_Neural_PDE_Modeling.md",
+        "anchor": "implicit-differentiation"
+      },
+      "domain": "machine-learning",
+      "courses": [
+        "machine-learning"
+      ]
     }
   ],
   "relations": [
@@ -1155,6 +1224,16 @@
         "anchor": "tensor-product-quadrature"
       },
       "note": "On a product region with a product measure and consistent paired-index ordering, the flattened tensor-product quadrature weights form the Kronecker product of the one-dimensional weight vectors."
+    },
+    {
+      "source": "solver-in-loop-training",
+      "target": "autoregressive-prediction",
+      "type": "derivation-uses",
+      "evidence": {
+        "path": "machine-learning/06-Physics_Integrated_Neural_PDE_Modeling.md",
+        "anchor": "solver-in-loop-training"
+      },
+      "note": "For time-dependent systems, trajectory-based solver-in-the-loop training uses an autoregressive rollout so that prediction errors alter later training inputs. Steady implicit problems can instead differentiate the converged equation."
     }
   ],
   "domains": [
